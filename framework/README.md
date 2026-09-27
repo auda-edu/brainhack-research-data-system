@@ -1,5 +1,7 @@
 # LabHippo system preview
 
+For the current architecture, deployment, and development limits, see [HANDOVER.md](HANDOVER.md).
+
 Open `index.html` in a browser. It uses plain HTML, CSS, and JavaScript and needs no build step or account.
 
 ## What is included
