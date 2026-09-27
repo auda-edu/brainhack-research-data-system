@@ -11,7 +11,7 @@
   let storageOk = true;
 
   function emptyState() {
-    return { projects: {}, logs: {}, updated_at: "", settings: { author: "", repo: "audachang/labhippo", branch: "main", folder: "records/lab/projects" } };
+    return { projects: {}, logs: {}, updated_at: "", settings: { author: "", repo: "audachang/labhippo-records", branch: "main", folder: "records/lab/projects" } };
   }
 
   function read() {

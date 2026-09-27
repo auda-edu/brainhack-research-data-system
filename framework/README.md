@@ -7,7 +7,7 @@ Open `index.html` in a browser. It uses plain HTML, CSS, and JavaScript and need
 - Overview page with a proposed system map
 - Function pages for projects, lifecycle and access, decisions, provenance, known issues, handover, people and governance, and connected tools (still page shells)
 - User scenarios, starting with the researcher:
-  - **Researcher**: a working launch record for a new project and a daily lab log (progress, runs, decisions, issues, next step, blockers). Each saved record can be copied, downloaded as Markdown with YAML frontmatter, or proposed as a new file in the private lab repository on GitHub (default `audachang/labhippo`, changeable under Settings; the public site repository is refused).
+  - **Researcher**: a working launch record for a new project and a daily lab log (progress, runs, decisions, issues, next step, blockers). Each saved record can be copied, downloaded as Markdown with YAML frontmatter, or proposed as a new file in the private lab repository on GitHub (default `audachang/labhippo-records`, changeable under Settings; the public site repository is refused).
   - **Principal investigator**, **Lab manager**, **New lab member**, **Collaborator**: read-only views derived from the researcher's records. The PI sees attention flags and recent decisions; the lab manager sees ownership, restart-readiness gaps and logging cadence; a new member gets a restart guide per project; a collaborator sees only projects marked public, with their launch record and all decisions (launch and daily logs).
 - Responsive layout, keyboard-accessible links and dropdowns, and a skip link
 
