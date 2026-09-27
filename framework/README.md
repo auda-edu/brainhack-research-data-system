@@ -9,15 +9,25 @@ Open `index.html` in a browser. It uses plain HTML, CSS, and JavaScript and need
 ## What is included
 
 - Overview page with a proposed system map
-- Function pages for projects, lifecycle and access, decisions, provenance, known issues, handover, people and governance, and connected tools (still page shells)
+- Eight interactive function demos, all reading the same browser records:
+  - **Projects**: search and filter the project registry.
+  - **Lifecycle and access**: see the saved labels and simulate other combinations without changing the record.
+  - **Decisions**: filter a timeline of launch and log decisions, with reasons, alternatives, IDs, and source links.
+  - **Provenance**: trace recorded data references, code, environment, runs, and planned outputs.
+  - **Known issues**: filter open and resolved issues, conditions, attempted fixes, and resolutions.
+  - **Handover**: see the current next step, blockers, readiness checks, and full restart guide.
+  - **People and governance**: see owners, reviewers, authors, and the proposed-record review boundary.
+  - **Connected tools**: see recorded references and the actual status of browser, repository, and API paths.
 - User scenarios, starting with the researcher:
   - **Researcher**: a working launch record for a new project and a daily lab log (progress, runs, decisions, issues, next step, blockers). Each saved record can be copied, downloaded as Markdown with YAML frontmatter, or proposed as a new file in the private lab repository on GitHub (default `audachang/labhippo-records`, changeable under Settings; the public site repository is refused).
   - **Principal investigator**, **Lab manager**, **New lab member**, **Collaborator**: read-only views derived from the researcher's records. The PI sees attention flags and recent decisions; the lab manager sees ownership, restart-readiness gaps and logging cadence; a new member gets a restart guide per project; a collaborator sees only projects marked public, with their launch record and all decisions (launch and daily logs).
 - Responsive layout, keyboard-accessible links and dropdowns, and a skip link
 
+Open any function page and choose **Load synthetic example** when the browser has no projects. This loads the same pupil-response example offered in the researcher workspace. It contains one launch record and three daily logs. It stays in this browser; it is not a shared dataset.
+
 ## How the role pages stay current
 
-All pages read one store (`store.js`). Nothing is copied between roles, so a researcher's save shows up the next time any role page renders, and other open tabs re-render on the browser `storage` event. Forms being edited are never re-rendered from outside.
+All function and role pages read one store (`store.js`). Nothing is copied between views, so a researcher's save shows up the next time a view renders, and other open tabs re-render on the browser `storage` event. Forms being edited are never re-rendered from outside.
 
 The store is the browser's `localStorage`, so this sharing is limited to one browser. Sharing across people and devices comes from committing the exported records to the lab repository and building the pages from those records (planned).
 
@@ -28,10 +38,13 @@ The store is the browser's `localStorage`, so this sharing is limited to one bro
 | `store.js` | Shared state, persistence, cross-tab updates, derived views (issues, decisions, readiness) |
 | `researcher.js` | Launch form, daily log form, project page, Markdown export |
 | `roles.js` | PI, lab manager, new member and collaborator views |
-| `app.js` | Navigation and hash router; mounts the workspace on scenario pages |
+| `functions.js` | Eight derived function demos, filters, selectors, and example loading |
+| `app.js` | Navigation and hash router; mounts function and scenario workspaces |
 | `styles.css` | Colors, type and layout, including the workspace (`ws-*`) classes |
 
 All record text is inserted as DOM text nodes, never as HTML.
+
+The lifecycle selector is a simulation. The provenance view displays researcher-entered references and run notes; it does not verify external files. Browser role views and access labels are not authorization. No function page approves or publishes a record.
 
 ## Record format
 

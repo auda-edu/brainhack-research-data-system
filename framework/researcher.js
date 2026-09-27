@@ -214,7 +214,7 @@
           h("li", {}, h("span", {}, "03 / ALWAYS"), h("strong", {}, "Restart point"), "Latest next step, open issues, blockers and readiness.")),
         h("div", { class: "ws-actions" },
           h("a", { class: "ws-button primary", href: `${BASE}/launch` }, "Launch a new project"),
-          h("button", { type: "button", class: "ws-button", onclick: loadExample }, "Load example project"))),
+          h("button", { type: "button", class: "ws-button", onclick: () => loadExample() }, "Load example project"))),
       h("section", { class: "ws-section" }, h("h3", {}, "Your projects"), list),
       settingsSection());
   }
@@ -529,7 +529,7 @@
 
   // ---------- example ----------
 
-  function loadExample() {
+  function loadExample({ stayOnPage = false } = {}) {
     const slug = "wm-pupil-example";
     if (state.projects[slug] && !confirm("Replace the existing example project?")) return;
     const t = today();
@@ -575,7 +575,8 @@
       }
     };
     save();
-    location.hash = `${BASE}/project/${slug}`;
+    if (!stayOnPage) location.hash = `${BASE}/project/${slug}`;
+    return true;
   }
 
   // ---------- entry ----------
@@ -599,5 +600,5 @@
     }
   }
 
-  window.LabhippoResearcher = { render };
+  window.LabhippoResearcher = { render, loadExample };
 })();

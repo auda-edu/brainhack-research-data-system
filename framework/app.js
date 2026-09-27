@@ -1,12 +1,12 @@
 const functions = [
-  { id: "projects", title: "Projects", category: "Registry", description: "A starting point for each study and its current state." },
-  { id: "lifecycle", title: "Lifecycle & access", category: "Registry", description: "A place to distinguish project status from access level." },
-  { id: "decisions", title: "Decision history", category: "Memory", description: "A future record of what changed and why." },
-  { id: "provenance", title: "Provenance", category: "Memory", description: "A route from data and code to analysis and outputs." },
-  { id: "issues", title: "Known issues", category: "Memory", description: "A place to retain caveats, failures, and open questions." },
-  { id: "handover", title: "Handover", category: "Continuity", description: "A reserved space for what a new member needs to restart work." },
-  { id: "people", title: "People & governance", category: "Continuity", description: "A future home for owners, roles, and review responsibilities." },
-  { id: "connections", title: "Connected tools", category: "Ecosystem", description: "Links to the existing systems that hold data and records." }
+  { id: "projects", title: "Projects", category: "Registry", description: "Search the study registry and see each project's current state." },
+  { id: "lifecycle", title: "Lifecycle & access", category: "Registry", description: "Compare project work state with its separate access label." },
+  { id: "decisions", title: "Decision history", category: "Memory", description: "Trace choices, reasons, alternatives, and the log that captured them." },
+  { id: "provenance", title: "Provenance", category: "Memory", description: "Follow recorded data, code, runs, and outputs for a project." },
+  { id: "issues", title: "Known issues", category: "Memory", description: "Review open and resolved problems with their conditions and remedies." },
+  { id: "handover", title: "Handover", category: "Continuity", description: "See the current restart point and what is missing." },
+  { id: "people", title: "People & governance", category: "Continuity", description: "See recorded owners, reviewers, authors, and review gaps." },
+  { id: "connections", title: "Connected tools", category: "Ecosystem", description: "Inspect recorded tool references and proposed connection points." }
 ];
 
 const scenarios = [
@@ -18,7 +18,7 @@ const scenarios = [
 ];
 
 const byId = id => document.getElementById(id);
-const pageTitle = "LabHippo — System preview";
+const pageTitle = "LabHippo — Interactive system demo";
 
 function linkFor(type, item) {
   return `#/${type}/${item.id}`;
@@ -83,6 +83,7 @@ function renderWorkspace(type, item, parts) {
   let render = null;
   if (type === "scenario" && item.id === "researcher" && window.LabhippoResearcher) render = root => window.LabhippoResearcher.render(root, parts.slice(2));
   else if (type === "scenario" && window.LabhippoRoles && window.LabhippoRoles.has(item.id)) render = root => window.LabhippoRoles.render(root, item.id, parts.slice(2));
+  else if (type === "function" && window.LabhippoFunctions && window.LabhippoFunctions.has(item.id)) render = root => window.LabhippoFunctions.render(root, item.id);
   workspace.hidden = !render;
   byId("placeholder-panel").hidden = Boolean(render);
   if (render) render(workspace);
@@ -103,14 +104,14 @@ function renderRoute(event) {
     const index = (type === "function" ? functions : scenarios).indexOf(item) + 1;
     byId("breadcrumb-group").textContent = group;
     byId("breadcrumb-current").textContent = item.title;
-    byId("detail-kicker").textContent = `${group} / Concept page`;
+    byId("detail-kicker").textContent = `${group} / Interactive demo`;
     byId("detail-title").textContent = item.title;
     byId("detail-description").textContent = item.description;
     byId("detail-index").textContent = String(index).padStart(2, "0");
     byId("placeholder-code").textContent = `${type.toUpperCase()} ${String(index).padStart(2, "0")}`;
     renderRelated(type, item);
     renderWorkspace(type, item, parts);
-    document.title = `${item.title} — LabHippo preview`;
+    document.title = `${item.title} — LabHippo demo`;
   } else {
     document.title = pageTitle;
   }

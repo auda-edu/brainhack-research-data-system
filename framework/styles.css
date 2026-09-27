@@ -247,11 +247,41 @@ h1, h2, h3, p { margin-top: 0; }
 .ws-kv dt { color: var(--ink-soft); font-size: 12px; font-weight: 700; }
 .ws-kv dd { margin: 0; word-break: break-word; }
 
+/* Function demos use the same record typography as the role workspaces. */
+.fn-picker { display: flex; align-items: center; gap: 14px; margin: 20px 0; }
+.fn-picker label, .fn-filters label { display: flex; flex-direction: column; gap: 6px; color: var(--ink-soft); font-size: 10px; font-weight: 700; letter-spacing: .1em; }
+.fn-picker label { flex: 1; }
+.fn-picker select, .fn-filters input, .fn-filters select { min-width: 0; min-height: 44px; padding: 9px 12px; border: 1px solid #c3ccc2; border-radius: 0; background: #fff; color: var(--ink); font: 14px var(--font); letter-spacing: normal; }
+.fn-picker select { width: 100%; max-width: 560px; }
+.fn-filters { display: flex; flex-wrap: wrap; gap: 12px; margin: 22px 0 14px; }
+.fn-filters > input { flex: 2 1 220px; }
+.fn-filters > select, .fn-filters > label { flex: 1 1 160px; }
+.fn-filters label select { width: 100%; }
+.fn-results { display: grid; gap: 12px; margin-top: 14px; }
+.fn-record { min-width: 0; padding: 20px; border: 1px solid var(--line); background: var(--paper); }
+.fn-record h3, .fn-flow-step h3 { margin: 0 0 10px; color: var(--ink); font: 22px/1.2 var(--display); letter-spacing: normal; text-transform: none; }
+.fn-record > p { margin: 6px 0; font-size: 14px; line-height: 1.55; }
+.fn-record .ws-kv { grid-template-columns: 110px minmax(0, 1fr); }
+.fn-record-head { display: flex; align-items: flex-start; flex-wrap: wrap; gap: 8px; }
+.fn-record-head h3 { flex: 1 1 220px; }
+.fn-preview { margin: 8px 0 0; padding: 16px; border-left: 3px solid var(--accent); background: var(--paper); font-size: 14px; line-height: 1.55; }
+.fn-flow { display: grid; gap: 12px; margin-top: 24px; }
+.fn-flow-step { position: relative; min-width: 0; padding: 20px 22px; border: 1px solid var(--line); background: var(--paper); }
+.fn-flow-step:not(:last-child)::after { content: "↓"; position: absolute; left: 24px; bottom: -19px; z-index: 1; color: var(--accent); font-size: 24px; }
+.fn-flow-step > span { display: block; margin-bottom: 8px; color: var(--accent); font-size: 10px; font-weight: 700; letter-spacing: .12em; }
+.fn-flow-step .ws-list { margin-top: 12px; }
+.fn-flow-step .ws-list li { overflow-wrap: anywhere; }
+.fn-connection-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 22px; }
+.fn-connection-grid .ws-kv { grid-template-columns: 1fr; gap: 3px; }
+.fn-connection-grid .ws-chip { display: inline-block; margin-bottom: 8px; }
+.fn-connection-grid .ws-inline-link { display: inline-block; margin-top: 10px; }
+.workspace .fn-picker select:focus-visible, .workspace .fn-filters input:focus-visible, .workspace .fn-filters select:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
 @media (max-width: 650px) {
   .ws-section { padding: 20px; }
   .ws-banner { padding: 14px 20px; }
   .ws-banner .ws-button, .ws-push { margin-left: 0; }
-  .ws-grid, .ws-cards, .ws-steps, .ws-row, .ws-update, .ws-cadence-row, .ws-kv { grid-template-columns: 1fr; }
+  .ws-grid, .ws-cards, .ws-steps, .ws-row, .ws-update, .ws-cadence-row, .ws-kv, .fn-record .ws-kv { grid-template-columns: 1fr; }
   .ws-icon-button { justify-self: end; }
   .ws-entry { grid-template-columns: 1fr; gap: 6px; }
   .ws-strip { gap: 2px; }
