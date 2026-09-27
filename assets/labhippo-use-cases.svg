@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1720" viewBox="0 0 1920 1720" role="img" aria-labelledby="title desc">
+<title id="title">Labhippo — five illustrative use cases</title><desc id="desc">Five hypothetical user journeys connect questions to research records, outcomes and observable checks. They cover project restart, figure provenance, failure learning, meeting follow-through and permission-aware collaboration.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#166b80"/></marker></defs>
+<rect width="100%" height="100%" fill="#f8fafb"/>
+<style>text{font-family:'Segoe UI',Arial,sans-serif;fill:#18313d}.secondary{fill:#48616e}.eyebrow{fill:#166b80;font-weight:600;letter-spacing:2px}.light{fill:#ffffff}</style>
+<text x="56" y="65.0" font-size="21" font-weight="400" class="eyebrow">LABHIPPO / ILLUSTRATIVE USER JOURNEYS</text>
+<text x="56" y="130.0" font-size="49" font-weight="600" class="">Five ways the same memory becomes useful</text>
+<text x="56" y="176.0" font-size="27" font-weight="400" class="secondary">Hypothetical scenarios · Proposed behavior and acceptance checks</text>
+<text x="84" y="235.0" font-size="22" font-weight="400" class="eyebrow">PERSON &amp; QUESTION</text>
+<text x="580" y="235.0" font-size="22" font-weight="400" class="eyebrow">CONNECTED RECORDS</text>
+<text x="1330" y="235.0" font-size="22" font-weight="400" class="eyebrow">RESULT</text>
+<rect x="56" y="259" width="1808" height="257" rx="16" fill="#ffffff" stroke="#cbd9df"/>
+<text x="80" y="302.0" font-size="28" font-weight="600" class="eyebrow">01</text>
+<text x="136" y="302.0" font-size="29" font-weight="600" class="">Restart a dormant project</text>
+<text x="84" y="344.0" font-size="24" font-weight="600" class="">New lab member</text>
+<text x="84" y="386" font-size="24" font-weight="400" class="secondary">“Where can I restart, and what</text>
+<text x="84" y="420" font-size="24" font-weight="400" class="secondary">is still missing?”</text>
+<text x="580" y="359" font-size="24" font-weight="400" class="">Project registry → handover state</text>
+<text x="580" y="395" font-size="24" font-weight="400" class="">SOP + checklist → data / code versions</text>
+<text x="580" y="431" font-size="24" font-weight="400" class="">Notebook + video → prior run</text>
+<path d="M516 387 L560 387" stroke="#166b80" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+<path d="M1257 387 L1306 387" stroke="#166b80" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+<text x="1330" y="359" font-size="23" font-weight="400" class="">A source-linked restart guide</text>
+<text x="1330" y="393" font-size="23" font-weight="400" class="">Access, environment and blockers</text>
+<text x="1330" y="427" font-size="23" font-weight="400" class="">are checked before execution</text>
+<path d="M80 456 H1840" stroke="#cbd9df"/>
+<text x="84" y="489.0" font-size="23" font-weight="400" class="secondary">Test: a newcomer reruns one small analysis, or the guide identifies the exact blocker.</text>
+<rect x="56" y="538" width="1808" height="257" rx="16" fill="#ffffff" stroke="#cbd9df"/>
+<text x="80" y="581.0" font-size="28" font-weight="600" class="eyebrow">02</text>
+<text x="136" y="581.0" font-size="29" font-weight="600" class="">Explain a changed figure</text>
+<text x="84" y="623.0" font-size="24" font-weight="600" class="">Analyst / reviewer</text>
+<text x="84" y="665" font-size="24" font-weight="400" class="secondary">“Why is Figure 2 different</text>
+<text x="84" y="699" font-size="24" font-weight="400" class="secondary">from the previous poster?”</text>
+<text x="580" y="638" font-size="24" font-weight="400" class="">Poster / figure → analysis run</text>
+<text x="580" y="674" font-size="24" font-weight="400" class="">Data selection + code + parameters</text>
+<text x="580" y="710" font-size="24" font-weight="400" class="">Meeting note → decision record</text>
+<path d="M516 666 L560 666" stroke="#166b80" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+<path d="M1257 666 L1306 666" stroke="#166b80" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+<text x="1330" y="638" font-size="23" font-weight="400" class="">An evidence chain for both figures</text>
+<text x="1330" y="672" font-size="23" font-weight="400" class="">Known differences and unresolved</text>
+<text x="1330" y="706" font-size="23" font-weight="400" class="">gaps remain explicitly visible</text>
+<path d="M80 735 H1840" stroke="#cbd9df"/>
+<text x="84" y="768.0" font-size="23" font-weight="400" class="secondary">Test: every claimed change points to a recorded version, run or decision.</text>
+<rect x="56" y="817" width="1808" height="257" rx="16" fill="#ffffff" stroke="#cbd9df"/>
+<text x="80" y="860.0" font-size="28" font-weight="600" class="eyebrow">03</text>
+<text x="136" y="860.0" font-size="29" font-weight="600" class="">Learn from a failed attempt</text>
+<text x="84" y="902.0" font-size="24" font-weight="600" class="">Research assistant</text>
+<text x="84" y="944" font-size="24" font-weight="400" class="secondary">“Has this pipeline failed</text>
+<text x="84" y="978" font-size="24" font-weight="400" class="secondary">under these conditions before?”</text>
+<text x="580" y="917" font-size="24" font-weight="400" class="">Nipoppy status + logs → issue</text>
+<text x="580" y="953" font-size="24" font-weight="400" class="">Run environment + inputs → evidence</text>
+<text x="580" y="989" font-size="24" font-weight="400" class="">Resolution → reviewed SOP update</text>
+<path d="M516 945 L560 945" stroke="#166b80" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+<path d="M1257 945 L1306 945" stroke="#166b80" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+<text x="1330" y="917" font-size="23" font-weight="400" class="">A documented failure pattern</text>
+<text x="1330" y="951" font-size="23" font-weight="400" class="">A bounded workaround, if verified</text>
+<text x="1330" y="985" font-size="23" font-weight="400" class="">and a traceable checklist revision</text>
+<path d="M80 1014 H1840" stroke="#cbd9df"/>
+<text x="84" y="1047.0" font-size="23" font-weight="400" class="secondary">Test: the next researcher can recognize the documented conditions and verify the remedy.</text>
+<rect x="56" y="1096" width="1808" height="257" rx="16" fill="#ffffff" stroke="#cbd9df"/>
+<text x="80" y="1139.0" font-size="28" font-weight="600" class="eyebrow">04</text>
+<text x="136" y="1139.0" font-size="29" font-weight="600" class="">Turn a meeting into follow-through</text>
+<text x="84" y="1181.0" font-size="24" font-weight="600" class="">Project lead / team</text>
+<text x="84" y="1223" font-size="24" font-weight="400" class="secondary">“What did we agree to do,</text>
+<text x="84" y="1257" font-size="24" font-weight="400" class="secondary">who owns it, and is it done?”</text>
+<text x="580" y="1196" font-size="24" font-weight="400" class="">Meeting note → reviewed decision</text>
+<text x="580" y="1232" font-size="24" font-weight="400" class="">Owner + calendar → planned activity</text>
+<text x="580" y="1268" font-size="24" font-weight="400" class="">Run / evidence → checklist completion</text>
+<path d="M516 1224 L560 1224" stroke="#166b80" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+<path d="M1257 1224 L1306 1224" stroke="#166b80" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+<text x="1330" y="1196" font-size="23" font-weight="400" class="">A current project status page</text>
+<text x="1330" y="1230" font-size="23" font-weight="400" class="">A dated slide briefing</text>
+<text x="1330" y="1264" font-size="23" font-weight="400" class="">Plans stay separate from evidence</text>
+<path d="M80 1293 H1840" stroke="#cbd9df"/>
+<text x="84" y="1326.0" font-size="23" font-weight="400" class="secondary">Test: completed status requires an outcome record; a calendar event alone is insufficient.</text>
+<rect x="56" y="1375" width="1808" height="257" rx="16" fill="#ffffff" stroke="#cbd9df"/>
+<text x="80" y="1418.0" font-size="28" font-weight="600" class="eyebrow">05</text>
+<text x="136" y="1418.0" font-size="29" font-weight="600" class="">Share an appropriate project view</text>
+<text x="84" y="1460.0" font-size="24" font-weight="600" class="">External collaborator</text>
+<text x="84" y="1502" font-size="24" font-weight="400" class="secondary">“Which work can I reuse,</text>
+<text x="84" y="1536" font-size="24" font-weight="400" class="secondary">and how do I request access?”</text>
+<text x="580" y="1475" font-size="24" font-weight="400" class="">Identity + access rules → allowed records</text>
+<text x="580" y="1511" font-size="24" font-weight="400" class="">Neurobagel / project discovery → links</text>
+<text x="580" y="1547" font-size="24" font-weight="400" class="">Public site or permitted chat → sources</text>
+<path d="M516 1503 L560 1503" stroke="#166b80" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+<path d="M1257 1503 L1306 1503" stroke="#166b80" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+<text x="1330" y="1475" font-size="23" font-weight="400" class="">Approved metadata and materials</text>
+<text x="1330" y="1509" font-size="23" font-weight="400" class="">A permitted access-request route</text>
+<text x="1330" y="1543" font-size="23" font-weight="400" class="">Restricted details stay unavailable</text>
+<path d="M80 1572 H1840" stroke="#cbd9df"/>
+<text x="84" y="1605.0" font-size="23" font-weight="400" class="secondary">Test: public and restricted users receive only their authorized records and derived answers.</text>
+<text x="56" y="1700.0" font-size="22" font-weight="400" class="secondary">Shared foundation: stable records, explicit links, evidence, responsible people and enforced access rules.</text>
+</svg>

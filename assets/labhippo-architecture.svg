@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1480" viewBox="0 0 1920 1480" role="img" aria-labelledby="title desc">
+<title id="title">Labhippo architecture — proposed design</title><desc id="desc">Research records and existing tools connect to a shared project memory. Permission-filtered views include a website, chat, flowcharts, slides and an avatar. Ownership, access, review and flexible storage apply across all layers.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#166b80"/></marker></defs>
+<rect width="100%" height="100%" fill="#f8fafb"/>
+<style>text{font-family:'Segoe UI',Arial,sans-serif;fill:#18313d}.secondary{fill:#48616e}.eyebrow{fill:#166b80;font-weight:600;letter-spacing:2px}.light{fill:#ffffff}</style>
+<text x="56" y="65.0" font-size="21" font-weight="400" class="eyebrow">LABHIPPO / PROPOSED ARCHITECTURE</text>
+<text x="56" y="133.0" font-size="52" font-weight="600" class="">Connect the records. Preserve the reasoning.</text>
+<text x="56" y="180.0" font-size="28" font-weight="400" class="secondary">A research-memory layer for understanding, tracing and restarting a project.</text>
+<text x="56" y="244.0" font-size="23" font-weight="400" class="eyebrow">01 / RECORD &amp; CONNECT</text>
+<text x="560" y="244.0" font-size="23" font-weight="400" class="eyebrow">02 / SHARED RESEARCH MEMORY</text>
+<text x="1424" y="244.0" font-size="23" font-weight="400" class="eyebrow">03 / UNDERSTAND &amp; USE</text>
+<g data-card="Research records">
+<rect x="56" y="270" width="440" height="316" rx="16" fill="#ffffff" stroke="#cbd9df"/>
+<text x="80" y="312.0" font-size="28" font-weight="600" class="">Research records</text>
+<text x="80" y="352.0" font-size="24" font-weight="400" class="secondary">Lab notebook · meeting notes</text>
+<text x="80" y="386.08" font-size="24" font-weight="400" class="secondary">Calendar · schedule</text>
+<text x="80" y="420.15999999999997" font-size="24" font-weight="400" class="secondary">SOPs · checklists</text>
+<text x="80" y="454.24" font-size="24" font-weight="400" class="secondary">Videos · reviewed transcripts</text>
+<text x="80" y="488.32" font-size="24" font-weight="400" class="secondary">Failure points · lessons learned</text>
+<text x="80" y="522.4" font-size="24" font-weight="400" class="secondary">Papers · talks · posters · figures</text>
+</g>
+<g data-card="Authoring &amp; organization">
+<rect x="56" y="608" width="440" height="168" rx="16" fill="#ffffff" stroke="#cbd9df"/>
+<text x="80" y="650.0" font-size="28" font-weight="600" class="">Authoring &amp; organization</text>
+<text x="80" y="690.0" font-size="23" font-weight="400" class="secondary">Markdown · spreadsheets · Obsidian</text>
+<text x="80" y="722.66" font-size="23" font-weight="400" class="secondary">File naming · sidecar metadata</text>
+</g>
+<g data-card="Connected tools">
+<rect x="56" y="798" width="440" height="240" rx="16" fill="#ffffff" stroke="#cbd9df"/>
+<text x="80" y="840.0" font-size="28" font-weight="600" class="">Connected tools</text>
+<text x="80" y="880.0" font-size="22" font-weight="400" class="secondary">Nipoppy → pipeline status</text>
+<text x="80" y="911.24" font-size="22" font-weight="400" class="secondary">DataLad → data versions / provenance</text>
+<text x="80" y="942.48" font-size="22" font-weight="400" class="secondary">Neurobagel → dataset / cohort search</text>
+<text x="80" y="973.72" font-size="22" font-weight="400" class="secondary">Git / local code → code references</text>
+</g>
+<rect x="560" y="270" width="800" height="620" rx="16" fill="#eaf3f5" stroke="#cbd9df"/>
+<text x="588" y="310.0" font-size="25" font-weight="600" class="">Common IDs + source links + version references</text>
+<rect x="590" y="332" width="740" height="80" rx="12" fill="#166b80" stroke="#166b80"/>
+<text x="612" y="366.0" font-size="22" font-weight="600" class="light">PROJECT REGISTRY</text>
+<text x="612" y="396.0" font-size="23" font-weight="400" class="light">Research question · scope · lifecycle · responsible owner</text>
+<g data-card="Activities &amp; runs">
+<rect x="590" y="438" width="360" height="126" rx="16" fill="#ffffff" stroke="#cbd9df"/>
+<text x="614" y="480.0" font-size="26" font-weight="600" class="">Activities &amp; runs</text>
+<text x="614" y="520.0" font-size="19" font-weight="400" class="secondary">Plans, observations, actual runs</text>
+<text x="614" y="546.98" font-size="19" font-weight="400" class="secondary">Inputs, parameters, environment</text>
+</g>
+<g data-card="Versioned assets">
+<rect x="970" y="438" width="360" height="126" rx="16" fill="#ffffff" stroke="#cbd9df"/>
+<text x="994" y="480.0" font-size="26" font-weight="600" class="">Versioned assets</text>
+<text x="994" y="520.0" font-size="19" font-weight="400" class="secondary">Data, code and outputs</text>
+<text x="994" y="546.98" font-size="19" font-weight="400" class="secondary">Source location + exact version</text>
+</g>
+<g data-card="Decisions">
+<rect x="590" y="584" width="360" height="126" rx="16" fill="#ffffff" stroke="#cbd9df"/>
+<text x="614" y="626.0" font-size="26" font-weight="600" class="">Decisions</text>
+<text x="614" y="666.0" font-size="19" font-weight="400" class="secondary">Choice, alternatives, rationale</text>
+<text x="614" y="692.98" font-size="19" font-weight="400" class="secondary">Evidence + reviewer</text>
+</g>
+<g data-card="Known issues">
+<rect x="970" y="584" width="360" height="126" rx="16" fill="#ffffff" stroke="#cbd9df"/>
+<text x="994" y="626.0" font-size="26" font-weight="600" class="">Known issues</text>
+<text x="994" y="666.0" font-size="19" font-weight="400" class="secondary">Failed attempts + conditions</text>
+<text x="994" y="692.98" font-size="19" font-weight="400" class="secondary">Resolution, limits, open questions</text>
+</g>
+<g data-card="People &amp; roles">
+<rect x="590" y="730" width="360" height="126" rx="16" fill="#ffffff" stroke="#cbd9df"/>
+<text x="614" y="772.0" font-size="26" font-weight="600" class="">People &amp; roles</text>
+<text x="614" y="812.0" font-size="19" font-weight="400" class="secondary">Who did it? Who maintains it?</text>
+<text x="614" y="838.98" font-size="19" font-weight="400" class="secondary">Who reviews or grants access?</text>
+</g>
+<g data-card="Handover state">
+<rect x="970" y="730" width="360" height="126" rx="16" fill="#ffffff" stroke="#cbd9df"/>
+<text x="994" y="772.0" font-size="26" font-weight="600" class="">Handover state</text>
+<text x="994" y="812.0" font-size="19" font-weight="400" class="secondary">Next steps + prerequisites</text>
+<text x="994" y="838.98" font-size="19" font-weight="400" class="secondary">Restart checks + blockers</text>
+</g>
+<path d="M960 412 V793 M950 501 H970 M950 647 H970 M950 793 H970" stroke="#166b80" stroke-width="2" fill="none"/>
+<text x="588" y="878.0" font-size="18" font-weight="400" class="secondary">Each project links these record types through stable IDs.</text>
+<path d="M497 427 L550 427" stroke="#166b80" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+<path d="M497 692 L550 692" stroke="#166b80" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+<path d="M497 918 L545 918" stroke="#166b80" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+<path d="M545 918 L545 832 L553 832" stroke="#166b80" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+<text x="512" y="391.0" font-size="17" font-weight="400" class="secondary">link</text>
+<rect x="560" y="914" width="800" height="124" rx="16" fill="#fff5ed" stroke="#ead4c3"/>
+<text x="584" y="951.0" font-size="22" font-weight="600" class="">LINKS MAKE THE MEMORY USEFUL</text>
+<text x="584" y="988.0" font-size="25" font-weight="400" class="">Data version → run + code version → figure → paper</text>
+<text x="584" y="1019.0" font-size="21" font-weight="400" class="secondary">Decision records explain changes; issue records preserve caveats.</text>
+<g data-card="Website / text">
+<rect x="1424" y="270" width="440" height="140" rx="16" fill="#ffffff" stroke="#cbd9df"/>
+<text x="1448" y="312.0" font-size="28" font-weight="600" class="">Website / text</text>
+<text x="1448" y="352.0" font-size="22" font-weight="400" class="secondary">Project map + restart guide</text>
+<text x="1448" y="383.24" font-size="22" font-weight="400" class="secondary">Approved public view → GitHub Pages</text>
+</g>
+<g data-card="Chat">
+<rect x="1424" y="426" width="440" height="140" rx="16" fill="#ffffff" stroke="#cbd9df"/>
+<text x="1448" y="468.0" font-size="28" font-weight="600" class="">Chat</text>
+<text x="1448" y="508.0" font-size="22" font-weight="400" class="secondary">Questions → answers + sources</text>
+<text x="1448" y="539.24" font-size="22" font-weight="400" class="secondary">Discord / LINE / web interface</text>
+</g>
+<g data-card="Flowcharts">
+<rect x="1424" y="582" width="440" height="140" rx="16" fill="#ffffff" stroke="#cbd9df"/>
+<text x="1448" y="624.0" font-size="28" font-weight="600" class="">Flowcharts</text>
+<text x="1448" y="664.0" font-size="22" font-weight="400" class="secondary">Inspect dependencies</text>
+<text x="1448" y="695.24" font-size="22" font-weight="400" class="secondary">Trace data → analysis → output</text>
+</g>
+<g data-card="Slides">
+<rect x="1424" y="738" width="440" height="140" rx="16" fill="#ffffff" stroke="#cbd9df"/>
+<text x="1448" y="780.0" font-size="28" font-weight="600" class="">Slides</text>
+<text x="1448" y="820.0" font-size="22" font-weight="400" class="secondary">Project and handover briefings</text>
+<text x="1448" y="851.24" font-size="22" font-weight="400" class="secondary">Generated from a dated snapshot</text>
+</g>
+<g data-card="Avatar">
+<rect x="1424" y="894" width="440" height="140" rx="16" fill="#ffffff" stroke="#cbd9df"/>
+<text x="1448" y="936.0" font-size="28" font-weight="600" class="">Avatar</text>
+<text x="1448" y="976.0" font-size="22" font-weight="400" class="secondary">Optional spoken interaction</text>
+<text x="1448" y="1007.24" font-size="22" font-weight="400" class="secondary">Uses the same permitted evidence</text>
+</g>
+<path d="M1360 658 L1390 658 L1390 340 L1416 340" stroke="#166b80" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+<path d="M1390 658 L1390 496 L1416 496" stroke="#166b80" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+<path d="M1390 658 L1390 652 L1416 652" stroke="#166b80" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+<path d="M1390 658 L1390 808 L1416 808" stroke="#166b80" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+<path d="M1390 658 L1390 964 L1416 964" stroke="#166b80" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+<rect x="56" y="1070" width="1808" height="166" rx="16" fill="#e9eff2" stroke="#cbd9df"/>
+<text x="80" y="1111.0" font-size="22" font-weight="600" class="">GUARDRAILS ACROSS EVERY LAYER</text>
+<text x="80" y="1150.0" font-size="26" font-weight="600" class="">Permission-aware retrieval</text>
+<text x="80" y="1184" font-size="22" font-weight="400" class="secondary">Public · lab-only · restricted</text>
+<text x="80" y="1213" font-size="22" font-weight="400" class="secondary">Filter records before search or AI use</text>
+<text x="675" y="1150.0" font-size="26" font-weight="600" class="">Evidence &amp; review</text>
+<text x="675" y="1184" font-size="22" font-weight="400" class="secondary">Sources, timestamps, review status</text>
+<text x="675" y="1213" font-size="22" font-weight="400" class="secondary">Proposed changes → review → saved record</text>
+<text x="1270" y="1150.0" font-size="26" font-weight="600" class="">Ownership &amp; readiness</text>
+<text x="1270" y="1184" font-size="22" font-weight="400" class="secondary">Maintainers, backups, retention</text>
+<text x="1270" y="1213" font-size="22" font-weight="400" class="secondary">Lifecycle ≠ restart readiness ≠ access</text>
+<rect x="56" y="1258" width="1808" height="132" rx="16" fill="#ffffff" stroke="#cbd9df"/>
+<text x="80" y="1297.0" font-size="22" font-weight="600" class="">STORAGE &amp; DEPLOYMENT / LOCAL, CLOUD OR HYBRID</text>
+<text x="80" y="1336.0" font-size="24" font-weight="600" class="">Memory records</text>
+<text x="80" y="1366.0" font-size="21" font-weight="400" class="secondary">Versioned Markdown + structured metadata</text>
+<text x="675" y="1336.0" font-size="24" font-weight="600" class="">Research assets</text>
+<text x="675" y="1366.0" font-size="21" font-weight="400" class="secondary">Existing local / NAS / cloud / repository storage</text>
+<text x="1270" y="1336.0" font-size="24" font-weight="600" class="">Published views</text>
+<text x="1270" y="1366.0" font-size="21" font-weight="400" class="secondary">Only the approved subset reaches the public site</text>
+<text x="56" y="1438.0" font-size="21" font-weight="400" class="secondary">Conceptual design · Proposed integrations and interfaces · No operational deployment implied</text>
+</svg>
