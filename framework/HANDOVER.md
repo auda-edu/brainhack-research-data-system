@@ -80,6 +80,7 @@ The earlier researcher implementation was checked through repository inspection,
 - Added local file selection, validation, preview, explicit save, and same-day replacement confirmation to the researcher and newcomer pages. Imported records remain proposed and local to the browser.
 - Added a complete demo newcomer route: project guide → identity and four self-checks → first daily log or file import → local completion receipt. This is self-reported and has no access-control effect.
 - Verification: eleven Node tests passed (six API, five import-format), and a local Chrome walkthrough completed onboarding, persisted the receipt after reload, saved JSON and Markdown imports, rejected an invalid file, required confirmation before replacing a same-day log, and found no page errors or mobile horizontal overflow. Live Pages deployment should be checked when publishing.
+- Deployment repair: GitHub Pages' Jekyll build treated the generic Markdown template's `---` frontmatter and placeholder date as a page and failed. The repository now uses `.nojekyll` so Pages serves the static HTML, scripts, and raw template unchanged.
 
 ### 2026-09-27 — Function demo coverage
 
