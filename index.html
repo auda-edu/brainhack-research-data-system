@@ -1,4 +1,7 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Labhippo — Brainhack</title>
+<link rel="alternate" hreflang="en" href="./">
+<link rel="alternate" hreflang="zh-TW" href="zh-TW.html">
+<link rel="alternate" hreflang="x-default" href="./">
 <style>
 :root{--bg:#f7f9fb;--ink:#17222b;--muted:#596873;--line:#d6dfe5;--blue:#176b87;--deep:#173d4b;--soft:#e8f2f5;--white:#fff}
 *{box-sizing:border-box}html,body{margin:0;height:100%;background:#111;font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink)}
@@ -15,8 +18,12 @@
 .tags{font-size:1.08vw;color:var(--muted);border-top:1px solid var(--line);padding-top:1vh;margin-top:1vh}.tag{display:inline-block;border:1px solid #b9cbd2;border-radius:999px;padding:.28vh .55vw;margin:.15vh;font-size:1vw}
 .footer{position:absolute;bottom:1.7vh;left:5vw;right:5vw;display:flex;justify-content:space-between;font-size:.95vw;color:#78858e}.nav{position:fixed;right:1.3vw;bottom:1.3vh;z-index:5;color:#fff;background:#0009;padding:6px 9px;border-radius:7px;font-size:13px}
 @media print{body{background:white}.slide{display:flex!important;page-break-after:always}.nav{display:none}}
+.language-switch{position:fixed;top:1vh;right:2vw;z-index:10;display:flex;gap:.6em;align-items:center;padding:.35em .7em;background:var(--white);border:1px solid var(--line);border-radius:8px;font-size:14px}
+.language-switch a{color:var(--blue);text-decoration:none;padding:.15em .3em}.language-switch a:hover{text-decoration:underline}.language-switch a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}.language-switch [aria-current="page"]{font-weight:800;color:var(--ink)}
+@media print{.language-switch{display:none}}
 </style></head><body>
-<section class="slide active"><div class="kicker">Labhippo · Brainhack proposal</div><div class="hero"><div><h1>Labhippo</h1><div class="lead"><b>A research memory layer for the lab.</b><br>Existing tools can organize, process, publish, and discover data. The missing layer is often the history needed to understand <b>why a project looks the way it does—and how to restart it.</b></div></div><div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Faudachang.github.io%2Fbrainhack-research-data-system%2F"><small>audachang.github.io/<br>brainhack-research-data-system/</small></div></div>
+<nav class="language-switch" aria-label="Language"><a href="./" lang="en" hreflang="en" aria-current="page">EN</a><span aria-hidden="true">/</span><a href="zh-TW.html" lang="zh-TW" hreflang="zh-TW">繁中</a></nav>
+<section class="slide active"><div class="kicker">Labhippo · Brainhack proposal</div><div class="hero"><div><h1>Labhippo</h1><div class="lead"><b>A research memory layer for the lab.</b><br>Existing tools can organize, process, publish, and discover data. The missing layer is often the history needed to understand <b>why a project looks the way it does—and how to restart it.</b></div></div><div class="qr"><img alt="QR code for the Labhippo proposal" src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Faudachang.github.io%2Fbrainhack-research-data-system%2F"><small>audachang.github.io/<br>brainhack-research-data-system/</small></div></div>
 <div class="three"><div class="card"><b>Lifecycle ≠ access</b><p>Active, dormant, restartable and archived are independent from public, internal and restricted.</p></div><div class="card"><b>Files ≠ memory</b><p>Code and data rarely explain decisions, failed analyses, ownership, caveats or the best restart point.</p></div><div class="card"><b>Don't rebuild FAIR tools</b><p>Connect Nipoppy, DataLad, Neurobagel, repositories and ELNs instead of replacing them.</p></div></div>
 <div class="callout">Labhippo asks: can institutional research memory become structured, searchable, maintainable—and useful to both humans and AI?</div><div class="footer"><span>Labhippo · ACL / Brainhack</span><span>1 / 3</span></div></section>
 
