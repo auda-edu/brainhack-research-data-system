@@ -2,6 +2,8 @@
 
 For the current architecture, deployment, and development limits, see [HANDOVER.md](HANDOVER.md).
 
+The separate [local record-read API prototype](../api/README.md) uses synthetic data and is not connected to this public page.
+
 Open `index.html` in a browser. It uses plain HTML, CSS, and JavaScript and needs no build step or account.
 
 ## What is included
