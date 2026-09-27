@@ -287,3 +287,49 @@ h1, h2, h3, p { margin-top: 0; }
   .ws-strip { gap: 2px; }
   .ws-kv { gap: 4px; }
 }
+
+/* Readable type throughout the public framework and working demos. */
+body { font-size: 16px; line-height: 1.55; }
+.primary-nav { font-size: 16px; }
+.menu-panel { width: min(320px, calc(100vw - 32px)); }
+.menu-heading, .eyebrow, .section-topline, .card-top, .scenario-number,
+.placeholder-top, .placeholder-bottom, .detail-aside h2, .ws-section h3,
+.ws-fieldset legend, .fn-flow-step > span { font-size: 13px; }
+.menu-link, .menu-link small, .preview-badge, .button, .text-link,
+.scope-note > a, .graphic-core > span, .graphic-label, .breadcrumb,
+.back-link, .footer-inner, .ws-steps span, .ws-back, .ws-meta, .ws-id,
+.ws-chip, .ws-legend, .ws-entry-actions, .ws-export-path, .ws-stat span,
+.ws-kv dt, .fn-picker label, .fn-filters label { font-size: 14px; }
+.module-card p, .scenario-description, .scope-note p, .related-link,
+.section-heading p, .placeholder-body p, .ws-steps li, .ws-field small,
+.ws-hint, .ws-status, .ws-warn, .ws-ok, .ws-card ul, .ws-settings > summary,
+.ws-table, .ws-table th { font-size: 15px; }
+.ws-lead, .ws-card p, .ws-entry p, .ws-list li, .ws-kv,
+.fn-record > p, .fn-preview, .ws-empty, .ws-banner { font-size: 16px; }
+.ws-section { line-height: 1.6; }
+.ws-section h3 { line-height: 1.4; }
+.ws-section .fn-record h3, .ws-section .fn-flow-step h3 { font-size: 22px; }
+.ws-import-preview h3 { font-size: 18px; }
+.ws-button, .ws-inline-link, .ws-add { font-size: 16px; }
+.ws-field { font-size: 16px; font-weight: 600; }
+.ws-field input, .ws-field select, .ws-field textarea,
+.fn-picker select, .fn-filters input, .fn-filters select { font-size: 16px; }
+.ws-md { font-size: 14px; }
+.ws-import-file { margin-top: 22px; }
+.ws-import-preview { margin-top: 18px; padding: 18px; border: 1px solid var(--line); background: var(--paper); }
+.ws-import-preview .ws-kv { grid-template-columns: 120px minmax(0, 1fr); }
+.nc-checklist { display: grid; gap: 10px; margin-top: 20px; }
+.nc-check { display: flex; align-items: flex-start; gap: 12px; padding: 13px 16px; border: 1px solid var(--line); background: var(--paper); cursor: pointer; }
+.nc-check input { width: 20px; height: 20px; flex: 0 0 auto; margin: 2px 0 0; accent-color: var(--ink); }
+.nc-receipt { padding: 20px; border: 2px solid #9cc1a8; background: var(--green); }
+.nc-receipt p { margin: 8px 0; }
+.ws-button:disabled { cursor: not-allowed; opacity: .5; }
+
+@media (max-width: 650px) {
+  .primary-nav { font-size: 15px; }
+  .menu-panel { left: 0; }
+  .module-card p { font-size: 15px; }
+  .detail-heading p { font-size: 17px; }
+  .ws-import-preview .ws-kv { grid-template-columns: 1fr; }
+  .ws-section h2, .ws-title { font-size: 30px; }
+}

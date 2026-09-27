@@ -1,0 +1,21 @@
+{
+  "type": "log",
+  "project": "lh:proj/YYYY-project-slug",
+  "date": "YYYY-MM-DD",
+  "author": "",
+  "review": "proposed",
+  "summary": "",
+  "runs": [
+    { "command": "", "inputs": "", "outputs": "", "result": "ok" }
+  ],
+  "decisions": [
+    { "choice": "", "reason": "", "alternatives": "" }
+  ],
+  "issues": [
+    { "problem": "", "conditions": "", "attempted": "" }
+  ],
+  "issue_updates": [],
+  "next_step": "",
+  "blockers": "",
+  "links": []
+}

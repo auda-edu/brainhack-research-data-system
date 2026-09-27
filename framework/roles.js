@@ -140,9 +140,10 @@
   // ---------- new lab member ----------
 
   function studentView(root, parts) {
-    const [view, slug] = parts;
+    const [view, slug, step] = parts;
     const visible = S.projects().filter(p => p.access !== "restricted");
     const restricted = S.projects().length - visible.length;
+    if (view === "project" && slug && step === "onboard") return window.LabhippoNewcomer.render(root, slug);
     if (view === "project" && slug) return restartGuide(root, slug);
 
     root.append(panelTop("NEW MEMBER"),
@@ -179,7 +180,8 @@
         h("a", { class: "ws-back", href: "#/scenario/student" }, "← All projects"),
         h("h2", { class: "ws-title" }, `Restart guide · ${p.title}`),
         h("div", { class: "ws-id" }, p.id),
-        h("p", { class: "ws-lead" }, p.question)),
+        h("p", { class: "ws-lead" }, p.question),
+        h("div", { class: "ws-actions" }, h("a", { class: "ws-button primary", href: `#/scenario/student/project/${slug}/onboard` }, "Start guided onboarding →"))),
       h("section", { class: "ws-section" },
         h("h3", {}, "1 · Where to pick up"),
         h("div", { class: "ws-card" },

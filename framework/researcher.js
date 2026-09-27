@@ -216,6 +216,10 @@
           h("a", { class: "ws-button primary", href: `${BASE}/launch` }, "Launch a new project"),
           h("button", { type: "button", class: "ws-button", onclick: () => loadExample() }, "Load example project"))),
       h("section", { class: "ws-section" }, h("h3", {}, "Your projects"), list),
+      ...(projects.length ? [window.LabhippoLogImport.mount({ onSaved: (project, log) => {
+        flash = { slug: project.slug, kind: "log", date: log.date };
+        location.hash = `${BASE}/project/${project.slug}`;
+      } })] : []),
       settingsSection());
   }
 
@@ -415,7 +419,11 @@
       h("section", { class: "ws-section" },
         h("h3", {}, `Last ${STRIP_DAYS} days`), strip,
         h("div", { class: "ws-legend" }, h("span", {}, h("i", { class: "ws-day on" }), " log entry"), h("span", {}, h("i", { class: "ws-day launch" }), " launch"), h("span", {}, h("i", { class: "ws-day today" }), " today"))),
-      h("section", { class: "ws-section" }, h("h3", {}, "Lab log"), timeline));
+      h("section", { class: "ws-section" }, h("h3", {}, "Lab log"), timeline),
+      window.LabhippoLogImport.mount({ projectSlug: slug, onSaved: (_project, log) => {
+        flash = { slug, kind: "log", date: log.date };
+        rerender();
+      } }));
   }
 
   function timelineEntry(date, who, content, editHref, record) {
