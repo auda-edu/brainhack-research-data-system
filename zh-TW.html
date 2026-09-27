@@ -1,71 +1,13 @@
-<!doctype html><html lang="zh-TW"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Labhippo — Brainhack 提案｜繁體中文</title>
-<link rel="alternate" hreflang="en" href="./">
-<link rel="alternate" hreflang="zh-TW" href="zh-TW.html">
-<link rel="alternate" hreflang="x-default" href="./">
-<style>
-:root{--bg:#f7f9fb;--ink:#17222b;--muted:#596873;--line:#d6dfe5;--blue:#176b87;--deep:#173d4b;--soft:#e8f2f5;--white:#fff}
-*{box-sizing:border-box}html,body{margin:0;height:100%;background:#111;font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink)}
-.slide{width:100vw;height:100vh;background:var(--bg);padding:4.5vh 5vw;display:none;position:relative;overflow:hidden}.slide.active{display:flex;flex-direction:column}
-.kicker{font-size:1.4vw;letter-spacing:.11em;text-transform:uppercase;color:var(--blue);font-weight:800}h1{font-size:5.4vw;line-height:.98;margin:1vh 0 1.5vh;letter-spacing:-.05em}h2{font-size:3.5vw;line-height:1.03;margin:.6vh 0 2vh;letter-spacing:-.04em}
-.lead{font-size:1.9vw;line-height:1.35;color:#3e4b55;max-width:1050px}.hero{display:grid;grid-template-columns:1fr 16vw;gap:2.5vw}.qr{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1vw;text-align:center}.qr img{width:100%;display:block}.qr small{font-size:.86vw;color:var(--muted)}
-.three{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25vw;margin-top:3vh}.card,.box{background:#fff;border:1px solid var(--line);border-radius:15px;padding:1.3vw}.card b{font-size:1.55vw;display:block;margin-bottom:.6vh}.card p{font-size:1.23vw;line-height:1.35;color:var(--muted);margin:0}
-.callout{margin-top:auto;background:var(--soft);border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:1vw 1.35vw;font-size:1.65vw;font-weight:700}
-.stack{display:grid;grid-template-columns:1.05fr 1.25fr 1.05fr;gap:1.3vw;flex:1}.col{display:flex;flex-direction:column;gap:1vh}.box strong{font-size:1.42vw}.box div{font-size:1.16vw;color:var(--muted);line-height:1.3;margin-top:.4vh}
-.center{background:var(--deep);color:white;border-radius:18px;padding:1.3vw;display:flex;flex-direction:column;justify-content:center}.center h3{font-size:2vw;margin:0 0 1vh}.node{border:1px solid #ffffff4d;border-radius:11px;padding:.72vw .9vw;margin:.45vh 0;font-size:1.2vw}.center .sub{font-size:1.05vw;opacity:.8;margin-top:1vh}
-.label{font-size:1.05vw;font-weight:800;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin:.2vh 0}.arrow{text-align:center;font-size:1.4vw;color:var(--blue)}
-.cols{display:grid;grid-template-columns:1.08fr .92fr;gap:1.8vw;flex:1}.step{display:grid;grid-template-columns:2.6vw 1fr;gap:.9vw;margin:1vh 0}.num{width:2.45vw;height:2.45vw;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:800;font-size:1.15vw}.step b{font-size:1.42vw}.step span{display:block;font-size:1.16vw;color:var(--muted);line-height:1.28;margin-top:.2vh}
-.questions{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.3vw}.questions h3{font-size:1.65vw;margin:0 0 .7vh}.questions li{font-size:1.2vw;line-height:1.38;margin:.7vh 0;color:#44525c}
-.tags{font-size:1.08vw;color:var(--muted);border-top:1px solid var(--line);padding-top:1vh;margin-top:1vh}.tag{display:inline-block;border:1px solid #b9cbd2;border-radius:999px;padding:.28vh .55vw;margin:.15vh;font-size:1vw}
-.footer{position:absolute;bottom:1.7vh;left:5vw;right:5vw;display:flex;justify-content:space-between;font-size:.95vw;color:#78858e}.nav{position:fixed;right:1.3vw;bottom:1.3vh;z-index:5;color:#fff;background:#0009;padding:6px 9px;border-radius:7px;font-size:13px}
-@media print{body{background:white}.slide{display:flex!important;page-break-after:always}.nav{display:none}}
-.language-switch{position:fixed;top:1vh;right:2vw;z-index:10;display:flex;gap:.6em;align-items:center;padding:.35em .7em;background:var(--white);border:1px solid var(--line);border-radius:8px;font-size:14px}
-.language-switch a{color:var(--blue);text-decoration:none;padding:.15em .3em}.language-switch a:hover{text-decoration:underline}.language-switch a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}.language-switch [aria-current="page"]{font-weight:800;color:var(--ink)}
-@media print{.language-switch{display:none}}
-html[lang="zh-TW"]{font-family:Inter,system-ui,-apple-system,"Segoe UI","Microsoft JhengHei","Noto Sans TC",sans-serif}
-html[lang="zh-TW"] .lead{line-height:1.5}html[lang="zh-TW"] .card p{line-height:1.5}html[lang="zh-TW"] h2{font-size:3.2vw;letter-spacing:0;line-height:1.2}
-html[lang="zh-TW"] .node{line-height:1.45}html[lang="zh-TW"] .center h3{font-size:1.85vw}html[lang="zh-TW"] .questions li{line-height:1.5}
-
-.figure-slide h2{margin-bottom:1vh}.figure-slide .figure-summary{margin:0 0 1vh;font-size:clamp(13px,1.15vw,20px);color:var(--muted)}
-.figure-preview{display:flex;flex:1;min-height:0;align-items:center;justify-content:center;margin:0}.figure-preview a{display:flex;min-height:0;height:100%;max-width:100%;align-items:center;justify-content:center}.figure-preview img{display:block;width:auto;height:auto;max-width:100%;max-height:62vh;object-fit:contain}
-.figure-actions{display:flex;gap:1.1em;flex-wrap:wrap;margin:1vh 0 2vh;font-size:clamp(13px,1.1vw,18px)}.figure-actions a{color:var(--blue);text-underline-offset:3px}
-@media print{.figure-preview img{max-height:65vh}.figure-actions{display:none}}
-</style></head><body>
-<nav class="language-switch" aria-label="網站導覽與語言切換"><a href="figures-zh-TW.html">架構與情境</a><span aria-hidden="true">·</span><a href="./" lang="en" hreflang="en">EN</a><span aria-hidden="true">/</span><a href="zh-TW.html" lang="zh-TW" hreflang="zh-TW" aria-current="page">繁中</a></nav>
-<section class="slide active"><div class="kicker">Labhippo · Brainhack 提案</div><div class="hero"><div><h1>Labhippo</h1><div class="lead"><b>為實驗室保存研究脈絡。</b><br>現有工具能整理、處理、發布與搜尋資料。真正缺少的，往往是研究過程的紀錄，讓人理解<b>專案為何走到這一步，以及如何接續研究。</b></div></div><div class="qr"><img alt="Labhippo 繁體中文提案的 QR code" src="https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=https%3A%2F%2Faudachang.github.io%2Fbrainhack-research-data-system%2Fzh-TW.html"><small>audachang.github.io/<br>brainhack-research-data-system/<br>zh-TW.html</small></div></div>
-<div class="three"><div class="card"><b>專案狀態 ≠ 存取權限</b><p>進行中、暫停、可重啟、已封存，是專案的生命週期；公開、內部、限制存取，則是另一個維度。</p></div><div class="card"><b>檔案 ≠ 研究記憶</b><p>光有程式碼與資料，通常無法交代決策理由、失敗的分析、負責人、注意事項，以及適合從哪裡接手。</p></div><div class="card"><b>串接既有 FAIR 工具</b><p>串接 Nipoppy、DataLad、Neurobagel、資料典藏庫與電子實驗紀錄簿（ELN），沿用它們已有的功能。</p></div></div>
-<div class="callout">Labhippo 想驗證：能否把團隊累積的研究記憶，整理成可搜尋、可維護，且人與 AI 都能使用的結構化紀錄？</div><div class="footer"><span>Labhippo · ACL / Brainhack</span><span>1 / 5</span></div></section>
-
-<section class="slide"><div class="kicker">在工具生態系中的定位</div><h2>串接既有的 FAIR 基礎設施</h2><div class="stack">
-<div class="col"><div class="label">資料與運算</div><div class="box"><strong>Nipoppy / BIDS</strong><div>研究資料組織、清單、整理，以及處理與特徵擷取的進度。</div></div><div class="box"><strong>DataLad / git-annex</strong><div>大型檔案的識別、版本管理、分散儲存位置與取回。</div></div><div class="box"><strong>NAS / S3 / 資料典藏庫</strong><div>儲存實際檔案：可設為私有、受控或公開，也可供頻繁存取或長期封存。</div></div><div class="box"><strong>Dataverse / OSF</strong><div>整理後的版本發布、研究成果公開與對外分享。</div></div></div>
-<div class="center"><h3>Labhippo：研究記憶</h3><div class="node"><b>專案登錄</b> · 生命週期 · 權限 · 負責人</div><div class="node"><b>決策歷程</b> · 為何選這個方法、資料或版本？</div><div class="node"><b>失敗經驗</b> · 試過什麼？為何行不通？</div><div class="node"><b>跨工具的來源與處理歷程</b> · 資料 → 流程 → 程式碼 → 產出</div><div class="node"><b>交接狀態</b> · 還缺什麼？從哪裡接續？</div><div class="node"><b>管理權責</b> · 誰維護、核准與封存？</div><div class="sub">長期保存的基礎：穩定識別碼＋開放格式的詮釋資料＋人能讀懂的紀錄。底層工具可以更換。</div></div>
-<div class="col"><div class="label">資料探索與操作介面</div><div class="box"><strong>Neurobagel</strong><div>統一研究參與者的詮釋資料，支援跨站點查詢；資料可留在原處。</div></div><div class="box"><strong>Fed-BioMed</strong><div>資料無法集中時，可作為後續聯邦運算的選項。</div></div><div class="box"><strong>持續更新的網站</strong><div>由同一份專案登錄資料，自動產生易讀的專案全貌。</div></div><div class="box"><strong>Discord / LINE / 網頁 AI</strong><div>依存取權限回答問題，並明確標示來源與處理歷程。</div></div></div>
-</div><div class="footer"><span>Labhippo 補上研究脈絡，與 BIDS、Nipoppy、Neurobagel 及儲存系統搭配使用。</span><span>2 / 5</span></div></section>
-
-<section class="slide"><div class="kicker">Brainhack MVP · 最小可行產品</div><h2>驗證「實驗室的研究記憶」能否實際運作</h2><div class="cols"><div>
-<div class="step"><div class="num">1</div><div><b>定義最精簡的研究記憶資料結構</b><span>專案識別碼、生命週期、權限、相關人員、儲存位置、決策、已知問題與重啟狀態。</span></div></div>
-<div class="step"><div class="num">2</div><div><b>串接既有詮釋資料</b><span>匯入或引用 Nipoppy 狀態、Git 提交紀錄、DataLad 識別碼與發表成果連結，避免重複建檔。</span></div></div>
-<div class="step"><div class="num">3</div><div><b>記錄一條完整的來源與處理歷程</b><span>資料集／版本 → 處理流程 → 程式碼 → 分析 → 圖表，並記下改變這條路徑的決策。</span></div></div>
-<div class="step"><div class="num">4</div><div><b>產生一個持續更新的專案網站</b><span>自動呈現專案狀態、歷程、負責人、已知問題與重啟步驟。</span></div></div>
-<div class="step"><div class="num">5</div><div><b>透過 Discord 提問</b><span>「這裡為什麼改了？」「圖 2 用的是哪些資料？」「這個專案能重新啟動嗎？」→ 回答＋來源。</span></div></div>
-<div class="tags">沿用工具：<span class="tag">Nipoppy</span><span class="tag">BIDS</span><span class="tag">DataLad</span><span class="tag">Neurobagel</span><span class="tag">GitHub</span><span class="tag">ELN</span></div>
-</div><div class="questions"><h3>值得一起動手探索的問題</h3><ul>
-<li>Nipoppy、Neurobagel、DataLad 真正缺少哪些資訊？</li>
-<li>專案暫停前，哪些資訊一定要留下？</li>
-<li>如何記錄決策，又不增加文件維護負擔？</li>
-<li>來源與處理歷程該依資料集、每次分析或產出分別記錄，還是將三者串起來？</li>
-<li>如何讓受限的詮釋資料可供搜尋，又不洩漏研究參與者的資訊？</li>
-<li>學生離開、專案暫停多年後，由誰負責維護？</li>
-<li>AI 能否根據結構化紀錄可靠地回答，並讓原始紀錄持續作為查核依據？</li>
-</ul><div class="callout" style="font-size:1.18vw;margin-top:1.5vh">MVP 成功標準：新成員不必找到原分析者，也能理解一個暫停的專案，並重新執行其中一項分析。</div></div></div><div class="footer"><span>目標：做出串接研究記憶的原型，沿用既有研究平台。</span><span>3 / 5</span></div></section>
-<section class="slide figure-slide" aria-label="Labhippo 系統架構"><div class="kicker">設計構想 · 圖中文字為英文</div><h2>Labhippo 系統架構</h2>
-<p class="figure-summary">研究紀錄與工具 → 共同研究記憶 → 使用者介面；權限與管理責任貫穿各層。</p>
-<figure class="figure-preview"><a href="figures-zh-TW.html#architecture" aria-label="開啟完整圖示: Labhippo 系統架構"><img src="assets/labhippo-architecture.svg" alt="架構圖：串接研究紀錄、工具、專案記憶、介面、權限與儲存。"></a></figure>
-<div class="figure-actions"><a href="figures-zh-TW.html#architecture">開啟完整圖示</a><a href="assets/labhippo-architecture.svg" download>SVG</a><a href="assets/labhippo-architecture.png" download>PNG</a></div>
-<div class="footer"><span>設計構想與假設情境，尚非已部署系統。</span><span>4 / 5</span></div></section>
-
-<section class="slide figure-slide" aria-label="Labhippo 的五個使用情境"><div class="kicker">設計構想 · 圖中文字為英文</div><h2>Labhippo 的五個使用情境</h2>
-<p class="figure-summary">重啟專案、追溯圖表、學習失敗經驗、追蹤會議決議，以及與合作對象分享。</p>
-<figure class="figure-preview"><a href="figures-zh-TW.html#use-cases" aria-label="開啟完整圖示: Labhippo 的五個使用情境"><img src="assets/labhippo-use-cases.svg" alt="五個 Labhippo 使用情境，呈現使用者問題、相關紀錄、預期結果與驗證方式。"></a></figure>
-<div class="figure-actions"><a href="figures-zh-TW.html#use-cases">開啟完整圖示</a><a href="assets/labhippo-use-cases.svg" download>SVG</a><a href="assets/labhippo-use-cases.png" download>PNG</a></div>
-<div class="footer"><span>設計構想與假設情境，尚非已部署系統。</span><span>5 / 5</span></div></section>
-<div class="nav">← / → · 空白鍵 · 點擊換頁</div><script>const s=[...document.querySelectorAll('.slide')];let i=0;function show(n){i=(n+s.length)%s.length;s.forEach((x,j)=>x.classList.toggle('active',j===i))}addEventListener('keydown',e=>{if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();show(i+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(i-1)}if(e.key==='Home')show(0);if(e.key==='End')show(s.length-1)});addEventListener('click',e=>{if(!e.target.closest('a'))show(i+1)});</script></body></html>
+<!doctype html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="refresh" content="0; url=original-plan/zh-TW.html">
+  <link rel="canonical" href="original-plan/zh-TW.html">
+  <title>LabHippo 原始提案（繁體中文） — moved</title>
+</head>
+<body>
+  <p>LabHippo 原始提案（繁體中文） has moved. <a href="original-plan/zh-TW.html">前往原始提案</a>.</p>
+</body>
+</html>

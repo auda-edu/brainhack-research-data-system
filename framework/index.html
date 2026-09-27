@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f2ec">
+  <meta name="description" content="A navigable concept framework for the LabHippo system.">
+  <title>LabHippo — System preview</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#/" aria-label="LabHippo home"><span class="brand-mark" aria-hidden="true">lh.</span><span>labhippo<span class="brand-dot">.</span></span></a>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="#/">Overview</a>
+        <details class="nav-menu"><summary>Functions <span aria-hidden="true">⌄</span></summary><div class="menu-panel" id="functions-menu"></div></details>
+        <details class="nav-menu"><summary>User scenarios <span aria-hidden="true">⌄</span></summary><div class="menu-panel" id="scenarios-menu"></div></details>
+      </nav>
+      <span class="preview-badge"><span class="status-dot"></span> Concept preview</span>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div id="home-view">
+      <section class="hero shell" aria-labelledby="home-title">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> A proposed system map</div>
+          <h1 id="home-title">A home for the<br><em>whole lab.</em></h1>
+          <p class="hero-intro">See how LabHippo could keep a lab's research memory connected: project state, decisions, provenance, and handover. Explore the structure now; build the processes later.</p>
+          <div class="hero-actions"><a class="button button-primary" href="#/function/projects">Explore functions <span aria-hidden="true">↗</span></a><a class="text-link" href="#/scenario/pi">See user scenarios <span aria-hidden="true">→</span></a></div>
+        </div>
+        <div class="hero-graphic" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <span class="graphic-label label-top">PEOPLE</span><span class="graphic-label label-right">RESEARCH</span><span class="graphic-label label-bottom">OPERATIONS</span>
+          <div class="graphic-core"><span>ONE LAB</span><strong>labhippo<b>.</b></strong></div>
+          <span class="graphic-point point-a"></span><span class="graphic-point point-b"></span><span class="graphic-point point-c"></span>
+        </div>
+      </section>
+
+      <section class="map-section" aria-labelledby="map-title"><div class="shell">
+        <div class="section-topline"><span>01 / SYSTEM MAP</span><span>PROPOSED NAVIGATION</span></div>
+        <div class="section-heading"><h2 id="map-title">The context behind<br>the research.</h2><p>Each area opens a page shell. The labels follow the original LabHippo proposal, and no operational workflow has been built yet.</p></div>
+        <div class="module-grid" id="module-grid"></div>
+      </div></section>
+
+      <section class="scenario-section shell" aria-labelledby="scenarios-title">
+        <div class="section-topline"><span>02 / USER SCENARIOS</span><span>CHOOSE A PERSPECTIVE</span></div>
+        <div class="section-heading"><h2 id="scenarios-title">One system.<br>Different starting points.</h2><p>Open a role to see its reserved space. Tasks, permissions, and handoffs can be designed later.</p></div>
+        <div class="scenario-list" id="scenario-list"></div>
+      </section>
+
+      <section class="scope-note shell" aria-label="Preview scope"><div class="scope-icon" aria-hidden="true">✳</div><div><strong>Built as a framework.</strong><p>Navigation and page shells are available. Forms, data, accounts, permissions, and process logic are intentionally left for the next phase.</p></div><a href="#/function/projects">Browse the map <span aria-hidden="true">→</span></a></section>
+    </div>
+
+    <section id="detail-view" class="detail-view shell" hidden aria-labelledby="detail-title">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="#/">Overview</a><span aria-hidden="true">/</span><span id="breadcrumb-group"></span><span aria-hidden="true">/</span><span id="breadcrumb-current"></span></nav>
+      <div class="detail-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> <span id="detail-kicker"></span></div><h1 id="detail-title"></h1><p id="detail-description"></p></div><span class="detail-index" id="detail-index" aria-hidden="true"></span></div>
+      <div class="detail-layout">
+        <div class="placeholder-panel"><div class="placeholder-top"><span class="status-dot"></span><span>RESERVED WORKSPACE</span><span id="placeholder-code"></span></div><div class="placeholder-body"><span class="placeholder-glyph" aria-hidden="true">+</span><h2>Process to be designed</h2><p>This space is intentionally blank. Future screens, actions, and data can be added here once the workflow is defined.</p></div><div class="placeholder-bottom"><span>LABHIPPO / CONCEPT FRAMEWORK</span><span>NO LIVE DATA</span></div></div>
+        <aside class="detail-aside" aria-label="Explore more"><h2>Explore the framework</h2><div id="related-links"></div><a class="back-link" href="#/">← Back to overview</a></aside>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="shell footer-inner"><span>labhippo<span class="brand-dot">.</span></span><span>System outline · Concept preview</span><a href="#/">Return to overview ↑</a></div></footer>
+</body>
+</html>
