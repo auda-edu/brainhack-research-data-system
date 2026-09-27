@@ -15,7 +15,7 @@ The earlier Dropbox folder `08_Administrative/Conferences/2026/Taiwan-open-scien
 
 ## What is implemented
 
-- The overview and dropdowns link to eight **function pages** (projects, lifecycle/access, decisions, provenance, issues, handover, people/governance, connected tools). These remain page shells.
+- The overview and dropdowns link to eight **working function demos** (projects, lifecycle/access, decisions, provenance, issues, handover, people/governance, connected tools). They derive from the browser launch records and daily logs. Filters and project selectors work in place; the lifecycle selector is a simulation that does not change saved data.
 - The **researcher** scenario has a project launch record, daily lab log, project view, settings, local backup/restore, and Markdown export. The record can also open GitHub's new-file page with the Markdown prefilled for review.
 - The **PI, lab manager, new member, and collaborator** scenarios are read-only views derived from the same browser records. The collaborator view displays only projects marked `public`.
 - `store.js` saves projects and logs in `localStorage` under `labhippo.researcher.v1`. Other tabs in the same browser update on the `storage` event. There is no server-backed or cross-device synchronization.
@@ -31,6 +31,7 @@ The earlier Dropbox folder `08_Administrative/Conferences/2026/Taiwan-open-scien
 | [store.js](store.js) | Browser persistence, state helpers, derived summaries |
 | [researcher.js](researcher.js) | Researcher forms, logs, export, settings |
 | [roles.js](roles.js) | PI, manager, new-member, collaborator views |
+| [functions.js](functions.js) | Eight function demos from the shared browser store |
 | [styles.css](styles.css) | Responsive design and workspace styles |
 | [README.md](README.md) | Short usage and record-format notes |
 | [../api/](../api/README.md) | Local read-only API, synthetic fixtures, server-side read policy, tests |
@@ -44,6 +45,8 @@ This is a **public static prototype**, not a secure research-record service. The
 The configured records repository defaults to `audachang/labhippo-records`, which was verified private on 2026-09-27. The app refuses its own public site repository as a destination, but it does **not** verify the visibility of every repository a user enters. The “Propose on GitHub” link places the Markdown in a URL query parameter for GitHub's new-file page; do not use that path for sensitive content without a reviewed alternative. Opening that link does not itself save or merge a record.
 
 The collaborator's `public` flag controls only this client-side view. A proper release path needs review, explicit publication rules, and server/repository-side enforcement. Browser storage can be cleared or unavailable; use the backup/export controls for any non-disposable test records.
+
+The function demos share that client-side boundary. Project access labels, people names, and the lifecycle simulation do not grant permissions or update repository approval. Provenance entries are researcher notes, not verified file traces. Connected tools are recorded references and proposed integration points; no live connector was added.
 
 The API prototype has a separate server-side `canRead(principal, record)` policy. It returns only approved records: public to anyone, lab to a same-lab identity, and restricted to a same-lab identity explicitly listed as a reader. The development identity is fixed in server code; headers, query strings, and client-side roles cannot select it. The CLI requires `LABHIPPO_DEV_ONLY=1`, binds to `127.0.0.1`, and uses invented fixtures only. **Do not connect this entry point to private data or expose it as a public service.**
 
@@ -60,9 +63,16 @@ Work from a fresh checkout of the repository and inspect `git status` and `origi
 
 For the local API, run `node --test api/api.test.mjs` and follow [its README](../api/README.md). The API has no production deployment configuration. A production API must fail closed without authenticated identity and authorization configuration, and must keep any future GitHub App credentials on the server.
 
-The current implementation was checked through repository inspection, a successful Pages build, and HTTP 200 responses. A rendered browser interaction check was not completed in this Dropbox-backed task because the browser helper failed before page inspection (`CreateProcessWithLogonW failed: 267`).
+The earlier researcher implementation was checked through repository inspection, a successful Pages build, and HTTP 200 responses. Its Codex browser-helper check failed before page inspection in the Dropbox workspace (`CreateProcessWithLogonW failed: 267`). The later function-demo browser check is recorded below.
 
 ## Handover log
+
+### 2026-09-27 — Function demo coverage
+
+- Replaced all eight blank function panels with views built from the existing researcher launch record and daily logs. An empty browser can load that same synthetic example directly from a function page.
+- Added registry search/access filter, lifecycle/access simulation, decision timeline/project filter, provenance trace, issue status filter, handover summary, people table, and connection status map. Source links lead back to the researcher record or log.
+- Kept access, review, and provenance claims explicitly at demo scope: no server authorization, approval, external-file verification, or live integration was added.
+- Verification: JavaScript syntax checks and a headless Chrome walkthrough on desktop and mobile, including example loading, all eight routes, lifecycle controls, no page errors, and no mobile horizontal overflow. The Codex browser helper again failed before inspection in this Dropbox workspace (`CreateProcessWithLogonW failed: 267`); the browser walkthrough used bundled Playwright and local Chrome.
 
 ### 2026-09-27 — Development API boundary
 
