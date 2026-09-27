@@ -1,7 +1,7 @@
 # LabHippo framework handover
 
 Updated: 2026-09-27 (Asia/Taipei)
-Framework baseline inspected: `54c7cf5` on `main`
+Framework baseline for this update: `375a26d` on `main`
 
 ## Where things live
 
@@ -9,7 +9,7 @@ Framework baseline inspected: `54c7cf5` on `main`
 - Public site: [LabHippo home](https://audachang.github.io/brainhack-research-data-system/)
 - Current framework: [`/framework/`](https://audachang.github.io/brainhack-research-data-system/framework/)
 - Original Brainhack proposal: [`/original-plan/`](https://audachang.github.io/brainhack-research-data-system/original-plan/) (English and Traditional Chinese slides and figures)
-- GitHub Pages builds from `main` at the repository root. The build for `4181b0c` was reported as `built`; the current framework HTML and three new scripts returned HTTP 200.
+- GitHub Pages builds from `main` at the repository root. The earlier build for `4181b0c` was reported as `built`; that check predates the import and newcomer changes described below.
 
 The earlier Dropbox folder `08_Administrative/Conferences/2026/Taiwan-open-science/labhippo-preview/` contains the **initial static shell**. It does not contain the newer researcher and role-view code. Treat this repository's `framework/` directory as the current implementation; do not copy the old Dropbox files over it.
 
@@ -17,7 +17,7 @@ The earlier Dropbox folder `08_Administrative/Conferences/2026/Taiwan-open-scien
 
 - The overview and dropdowns link to eight **working function demos** (projects, lifecycle/access, decisions, provenance, issues, handover, people/governance, connected tools). They derive from the browser launch records and daily logs. Filters and project selectors work in place; the lifecycle selector is a simulation that does not change saved data.
 - The **researcher** scenario has a project launch record, daily lab log, project view, settings, local backup/restore, and Markdown export. The record can also open GitHub's new-file page with the Markdown prefilled for review.
-- The **PI, lab manager, new member, and collaborator** scenarios are read-only views derived from the same browser records. The collaborator view displays only projects marked `public`.
+- The **PI, lab manager, and collaborator** scenarios are read-only views derived from the same browser records. The collaborator view displays only projects marked `public`. The new-member scenario adds a guided local checklist, first daily log, and completion receipt.
 - `store.js` saves projects and logs in `localStorage` under `labhippo.researcher.v1`. Other tabs in the same browser update on the `storage` event. There is no server-backed or cross-device synchronization.
 - Exported launch records use `records/lab/projects/<short-id>/project.md`; daily logs use `records/lab/projects/<short-id>/log/<date>.md`. Exports carry `review: "proposed"` until reviewed and merged.
 - A separate [local API prototype](../api/README.md) serves **synthetic approved records** from Node.js. It is not called by the framework, deployed on GitHub Pages, or connected to the private records repository.
@@ -30,6 +30,10 @@ The earlier Dropbox folder `08_Administrative/Conferences/2026/Taiwan-open-scien
 | [app.js](app.js) | Navigation and hash routing; mounts scenario views |
 | [store.js](store.js) | Browser persistence, state helpers, derived summaries |
 | [researcher.js](researcher.js) | Researcher forms, logs, export, settings |
+| [log-format.js](log-format.js) | Constrained Markdown/JSON daily-log parsing, validation and templates |
+| [log-import.js](log-import.js) | Local file selection, preview, save and replacement confirmation |
+| [newcomer.js](newcomer.js) | Project-specific onboarding checklist, first log and local receipt |
+| [templates/](templates/) | Generic Markdown and JSON daily-log examples |
 | [roles.js](roles.js) | PI, manager, new-member, collaborator views |
 | [functions.js](functions.js) | Eight function demos from the shared browser store |
 | [styles.css](styles.css) | Responsive design and workspace styles |
@@ -45,6 +49,8 @@ This is a **public static prototype**, not a secure research-record service. The
 The configured records repository defaults to `audachang/labhippo-records`, which was verified private on 2026-09-27. The app refuses its own public site repository as a destination, but it does **not** verify the visibility of every repository a user enters. The “Propose on GitHub” link places the Markdown in a URL query parameter for GitHub's new-file page; do not use that path for sensitive content without a reviewed alternative. Opening that link does not itself save or merge a record.
 
 The collaborator's `public` flag controls only this client-side view. A proper release path needs review, explicit publication rules, and server/repository-side enforcement. Browser storage can be cleared or unavailable; use the backup/export controls for any non-disposable test records.
+
+Daily-log import reads a selected local file in the browser. It validates the project, date, core fields, review state, list shapes, and a 256 KB size limit, then asks for an explicit save. Replacing an existing project/date log requires a second confirmation. It does not write to GitHub or the API. New-member progress is a separate `localStorage` item (`labhippo.newcomer.v1`); its four checks are self-reported and the receipt is not an approval or training record. The first log is stored in the shared researcher store, so other function and role views can read it in the same browser.
 
 The function demos share that client-side boundary. Project access labels, people names, and the lifecycle simulation do not grant permissions or update repository approval. Provenance entries are researcher notes, not verified file traces. Connected tools are recorded references and proposed integration points; no live connector was added.
 
@@ -66,6 +72,14 @@ For the local API, run `node --test api/api.test.mjs` and follow [its README](..
 The earlier researcher implementation was checked through repository inspection, a successful Pages build, and HTTP 200 responses. Its Codex browser-helper check failed before page inspection in the Dropbox workspace (`CreateProcessWithLogonW failed: 267`). The later function-demo browser check is recorded below.
 
 ## Handover log
+
+### 2026-09-27 — Daily-log import, newcomer flow and readable type
+
+- Increased text sizes across navigation, cards, metadata, function views, tables, and form controls; the browser walkthrough measured 16 px body, navigation, and action button text on desktop.
+- Added downloadable project-specific Markdown/JSON daily-log templates and generic examples under `templates/`. The planned fields cover progress, runs, decisions, issues, issue updates, next step, blockers, and links. Existing LabHippo Markdown exports can be imported.
+- Added local file selection, validation, preview, explicit save, and same-day replacement confirmation to the researcher and newcomer pages. Imported records remain proposed and local to the browser.
+- Added a complete demo newcomer route: project guide → identity and four self-checks → first daily log or file import → local completion receipt. This is self-reported and has no access-control effect.
+- Verification: eleven Node tests passed (six API, five import-format), and a local Chrome walkthrough completed onboarding, persisted the receipt after reload, saved JSON and Markdown imports, rejected an invalid file, required confirmation before replacing a same-day log, and found no page errors or mobile horizontal overflow. Live Pages deployment should be checked when publishing.
 
 ### 2026-09-27 — Function demo coverage
 

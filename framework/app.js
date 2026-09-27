@@ -71,7 +71,10 @@ function closeMenus() {
 
 // Researcher forms are never re-rendered from outside, so typed text is not lost.
 function isEditing(parts) {
-  return parts[0] === "scenario" && parts[1] === "researcher" && (parts[2] === "launch" || parts[4] === "log");
+  return parts[0] === "scenario" && (
+    (parts[1] === "researcher" && (parts[2] === "launch" || parts[4] === "log")) ||
+    (parts[1] === "student" && parts[2] === "project" && parts[4] === "onboard")
+  );
 }
 
 function routeParts() {
