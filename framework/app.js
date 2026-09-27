@@ -10,11 +10,11 @@ const functions = [
 ];
 
 const scenarios = [
-  { id: "pi", title: "Principal investigator", description: "A lab-wide view of project state and stewardship." },
-  { id: "manager", title: "Lab manager", description: "A starting point for ownership and handover coordination." },
-  { id: "researcher", title: "Researcher", description: "A view of decisions, provenance, and known issues." },
-  { id: "student", title: "New lab member", description: "A clear route into a project and its restart point." },
-  { id: "collaborator", title: "Collaborator", description: "A reserved space for permitted shared context." }
+  { id: "researcher", title: "Researcher", description: "Launch a project, then keep its lab log current each day there is progress." },
+  { id: "pi", title: "Principal investigator", description: "A lab-wide view of project state, attention flags and recent decisions." },
+  { id: "manager", title: "Lab manager", description: "Ownership, restart readiness and logging cadence across projects." },
+  { id: "student", title: "New lab member", description: "A restart guide for each project, built from its launch record and logs." },
+  { id: "collaborator", title: "Collaborator", description: "Only the projects and records marked public." }
 ];
 
 const byId = id => document.getElementById(id);
@@ -69,8 +69,28 @@ function closeMenus() {
   document.querySelectorAll(".nav-menu[open]").forEach(menu => { menu.open = false; });
 }
 
-function renderRoute() {
-  const parts = decodeURIComponent(location.hash.replace(/^#\/?/, "")).split("/").filter(Boolean);
+// Researcher forms are never re-rendered from outside, so typed text is not lost.
+function isEditing(parts) {
+  return parts[0] === "scenario" && parts[1] === "researcher" && (parts[2] === "launch" || parts[4] === "log");
+}
+
+function routeParts() {
+  return decodeURIComponent(location.hash.replace(/^#\/?/, "")).split("/").filter(Boolean);
+}
+
+function renderWorkspace(type, item, parts) {
+  const workspace = byId("workspace");
+  let render = null;
+  if (type === "scenario" && item.id === "researcher" && window.LabhippoResearcher) render = root => window.LabhippoResearcher.render(root, parts.slice(2));
+  else if (type === "scenario" && window.LabhippoRoles && window.LabhippoRoles.has(item.id)) render = root => window.LabhippoRoles.render(root, item.id, parts.slice(2));
+  workspace.hidden = !render;
+  byId("placeholder-panel").hidden = Boolean(render);
+  if (render) render(workspace);
+  else workspace.replaceChildren();
+}
+
+function renderRoute(event) {
+  const parts = routeParts();
   const type = parts[0];
   const item = type === "function" ? functions.find(entry => entry.id === parts[1]) : type === "scenario" ? scenarios.find(entry => entry.id === parts[1]) : null;
   const showDetail = Boolean(item);
@@ -89,16 +109,19 @@ function renderRoute() {
     byId("detail-index").textContent = String(index).padStart(2, "0");
     byId("placeholder-code").textContent = `${type.toUpperCase()} ${String(index).padStart(2, "0")}`;
     renderRelated(type, item);
+    renderWorkspace(type, item, parts);
     document.title = `${item.title} — LabHippo preview`;
   } else {
     document.title = pageTitle;
   }
-  window.scrollTo(0, 0);
+  if (event !== false) window.scrollTo(0, 0);
 }
 
 renderNavigation();
 renderRoute();
 window.addEventListener("hashchange", renderRoute);
+// Another tab saved records: refresh the open view in place unless a form is being edited.
+if (window.LabhippoStore) window.LabhippoStore.subscribe(() => { if (!isEditing(routeParts())) renderRoute(false); });
 
 document.addEventListener("click", event => {
   if (event.target.closest(".menu-link")) closeMenus();

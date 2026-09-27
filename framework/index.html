@@ -7,6 +7,9 @@
   <meta name="description" content="A navigable concept framework for the LabHippo system.">
   <title>LabHippo — System preview</title>
   <link rel="stylesheet" href="./styles.css">
+  <script src="./store.js" defer></script>
+  <script src="./researcher.js" defer></script>
+  <script src="./roles.js" defer></script>
   <script src="./app.js" defer></script>
 </head>
 <body>
@@ -30,7 +33,7 @@
           <div class="eyebrow"><span class="eyebrow-line"></span> A proposed system map</div>
           <h1 id="home-title">A home for the<br><em>whole lab.</em></h1>
           <p class="hero-intro">See how LabHippo could keep a lab's research memory connected: project state, decisions, provenance, and handover. Explore the structure now; build the processes later.</p>
-          <div class="hero-actions"><a class="button button-primary" href="#/function/projects">Explore functions <span aria-hidden="true">↗</span></a><a class="text-link" href="#/scenario/pi">See user scenarios <span aria-hidden="true">→</span></a></div>
+          <div class="hero-actions"><a class="button button-primary" href="#/function/projects">Explore functions <span aria-hidden="true">↗</span></a><a class="text-link" href="#/scenario/researcher">See user scenarios <span aria-hidden="true">→</span></a></div>
         </div>
         <div class="hero-graphic" aria-hidden="true">
           <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
@@ -52,14 +55,15 @@
         <div class="scenario-list" id="scenario-list"></div>
       </section>
 
-      <section class="scope-note shell" aria-label="Preview scope"><div class="scope-icon" aria-hidden="true">✳</div><div><strong>Built as a framework.</strong><p>Navigation and page shells are available. Forms, data, accounts, permissions, and process logic are intentionally left for the next phase.</p></div><a href="#/function/projects">Browse the map <span aria-hidden="true">→</span></a></section>
+      <section class="scope-note shell" aria-label="Preview scope"><div class="scope-icon" aria-hidden="true">✳</div><div><strong>Start with the researcher.</strong><p>The researcher scenario has a working launch record and daily lab log, stored in your browser. The other role pages are built from those same records. Function pages are still shells.</p></div><a href="#/scenario/researcher">Open the researcher workspace <span aria-hidden="true">→</span></a></section>
     </div>
 
     <section id="detail-view" class="detail-view shell" hidden aria-labelledby="detail-title">
       <nav class="breadcrumb" aria-label="Breadcrumb"><a href="#/">Overview</a><span aria-hidden="true">/</span><span id="breadcrumb-group"></span><span aria-hidden="true">/</span><span id="breadcrumb-current"></span></nav>
       <div class="detail-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> <span id="detail-kicker"></span></div><h1 id="detail-title"></h1><p id="detail-description"></p></div><span class="detail-index" id="detail-index" aria-hidden="true"></span></div>
       <div class="detail-layout">
-        <div class="placeholder-panel"><div class="placeholder-top"><span class="status-dot"></span><span>RESERVED WORKSPACE</span><span id="placeholder-code"></span></div><div class="placeholder-body"><span class="placeholder-glyph" aria-hidden="true">+</span><h2>Process to be designed</h2><p>This space is intentionally blank. Future screens, actions, and data can be added here once the workflow is defined.</p></div><div class="placeholder-bottom"><span>LABHIPPO / CONCEPT FRAMEWORK</span><span>NO LIVE DATA</span></div></div>
+        <div class="placeholder-panel" id="placeholder-panel"><div class="placeholder-top"><span class="status-dot"></span><span>RESERVED WORKSPACE</span><span id="placeholder-code"></span></div><div class="placeholder-body"><span class="placeholder-glyph" aria-hidden="true">+</span><h2>Process to be designed</h2><p>This space is intentionally blank. Future screens, actions, and data can be added here once the workflow is defined.</p></div><div class="placeholder-bottom"><span>LABHIPPO / CONCEPT FRAMEWORK</span><span>NO LIVE DATA</span></div></div>
+        <div id="workspace" class="workspace" hidden></div>
         <aside class="detail-aside" aria-label="Explore more"><h2>Explore the framework</h2><div id="related-links"></div><a class="back-link" href="#/">← Back to overview</a></aside>
       </div>
     </section>
