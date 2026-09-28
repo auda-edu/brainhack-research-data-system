@@ -73,6 +73,12 @@ The earlier researcher implementation was checked through repository inspection,
 
 ## Handover log
 
+### 2026-09-28 — First-slide website QR
+
+- Reused the existing website QR asset on the first slide beside the LabHippo logo on desktop and below it on narrow screens. The third-slide QR remains available.
+- Verified locally in Chrome at 1440 × 900 and 375 × 812: three slides, all images loaded, no page errors or horizontal overflow. Both first-slide screenshots' QR codes decoded to the intended public URL. The print PDF remains three pages, and its first page was visually checked. Live Pages verification is pending merge and deployment.
+- The architecture detail links already point to the repository's `blob/main/plan-ver-0928/architecture.md` page. A live Chrome check found GitHub's formatted Markdown preview with rendered headings; no link change was needed.
+
 ### 2026-09-28 — Architecture slide readability
 
 - Replaced the first slide's small flow strip with a prominent three-column Capture → Structure → Explore diagram. Each layer now names its function and components; mobile stacks the same sequence vertically.
