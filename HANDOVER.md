@@ -7,11 +7,12 @@ Framework baseline for this update: `af8c052` on `main`
 
 - Repository: [audachang/brainhack-research-data-system](https://github.com/audachang/brainhack-research-data-system)
 - Public site: [LabHippo home](https://audachang.github.io/brainhack-research-data-system/)
-- Current framework: [`/framework/`](https://audachang.github.io/brainhack-research-data-system/framework/)
-- Original Brainhack proposal: [`/original-plan/`](https://audachang.github.io/brainhack-research-data-system/original-plan/) (English and Traditional Chinese slides and figures)
-- GitHub Pages builds from `main` at the repository root. The earlier build for `4181b0c` was reported as `built`; that check predates the import and newcomer changes described below.
+- Interactive framework: [repository root](https://audachang.github.io/brainhack-research-data-system/)
+- Latest architecture concept: [`/plan-latest/`](https://audachang.github.io/brainhack-research-data-system/plan-latest/) (proposal, not an operational prototype)
+- Archived Brainhack proposal: [`/archived/original-plan/`](https://audachang.github.io/brainhack-research-data-system/archived/original-plan/) (English and Traditional Chinese slides and figures)
+- GitHub Pages builds from `main` at the repository root. This path map describes the proposed reorganization on a feature branch; Pages keeps the earlier layout until the owner merges it and deployment completes.
 
-The earlier Dropbox folder `08_Administrative/Conferences/2026/Taiwan-open-science/labhippo-preview/` contains the **initial static shell**. It does not contain the newer researcher and role-view code. Treat this repository's `framework/` directory as the current implementation; do not copy the old Dropbox files over it.
+The earlier Dropbox folder `08_Administrative/Conferences/2026/Taiwan-open-science/labhippo-preview/` contains the **initial static shell**. It does not contain the newer researcher and role-view code. Treat this repository root as the current interactive implementation; do not copy the old Dropbox files over it.
 
 ## What is implemented
 
@@ -20,7 +21,7 @@ The earlier Dropbox folder `08_Administrative/Conferences/2026/Taiwan-open-scien
 - The **PI, lab manager, and collaborator** scenarios are read-only views derived from the same browser records. The collaborator view displays only projects marked `public`. The new-member scenario adds a guided local checklist, first daily log, and completion receipt.
 - `store.js` saves projects and logs in `localStorage` under `labhippo.researcher.v1`. Other tabs in the same browser update on the `storage` event. There is no server-backed or cross-device synchronization.
 - Exported launch records use `records/lab/projects/<short-id>/project.md`; daily logs use `records/lab/projects/<short-id>/log/<date>.md`. Exports carry `review: "proposed"` until reviewed and merged.
-- A separate [local API prototype](../api/README.md) serves **synthetic approved records** from Node.js. It is not called by the framework, deployed on GitHub Pages, or connected to the private records repository.
+- A separate [local API prototype](api/README.md) serves **synthetic approved records** from Node.js. It is not called by the framework, deployed on GitHub Pages, or connected to the private records repository.
 
 ## File map
 
@@ -38,7 +39,7 @@ The earlier Dropbox folder `08_Administrative/Conferences/2026/Taiwan-open-scien
 | [functions.js](functions.js) | Eight function demos from the shared browser store |
 | [styles.css](styles.css) | Responsive design and workspace styles |
 | [README.md](README.md) | Short usage and record-format notes |
-| [../api/](../api/README.md) | Local read-only API, synthetic fixtures, server-side read policy, tests |
+| [api/](api/README.md) | Local read-only API, synthetic fixtures, server-side read policy, tests |
 
 Routes use URL hashes (for example, `#/scenario/researcher` and `#/function/projects`), so static GitHub Pages hosting needs no router rewrite.
 
@@ -65,13 +66,21 @@ The API prototype has a separate server-side `canRead(principal, record)` policy
 
 ## Editing and deployment
 
-Work from a fresh checkout of the repository and inspect `git status` and `origin/main` first; another implementation landed after the initial shell deployment. The temporary checkout used during the original deployment is not a durable workspace. Change `framework/` files there, run `node --check` on the JavaScript files, review local links and the Git diff, then commit and push the intended files. Afterward, confirm the GitHub Pages build names the new commit and fetch the live URLs.
+Work from a fresh checkout of the repository and inspect `git status` and `origin/main` first; another implementation landed after the initial shell deployment. The temporary checkout used during the original deployment is not a durable workspace. Change the root framework files there, run `node --check` on the JavaScript files, review local links and the Git diff, then commit and push the intended files. Afterward, confirm the GitHub Pages build names the new commit and fetch the live URLs.
 
-For the local API, run `node --test api/api.test.mjs` and follow [its README](../api/README.md). The API has no production deployment configuration. A production API must fail closed without authenticated identity and authorization configuration, and must keep any future GitHub App credentials on the server.
+For the local API, run `node --test api/api.test.mjs` and follow [its README](api/README.md). The API has no production deployment configuration. A production API must fail closed without authenticated identity and authorization configuration, and must keep any future GitHub App credentials on the server.
 
 The earlier researcher implementation was checked through repository inspection, a successful Pages build, and HTTP 200 responses. Its Codex browser-helper check failed before page inspection in the Dropbox workspace (`CreateProcessWithLogonW failed: 267`). The later function-demo browser check is recorded below.
 
 ## Handover log
+
+### 2026-09-28 — Root framework and archive reorganization
+
+- Moved the working interactive framework from `framework/` to the repository root, including its public Capture templates and synthetic exemplars.
+- Renamed the separate architecture concept page from `plan-ver-0928/` to `plan-latest/`. It remains a proposal, not an operational prototype. Generated a new QR code for the new URL; the old URL redirects for existing QR codes and links.
+- Moved the previous root landing page, original Brainhack proposal, and proposal assets under `archived/`. Added redirects for the former framework and proposal routes and updated the top-level language and figure aliases.
+- Verification: all root JavaScript syntax checks and 11 Node tests passed. Local Chrome at 1440 px and 375 px loaded the root demo, researcher view, and three-slide plan without page errors or horizontal overflow; plan images loaded. Redirects to the new framework, plan, and archive locations completed. The new QR decoded to the intended `/plan-latest/` URL.
+- The change is pending owner review and merge. GitHub Pages and live links have not yet been checked for this branch.
 
 ### 2026-09-28 — Public Capture templates and synthetic exemplars
 

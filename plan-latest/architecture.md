@@ -60,7 +60,7 @@ The two generated sites are separate publication outputs. The public site receiv
 | AI assistance | Proposes normalized text, metadata, summaries, related records, and documentation gaps. | A draft for review, never an automatically accepted research claim. |
 | Researcher review | Checks factual accuracy, provenance, source-system references, and permitted audience before submission. | A reviewable pull request. |
 
-The blank templates and fully synthetic exemplars live in the public [framework template kit](../framework/templates/README.md). Filled records go to the private repository for review. The templates do not require participant, visit, or session identifiers. Such identifiers may be added only when the study's governance permits them in the private repository and intended output. Public pages and indexes must not contain participant-level records or identifiers.
+The blank templates and fully synthetic exemplars live in the public [Capture template kit](../templates/README.md). Filled records go to the private repository for review. The templates do not require participant, visit, or session identifiers. Such identifiers may be added only when the study's governance permits them in the private repository and intended output. Public pages and indexes must not contain participant-level records or identifiers.
 
 ## Layer 2 — Structure / Version
 
