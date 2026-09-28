@@ -1,7 +1,7 @@
 # LabHippo framework handover
 
-Updated: 2026-09-27 (Asia/Taipei)
-Framework baseline for this update: `375a26d` on `main`
+Updated: 2026-09-28 (Asia/Taipei)
+Framework baseline for this update: `af8c052` on `main`
 
 ## Where things live
 
@@ -72,6 +72,14 @@ For the local API, run `node --test api/api.test.mjs` and follow [its README](..
 The earlier researcher implementation was checked through repository inspection, a successful Pages build, and HTTP 200 responses. Its Codex browser-helper check failed before page inspection in the Dropbox workspace (`CreateProcessWithLogonW failed: 267`). The later function-demo browser check is recorded below.
 
 ## Handover log
+
+### 2026-09-28 — Public Capture templates and synthetic exemplars
+
+- Added public blank Project, Project event, and Resource Markdown templates beside the existing daily-log Markdown/JSON templates. Completed real records remain destined for a suitable private repository; no private records were copied here.
+- Added fully fictional resting-state fMRI and Stroop task examples. Each has a project, linked event, resource, and daily analysis or experiment log. The current browser log parser remains unchanged.
+- Updated the framework README and architecture draft to distinguish public templates from private instances, and the proposed record model from the existing browser log format. The Capture slide links directly to the template kit.
+- Verification: three blank and eight example YAML records parsed; IDs, internal links, Markdown links, and JSON template checked. Both example logs passed the current parser and validator. Framework JavaScript syntax checks and all eleven Node tests passed. Local Chrome at 1440 px and 375 px loaded the plan and researcher pages without console errors or horizontal overflow; all plan images loaded, and the changed Capture card was visually checked at both widths.
+- This change is on a feature branch pending owner review and merge. The new files are not yet live on GitHub Pages. No private-record schema validator, build, or publication controls were added.
 
 ### 2026-09-28 — First-slide website QR
 

@@ -5,7 +5,7 @@ date: "YYYY-MM-DD"
 author: ""
 review: "proposed"
 runs:
-  # - command: "script or command"
+  # - command: "analysis, experiment, QC check, or other work"
   #   inputs: "versioned data or paths"
   #   outputs: "artifact paths"
   #   result: "ok"
@@ -25,7 +25,7 @@ links: []
 
 ## Progress
 
-<!-- What moved forward? Name evidence, inputs, and outputs. -->
+<!-- What moved forward in the analysis or experiment? Name permitted evidence, inputs, outputs, and the result. -->
 
 ## Next step
 

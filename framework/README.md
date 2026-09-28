@@ -4,6 +4,8 @@ For the current architecture, deployment, and development limits, see [HANDOVER.
 
 The separate [local record-read API prototype](../api/README.md) uses synthetic data and is not connected to this public page.
 
+The public [Capture template kit](templates/README.md) has blank Project, Project event, Resource, and Daily-log formats plus fictional resting-state fMRI and Stroop examples. Completed lab records belong in a suitable private repository, not this demo.
+
 Open `index.html` in a browser. It uses plain HTML, CSS, and JavaScript and needs no build step or account.
 
 ## What is included
@@ -42,7 +44,7 @@ The store is the browser's `localStorage`, so this sharing is limited to one bro
 | `log-format.js` | Constrained Markdown/JSON daily-log parser, validation, project-specific templates |
 | `log-import.js` | Local file chooser, preview, explicit save and replacement confirmation |
 | `newcomer.js` | Guided onboarding, first daily log and browser-only receipt |
-| `templates/` | Generic Markdown and JSON daily-log templates |
+| `templates/` | Public blank capture templates, daily-log formats, and fully fictional project exemplars |
 | `roles.js` | PI, lab manager, new member and collaborator views |
 | `functions.js` | Eight derived function demos, filters, selectors, and example loading |
 | `app.js` | Navigation and hash router; mounts function and scenario workspaces |

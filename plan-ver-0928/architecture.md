@@ -17,14 +17,14 @@ flowchart TB
     S["Research activity and authoritative systems<br/>LabKey · ELN · XNAT · BIDS · code and pipelines"]
 
     subgraph L1["1. CAPTURE / DOCUMENT — create reviewable knowledge objects"]
-        T["Markdown templates<br/>Project · Project event · Resource"]
+        T["Public Markdown templates<br/>Project · Project event · Resource · Daily log"]
         A["AI-assisted drafting<br/>Normalize · suggest summaries/tags/links · flag missing fields"]
         H["Human review<br/>Verify facts, sources, classification, and proposed links"]
         T --> A --> H
     end
 
     subgraph L2["2. STRUCTURE / VERSION — maintain the private knowledge source"]
-        R["Private GitHub repository<br/>projects/ · resources/ · templates/ · schemas/"]
+        R["Private GitHub repository<br/>populated projects/ · resources/ · schemas/"]
         V["Validation<br/>Schema · stable IDs · relationships · source references · publication rules"]
         X["Normalized index and provenance graph<br/>Project · resource · event · method · person · date · source version"]
         R --> V --> X
@@ -56,10 +56,11 @@ The two generated sites are separate publication outputs. The public site receiv
 | Project template | Records a research project's identity, objectives, leadership, lifecycle stage, and links to its history. | One project Markdown record. |
 | Project-event template | Records a dated decision, meeting, protocol change, analysis, QC finding, issue, milestone, or handover within a project. | A separate event record linked by `project_id`. |
 | Resource template | Records reusable lab guidance, methods, software, equipment guidance, literature pointers, and other cross-project information. | One resource Markdown record. |
+| Daily-log template | Records dated analysis, experiment, QC, decisions, issues, and next steps. | One log linked to a project. |
 | AI assistance | Proposes normalized text, metadata, summaries, related records, and documentation gaps. | A draft for review, never an automatically accepted research claim. |
 | Researcher review | Checks factual accuracy, provenance, source-system references, and permitted audience before submission. | A reviewable pull request. |
 
-The default templates must not require participant, visit, or session identifiers. Such identifiers may be added only when the study's governance permits them in this repository and in the intended output. Public pages and indexes must not contain participant-level records or identifiers.
+The blank templates and fully synthetic exemplars live in the public [framework template kit](../framework/templates/README.md). Filled records go to the private repository for review. The templates do not require participant, visit, or session identifiers. Such identifiers may be added only when the study's governance permits them in the private repository and intended output. Public pages and indexes must not contain participant-level records or identifiers.
 
 ## Layer 2 — Structure / Version
 
@@ -73,6 +74,11 @@ Every record has a stable `id`, `kind`, `title`, `summary`, `status`, `updated_a
 | `project-event` | `project_id`, `event_type`, `occurred_on`, outcome, next action, source references. | Belongs to exactly one project; may link to other events and resources. |
 | `resource` | `category`, `intended_use`, `review_due`, applicability. | May apply to several projects or methods. |
 
+The current browser daily log uses `type: log`, `project`, and `date`,
+rather than the proposed common `kind` fields above. It can capture analyses
+and experiments today, but no validator or build step yet reconciles the two
+formats.
+
 An initial repository layout is:
 
 ```text
@@ -85,10 +91,6 @@ labhippo-records/                  # private GitHub repository
 ├── resources/
 │   └── <category>/
 │       └── <resource-id>.md
-├── templates/
-│   ├── project.md
-│   ├── project-event.md
-│   └── resource.md
 ├── schemas/
 ├── site/                           # validation, indexing, and page generation
 └── .github/workflows/
@@ -140,4 +142,4 @@ The public builder must fail closed on missing or ambiguous publication approval
 - Direct requests for internal pages and assets are denied to an unauthenticated or unauthorized visitor.
 - Provenance links identify documentation commits separately from authoritative dataset and pipeline versions.
 
-This document describes a proposed architecture. It does not indicate that the templates, pipeline, Azure deployment, or access rules have been implemented or verified.
+This document describes a proposed architecture. Public blank templates and synthetic exemplars now exist in the framework demo. The private-record validator, publication pipeline, Azure deployment, and access rules have not been implemented or verified.
