@@ -1,6 +1,7 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
 const capture = require("./capture-core.js");
+const archivedLogFormat = require("./archived/interactive-demo/log-format.js");
 
 const base = {
   id: "lh:proj/2026-demo", title: "Demo project", summary: "Synthetic summary",
@@ -41,7 +42,8 @@ test("daily log retains browser import shape and nested work entries", () => {
     runs: [{ command: "Synthetic QC", inputs: "demo", outputs: "demo-output", result: "ok" }],
     decisions: [{ choice: "Continue", reason: "Test", alternatives: "Pause" }],
     issues: [{ problem: "Synthetic issue", conditions: "Demo", attempted: "Retry" }],
-    issue_updates: "Resolved fictional issue", links: "https://example.org/demo",
+    issue_updates: [{ id: "lh:iss/2026-demo-1", status: "resolved", resolution: "Synthetic resolution" }],
+    links: "https://example.org/demo",
     sections: { progress: "Synthetic progress", next_step: "Review output" } };
   const markdown = capture.buildMarkdown("log", data);
   assert.match(markdown, /type: "log"/);
@@ -50,6 +52,9 @@ test("daily log retains browser import shape and nested work entries", () => {
   const path = capture.suggestedPath("log", data);
   assert.equal(path, "records/lab/projects/2026-demo/log/2026-09-28.md");
   assert.equal(capture.validateSubmission(path, markdown).kind, "log");
+  const parsed = archivedLogFormat.parseFile("daily-log.md", markdown);
+  const project = [{ id: base.id, slug: "demo", launched: "2026-09-01", access: "lab", title: "Demo" }];
+  assert.equal(archivedLogFormat.validate(parsed, project, "2026-09-28").log.runs[0].command, "Synthetic QC");
 });
 
 test("rejects unsafe destinations, review claims, bad dates and oversized files", () => {
@@ -59,6 +64,8 @@ test("rejects unsafe destinations, review claims, bad dates and oversized files"
   }
   assert.throws(() => capture.validateSubmission("projects/2026-demo/project.md", markdown.replace('review: "proposed"', 'review: "approved"')));
   assert.throws(() => capture.validateSubmission("projects/2026-demo/project.md", markdown.replace('publication_class: "internal"', 'publication_class: "public"')));
+  assert.throws(() => capture.validateSubmission("projects/2026-demo/project.md", markdown.replace('review: "proposed"', 'review: "proposed"\nreview: "approved"')), /Duplicate review/);
+  assert.throws(() => capture.buildMarkdown("project", { ...base, id: "lh:proj/" }), /stable suffix/);
   assert.throws(() => capture.buildMarkdown("project", { ...base, updated_at: "2026-02-30" }));
   assert.throws(() => capture.validateSubmission("projects/2026-demo/project.md", markdown + "x".repeat(256 * 1024)));
 });
@@ -68,4 +75,9 @@ test("record text stays quoted inside frontmatter", () => {
   const header = capture.parseHeader(markdown);
   assert.equal(header.title, 'A title: "with quotes"\nreview: approved');
   assert.equal(header.review, "proposed");
+});
+
+test("manual lists require complete entries and daily logs require progress", () => {
+  assert.throws(() => capture.buildMarkdown("project", { ...base, source_refs: [{ system: "Example" }] }), /Complete each source refs/);
+  assert.throws(() => capture.buildMarkdown("log", { project: base.id, date: "2026-09-28", author: "Example" }), /Progress and Next step/);
 });

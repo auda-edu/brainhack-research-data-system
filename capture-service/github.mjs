@@ -29,6 +29,7 @@ export function createGitHubClient({ token, repo, baseBranch = "main", fetchImpl
     try {
       response = await fetchImpl(`${API}${endpoint}`, {
         method,
+        signal: AbortSignal.timeout(15000),
         headers: {
           Accept: "application/vnd.github+json",
           Authorization: `Bearer ${token}`,

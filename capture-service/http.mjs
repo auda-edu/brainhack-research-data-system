@@ -84,7 +84,8 @@ export function createCaptureServer({ rootDir, client, port = 8788 }) {
     }
     if (url.pathname.startsWith("/api/")) return failure(response, 404, "NOT_FOUND", "Endpoint not found.");
     if (request.method !== "GET") return failure(response, 405, "METHOD_NOT_ALLOWED", "Only GET is available here.");
-    const filename = publicFile(rootDir, url.pathname === "/plan-latest/" ? "/plan-latest/index.html" : url.pathname);
+    const alias = { "/plan-latest/": "/plan-latest/index.html", "/archived/interactive-demo/": "/archived/interactive-demo/index.html" };
+    const filename = publicFile(rootDir, alias[url.pathname] || url.pathname);
     if (!filename) return failure(response, 404, "NOT_FOUND", "Page not found.");
     try {
       const contents = await readFile(filename);

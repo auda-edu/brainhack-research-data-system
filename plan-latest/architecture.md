@@ -142,4 +142,4 @@ The public builder must fail closed on missing or ambiguous publication approval
 - Direct requests for internal pages and assets are denied to an unauthenticated or unauthorized visitor.
 - Provenance links identify documentation commits separately from authoritative dataset and pipeline versions.
 
-This document describes a proposed architecture. Public blank templates and synthetic exemplars now exist in the framework demo. The private-record validator, publication pipeline, Azure deployment, and access rules have not been implemented or verified.
+This document describes a proposed architecture, not an operational prototype. Public blank templates and synthetic exemplars exist, and a local-only Capture interface can prepare records and open draft private-repository pull requests. The Structure validator and index, publication pipeline, Azure deployment, and access rules have not been implemented or verified.

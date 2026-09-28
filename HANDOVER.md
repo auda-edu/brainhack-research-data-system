@@ -1,78 +1,70 @@
 # LabHippo framework handover
 
 Updated: 2026-09-28 (Asia/Taipei)
-Framework baseline for this update: `af8c052` on `main`
+Current work: `feature/capture-two-paths`, based on the pending root-framework PR #10 (which is based on Capture templates PR #9). The public Pages site still serves `main` until owner review, merges, and deployment.
 
 ## Where things live
 
-- Repository: [audachang/brainhack-research-data-system](https://github.com/audachang/brainhack-research-data-system)
-- Public site: [LabHippo home](https://audachang.github.io/brainhack-research-data-system/)
-- Interactive framework: [repository root](https://audachang.github.io/brainhack-research-data-system/)
-- Latest architecture concept: [`/plan-latest/`](https://audachang.github.io/brainhack-research-data-system/plan-latest/) (proposal, not an operational prototype)
-- Archived Brainhack proposal: [`/archived/original-plan/`](https://audachang.github.io/brainhack-research-data-system/archived/original-plan/) (English and Traditional Chinese slides and figures)
-- GitHub Pages builds from `main` at the repository root. This path map describes the proposed reorganization on a feature branch; Pages keeps the earlier layout until the owner merges it and deployment completes.
+- [Repository](https://github.com/audachang/brainhack-research-data-system): public code and synthetic examples only.
+- [Root framework](index.html): Capture workspace with file and manual entry routes, plus explicitly planned Structure and Explore sections.
+- [Latest architecture concept](plan-latest/): proposal, not an operational prototype.
+- [Public templates](templates/README.md): blank records and fictional examples.
+- [Earlier interactive demo](archived/interactive-demo/): historical browser-local project, log, and role-view prototype.
+- [Local Capture service](capture-service/README.md): fixed private-repository submission through a new branch and draft PR.
+- [Local read API](api/README.md): separate synthetic, read-only prototype.
 
-The earlier Dropbox folder `08_Administrative/Conferences/2026/Taiwan-open-science/labhippo-preview/` contains the **initial static shell**. It does not contain the newer researcher and role-view code. Treat this repository root as the current interactive implementation; do not copy the old Dropbox files over it.
+## What is built
 
-## What is implemented
+The Capture workspace accepts a completed Markdown file or presents each
+template metadata/body prompt for Project, Project event, Resource, and Daily
+log records. It previews and downloads Markdown. The local service verifies
+that its configured repository is private, refuses an existing path, commits
+only to a new branch, and opens a draft PR for review. Browser code holds no
+GitHub credential; the service reads its credential from the local process
+environment. Capture records remain proposed. A draft PR is not a merge,
+approval, or publication.
 
-- The overview and dropdowns link to eight **working function demos** (projects, lifecycle/access, decisions, provenance, issues, handover, people/governance, connected tools). They derive from the browser launch records and daily logs. Filters and project selectors work in place; the lifecycle selector is a simulation that does not change saved data.
-- The **researcher** scenario has a project launch record, daily lab log, project view, settings, local backup/restore, and Markdown export. The record can also open GitHub's new-file page with the Markdown prefilled for review.
-- The **PI, lab manager, and collaborator** scenarios are read-only views derived from the same browser records. The collaborator view displays only projects marked `public`. The new-member scenario adds a guided local checklist, first daily log, and completion receipt.
-- `store.js` saves projects and logs in `localStorage` under `labhippo.researcher.v1`. Other tabs in the same browser update on the `storage` event. There is no server-backed or cross-device synchronization.
-- Exported launch records use `records/lab/projects/<short-id>/project.md`; daily logs use `records/lab/projects/<short-id>/log/<date>.md`. Exports carry `review: "proposed"` until reviewed and merged.
-- A separate [local API prototype](api/README.md) serves **synthetic approved records** from Node.js. It is not called by the framework, deployed on GitHub Pages, or connected to the private records repository.
+The architecture calls for Structure validation, indexing, relationships,
+source-version tracking, and separate public/internal Explore builds. Those
+automated stages are not implemented. The earlier browser-local role views
+remain in the archive and are not access controls.
 
-## File map
+## Current files and checks
 
-| File | Responsibility |
+| Path | Role |
 | --- | --- |
-| [index.html](index.html) | Overview, shared detail shell, script loading |
-| [app.js](app.js) | Navigation and hash routing; mounts scenario views |
-| [store.js](store.js) | Browser persistence, state helpers, derived summaries |
-| [researcher.js](researcher.js) | Researcher forms, logs, export, settings |
-| [log-format.js](log-format.js) | Constrained Markdown/JSON daily-log parsing, validation and templates |
-| [log-import.js](log-import.js) | Local file selection, preview, save and replacement confirmation |
-| [newcomer.js](newcomer.js) | Project-specific onboarding checklist, first log and local receipt |
-| [templates/](templates/) | Generic Markdown and JSON daily-log examples |
-| [roles.js](roles.js) | PI, manager, new-member, collaborator views |
-| [functions.js](functions.js) | Eight function demos from the shared browser store |
-| [styles.css](styles.css) | Responsive design and workspace styles |
-| [README.md](README.md) | Short usage and record-format notes |
-| [api/](api/README.md) | Local read-only API, synthetic fixtures, server-side read policy, tests |
+| [index.html](index.html), [styles.css](styles.css), [capture.js](capture.js) | Three-stage page and both Capture interfaces |
+| [capture-core.js](capture-core.js) | Template fields, Markdown generation, path/record checks |
+| [capture-service/](capture-service/README.md) | Loopback HTTP server and GitHub draft-PR submission |
+| [capture-core.test.cjs](capture-core.test.cjs) | Record generation and validation tests |
+| [archived/interactive-demo/](archived/interactive-demo/) | Previous browser-local framework |
+| [api/](api/README.md) | Separate read-only synthetic API |
 
-Routes use URL hashes (for example, `#/scenario/researcher` and `#/function/projects`), so static GitHub Pages hosting needs no router rewrite.
+Required verification commands are in [README.md](README.md). The local
+Capture server does not run from public GitHub Pages. Live private-repository
+submission has not been exercised; the GitHub workflow tests use a mock API.
+Browser walkthrough and final checks are recorded in the newest handover
+entry below.
 
-## Boundaries that matter before real use
+## Security and deployment boundary
 
-This is a **public static prototype**, not a secure research-record service. The role pages are display filters, **not authentication or access control**: someone using the same browser can navigate to the researcher view or inspect its local storage. Do not enter confidential, participant-level, or restricted research information.
-
-The configured records repository defaults to `audachang/labhippo-records`, which was verified private on 2026-09-27. The app refuses its own public site repository as a destination, but it does **not** verify the visibility of every repository a user enters. The “Propose on GitHub” link places the Markdown in a URL query parameter for GitHub's new-file page; do not use that path for sensitive content without a reviewed alternative. Opening that link does not itself save or merge a record.
-
-The collaborator's `public` flag controls only this client-side view. A proper release path needs review, explicit publication rules, and server/repository-side enforcement. Browser storage can be cleared or unavailable; use the backup/export controls for any non-disposable test records.
-
-Daily-log import reads a selected local file in the browser. It validates the project, date, core fields, review state, list shapes, and a 256 KB size limit, then asks for an explicit save. Replacing an existing project/date log requires a second confirmation. It does not write to GitHub or the API. New-member progress is a separate `localStorage` item (`labhippo.newcomer.v1`); its four checks are self-reported and the receipt is not an approval or training record. The first log is stored in the shared researcher store, so other function and role views can read it in the same browser.
-
-The function demos share that client-side boundary. Project access labels, people names, and the lifecycle simulation do not grant permissions or update repository approval. Provenance entries are researcher notes, not verified file traces. Connected tools are recorded references and proposed integration points; no live connector was added.
-
-The API prototype has a separate server-side `canRead(principal, record)` policy. It returns only approved records: public to anyone, lab to a same-lab identity, and restricted to a same-lab identity explicitly listed as a reader. The development identity is fixed in server code; headers, query strings, and client-side roles cannot select it. The CLI requires `LABHIPPO_DEV_ONLY=1`, binds to `127.0.0.1`, and uses invented fixtures only. **Do not connect this entry point to private data or expose it as a public service.**
-
-## Recommended next work
-
-1. Decide the first real workflow and acceptance check with the lab. The proposal's dormant-project restart scenario is one candidate; the current researcher launch/log flow is the available starting point.
-2. Review the record schema and ownership: lifecycle and access are separate fields; define who may propose, review, merge, and publish each field.
-3. Before connecting private records, add verified sign-in, server-managed sessions, trusted lab membership and reader assignments, record-schema validation, public-field allowlisting, and repository-backed reads. Review the policy with the lab and test revocation and cross-lab denial. Keep public pages generated only from explicitly approved public records.
-4. Test the researcher save/export/restore flow and each role view in a browser with synthetic data, including keyboard and mobile behavior. Add tests for any new logic introduced.
-
-## Editing and deployment
-
-Work from a fresh checkout of the repository and inspect `git status` and `origin/main` first; another implementation landed after the initial shell deployment. The temporary checkout used during the original deployment is not a durable workspace. Change the root framework files there, run `node --check` on the JavaScript files, review local links and the Git diff, then commit and push the intended files. Afterward, confirm the GitHub Pages build names the new commit and fetch the live URLs.
-
-For the local API, run `node --test api/api.test.mjs` and follow [its README](api/README.md). The API has no production deployment configuration. A production API must fail closed without authenticated identity and authorization configuration, and must keep any future GitHub App credentials on the server.
-
-The earlier researcher implementation was checked through repository inspection, a successful Pages build, and HTTP 200 responses. Its Codex browser-helper check failed before page inspection in the Dropbox workspace (`CreateProcessWithLogonW failed: 267`). The later function-demo browser check is recorded below.
+The local service binds only to `127.0.0.1`, checks Host and Origin, requires a
+per-process CSRF value, and reads a server-side token from an environment
+variable. It is a single-workstation prototype, not a multi-user identity
+system. Never deploy it to a public host or point it at real private records
+without authentication, authorization, audit, and reviewed secret management.
+The server verifies repository visibility on every submission. The client
+never treats a `publication_class` label or a role page as access control.
 
 ## Handover log
+
+### 2026-09-28 — Three-stage page and local Capture submission
+
+- Rebuilt the root page around Capture, Structure, and Explore. Capture has a completed Markdown upload route and a guided form that exposes every field in the four public record templates. Both routes preview and download the proposed Markdown.
+- Added a loopback Node service that verifies the configured private GitHub repository, checks the proposed record and destination path, creates a feature branch, writes one new record, and opens a draft pull request. Structure automation and Explore publication remain planned.
+- Moved the previous browser-local framework into `archived/interactive-demo/` and kept its historical tests and documentation there. Added the existing LabHippo wordmark to the root system page.
+- Verification: the destination repository was checked read-only and reported private; no real record or pull request was submitted. GitHub submission and HTTP tests used mocked APIs. The full Node test suite and syntax checks passed. Local Chrome at 1440 px and 375 px loaded the root page, architecture plan, and archived demo without page errors or horizontal overflow. Both Capture routes and a mocked draft-PR submission were walked through. The logo loaded and was visually checked at both widths.
+- This work is on a feature branch pending owner review and merge. Public GitHub Pages has not yet been checked for this branch.
 
 ### 2026-09-28 — Root framework and archive reorganization
 
