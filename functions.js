@@ -235,7 +235,7 @@
           action(RESEARCHER, "Open export and settings →")),
         h("article", { class: "fn-record" }, h("h3", {}, "Record-read API"), chip("Local prototype"),
           h("p", {}, "A separate Node API demonstrates server-side read rules using invented records. The public framework does not call it."),
-          h("a", { class: "ws-inline-link", href: "../api/README.md" }, "Read API boundary →"))),
+          h("a", { class: "ws-inline-link", href: "api/README.md" }, "Read API boundary →"))),
       h("h3", { class: "ws-sub" }, "References in project records"),
       references.length ? list(references.map(({ p, kind, value }) =>
         h("li", {}, h("strong", {}, `${kind} · `), value, h("div", { class: "ws-meta" }, projectLink(p)))))

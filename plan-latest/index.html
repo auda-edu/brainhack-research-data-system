@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f6f8">
+  <meta name="description" content="LabHippo's three-layer research knowledge architecture: Capture, Structure, Explore.">
+  <link rel="canonical" href="https://audachang.github.io/brainhack-research-data-system/plan-latest/">
+  <link rel="icon" href="logo-light.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+  <title>LabHippo · Three-Layer Architecture · 28 Sep 2026</title>
+</head>
+<body>
+  <a class="skip-link" href="#capture">Skip to the presentation</a>
+  <main class="deck">
+    <section class="slide slide-capture" id="capture" aria-labelledby="capture-title">
+      <div class="slide-shell">
+        <header class="slide-header">
+          <p class="deck-label">LABHIPPO <span aria-hidden="true">/</span> ARCHITECTURE PLAN <span aria-hidden="true">/</span> 28 SEP 2026</p>
+          <nav class="slide-nav" aria-label="Presentation slides">
+            <a href="#capture" aria-current="step">01 <span>Capture</span></a>
+            <a href="#structure">02 <span>Structure</span></a>
+            <a href="#explore">03 <span>Explore</span></a>
+          </nav>
+        </header>
+
+        <div class="capture-intro">
+          <div class="capture-copy">
+            <p class="eyebrow"><span class="step-dot"></span> The system at a glance</p>
+            <h1 id="capture-title">Three layers.<br><em>One research memory.</em></h1>
+            <p class="lead">Capture research context in Markdown, structure it in a private repository, then publish reviewed views for the people who need them.</p>
+          </div>
+          <div class="hero-media">
+            <img class="hero-logo" src="logo-light.png" width="2400" height="1280" alt="LabHippo: the lab's memory">
+            <a class="hero-qr" href="https://audachang.github.io/brainhack-research-data-system/plan-latest/" aria-label="Open this architecture page">
+              <img src="qr-plan-latest.png" width="588" height="588" alt="QR code for this LabHippo architecture page">
+              <span>Scan this page</span>
+            </a>
+          </div>
+        </div>
+
+        <figure class="architecture-overview" aria-labelledby="overview-title">
+          <figcaption id="overview-title">THE THREE-LAYER ARCHITECTURE</figcaption>
+          <div class="overview-flow">
+            <article class="overview-layer overview-capture">
+              <div class="layer-heading"><span>01</span><h2>Capture</h2></div>
+              <p class="layer-function">Turn lab activity into reviewed knowledge records.</p>
+              <div class="layer-components"><strong>Components</strong><p>Project · project event · resource · daily log templates</p><p>AI draft assistance + researcher review</p></div>
+              <a class="layer-detail" href="https://github.com/audachang/brainhack-research-data-system/blob/main/templates/README.md">Read template details on GitHub ↗</a>
+            </article>
+            <span class="layer-arrow" aria-hidden="true">→</span>
+            <article class="overview-layer overview-structure">
+              <div class="layer-heading"><span>02</span><h2>Structure</h2></div>
+              <p class="layer-function">Validate, version, connect, and trace each record.</p>
+              <div class="layer-components"><strong>Components</strong><p>Private GitHub Markdown repository</p><p>Schema checks · relationship and provenance index</p></div>
+              <a href="#structure" class="layer-detail">See repository and build functions →</a>
+            </article>
+            <span class="layer-arrow" aria-hidden="true">→</span>
+            <article class="overview-layer overview-explore">
+              <div class="layer-heading"><span>03</span><h2>Explore</h2></div>
+              <p class="layer-function">Find knowledge by project, resource, role, or question.</p>
+              <div class="layer-components"><strong>Components</strong><p>Public GitHub Pages · approved fields only</p><p>Internal Azure Static Web Apps · authorized readers</p></div>
+              <a href="#explore" class="layer-detail">See both publication paths →</a>
+            </article>
+          </div>
+        </figure>
+
+        <p class="overview-boundary"><strong>Boundary:</strong> primary research data stay in their authoritative systems; only reviewed, permitted references and context enter LabHippo.</p>
+
+        <footer class="slide-footer">
+          <span>01 / 03</span>
+          <a href="https://github.com/audachang/brainhack-research-data-system/blob/main/plan-latest/architecture.md">Read details on GitHub <span aria-hidden="true">↗</span></a>
+          <a class="next-link" href="#structure">Next: Structure <span aria-hidden="true">→</span></a>
+        </footer>
+      </div>
+    </section>
+
+    <section class="slide slide-structure" id="structure" aria-labelledby="structure-title">
+      <div class="slide-shell">
+        <header class="slide-header">
+          <p class="deck-label">LABHIPPO <span aria-hidden="true">/</span> ARCHITECTURE PLAN <span aria-hidden="true">/</span> 28 SEP 2026</p>
+          <nav class="slide-nav" aria-label="Presentation slides">
+            <a href="#capture">01 <span>Capture</span></a>
+            <a href="#structure" aria-current="step">02 <span>Structure</span></a>
+            <a href="#explore">03 <span>Explore</span></a>
+          </nav>
+        </header>
+
+        <div class="structure-heading">
+          <div>
+            <p class="eyebrow"><span class="step-dot"></span> Layer 02 / Structure</p>
+            <h2 id="structure-title">One private source.<br><em>Many connected paths.</em></h2>
+            <p class="lead">A private GitHub repository will hold reviewed Markdown knowledge objects. Validation and indexing will turn folders into a traceable network without copying primary research data.</p>
+          </div>
+          <img class="dark-logo" src="logo-dark.png" width="2400" height="1280" alt="LabHippo logo on a dark background">
+        </div>
+
+        <div class="structure-grid">
+          <div class="repo-panel">
+            <p class="panel-kicker">PRIVATE KNOWLEDGE SOURCE</p>
+            <div class="repo-tree" aria-label="Proposed repository structure">
+              <p>labhippo-records<span class="tree-slash">/</span></p>
+              <p><span class="tree-line">├─</span> projects<span class="tree-slash">/</span><small>project.md · events/</small></p>
+              <p><span class="tree-line">├─</span> resources<span class="tree-slash">/</span><small>methods · software · guidance</small></p>
+              <p><span class="tree-line">├─</span> templates<span class="tree-slash">/</span><small>shared and type-specific fields</small></p>
+              <p><span class="tree-line">└─</span> schemas<span class="tree-slash">/</span><small>validation rules</small></p>
+            </div>
+          </div>
+          <div class="function-panel">
+            <p class="panel-kicker">BUILD FUNCTIONS</p>
+            <ol class="function-list">
+              <li><span>01</span><div><h3>Validate</h3><p>Required fields, stable IDs, links, source references, and publication classification.</p></div></li>
+              <li><span>02</span><div><h3>Connect</h3><p>Index each record by project, resource, method, workflow, person, status, and date.</p></div></li>
+              <li><span>03</span><div><h3>Trace</h3><p>Keep documentation commits distinct from dataset, pipeline, and external-system versions.</p></div></li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="provenance-line"><span>Result</span><i aria-hidden="true">→</i><span>Analysis log</span><i aria-hidden="true">→</i><span>Pipeline version</span><i aria-hidden="true">→</i><span>Dataset version</span><i aria-hidden="true">→</i><span>Source session</span></div>
+        <p class="boundary-note">LabKey, ELN, XNAT, BIDS, and controlled storage remain authoritative for the underlying data. Participant-level identifiers enter LabHippo only when study governance permits them; they never enter the public build.</p>
+
+        <footer class="slide-footer">
+          <span>02 / 03</span>
+          <a href="https://github.com/audachang/brainhack-research-data-system/blob/main/plan-latest/architecture.md">Read details on GitHub ↗</a>
+          <a class="next-link" href="#explore">Next: Explore <span aria-hidden="true">→</span></a>
+        </footer>
+      </div>
+    </section>
+
+    <section class="slide slide-explore" id="explore" aria-labelledby="explore-title">
+      <div class="slide-shell">
+        <header class="slide-header">
+          <p class="deck-label">LABHIPPO <span aria-hidden="true">/</span> ARCHITECTURE PLAN <span aria-hidden="true">/</span> 28 SEP 2026</p>
+          <nav class="slide-nav" aria-label="Presentation slides">
+            <a href="#capture">01 <span>Capture</span></a>
+            <a href="#structure">02 <span>Structure</span></a>
+            <a href="#explore" aria-current="step">03 <span>Explore</span></a>
+          </nav>
+        </header>
+
+        <div class="explore-heading">
+          <p class="eyebrow"><span class="step-dot"></span> Layer 03 / Explore</p>
+          <h2 id="explore-title">Two destinations.<br><em>One reviewed source.</em></h2>
+          <p class="lead">The same private Markdown repository will generate separate publication outputs. Each site will have its own search index, links, assets, and access boundary.</p>
+        </div>
+
+        <div class="destinations">
+          <article class="destination public-destination">
+            <div class="destination-top"><span class="destination-mark">01</span><span class="access-pill">PUBLIC</span></div>
+            <h3>GitHub Pages</h3>
+            <p>Only explicitly approved records and fields would enter the existing public site after review.</p>
+            <ul><li>Public project and resource pages</li><li>Full-text and faceted discovery</li><li>Relationship navigation</li></ul>
+          </article>
+          <article class="destination internal-destination">
+            <div class="destination-top"><span class="destination-mark">02</span><span class="access-pill">ACCESS CONTROLLED</span></div>
+            <h3>Azure Static Web Apps</h3>
+            <p>Authorized lab readers would explore permitted internal records through role-oriented views.</p>
+            <ul><li>PI portfolio and decisions</li><li>Project leader history and next actions</li><li>New member guidance and handover</li></ul>
+          </article>
+        </div>
+
+        <div class="explore-bottom">
+          <div class="explore-note"><p class="panel-kicker">DESIGN RULE</p><p>Views arrange information; authorization controls access to pages and assets. A public allowlist and review gate prevent internal records from entering the GitHub Pages build.</p><a href="https://github.com/audachang/brainhack-research-data-system/blob/main/plan-latest/architecture.md">Read details in the GitHub Markdown file <span aria-hidden="true">↗</span></a><small>Architecture proposal · templates, build pipeline, and Azure access rules are not deployed.</small></div>
+          <div class="qr-block"><a href="https://audachang.github.io/brainhack-research-data-system/plan-latest/" aria-label="Open this architecture plan"><img src="qr-plan-latest.png" width="588" height="588" alt="QR code for this LabHippo architecture page"></a><div><strong>Open this plan</strong><span>Scan or visit<br><a href="https://audachang.github.io/brainhack-research-data-system/plan-latest/">audachang.github.io/brainhack-research-data-system/plan-latest/</a></span></div></div>
+        </div>
+
+        <footer class="slide-footer">
+          <span>03 / 03</span>
+          <a href="../">LabHippo home <span aria-hidden="true">↗</span></a>
+          <a class="next-link" href="#capture">Back to start <span aria-hidden="true">↑</span></a>
+        </footer>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

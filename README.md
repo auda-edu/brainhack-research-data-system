@@ -1,8 +1,8 @@
-# LabHippo system preview
+# LabHippo interactive framework demo
 
-For the current architecture, deployment, and development limits, see [HANDOVER.md](HANDOVER.md).
+The interactive framework is served from the repository root. The separate [latest architecture plan](plan-latest/) is a proposal, not an operational prototype. Earlier pages are under [archived/](archived/). For implementation and deployment limits, see [HANDOVER.md](HANDOVER.md).
 
-The separate [local record-read API prototype](../api/README.md) uses synthetic data and is not connected to this public page.
+The separate [local record-read API prototype](api/README.md) uses synthetic data and is not connected to this public page.
 
 The public [Capture template kit](templates/README.md) has blank Project, Project event, Resource, and Daily-log formats plus fictional resting-state fMRI and Stroop examples. Completed lab records belong in a suitable private repository, not this demo.
 

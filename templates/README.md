@@ -37,7 +37,7 @@ reviewable record; link it to the relevant log instead of copying the same
 account into both files.
 
 The Project, Project event, and Resource fields are a **proposed** private
-record contract from the [architecture draft](../../plan-ver-0928/architecture.md).
+record contract from the [architecture draft](../plan-latest/architecture.md).
 No schema validator, repository-backed import, or publication build exists
 for them yet. Their `publication_class` and `public_release` values are
 labels, not access controls. The current browser workspace exports a different
