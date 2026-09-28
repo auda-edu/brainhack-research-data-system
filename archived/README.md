@@ -1,5 +1,6 @@
 # Archived LabHippo pages
 
+- [Earlier interactive demo](interactive-demo/) — browser-local project and log views retained as a historical prototype.
 - [Original Brainhack proposal](original-plan/) — English and Traditional Chinese slides and figures, with its assets in [assets/](assets/).
 - [Original landing page](landing/) — the earlier entry page, retained for reference.
 

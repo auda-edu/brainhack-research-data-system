@@ -40,10 +40,13 @@ The Project, Project event, and Resource fields are a **proposed** private
 record contract from the [architecture draft](../plan-latest/architecture.md).
 No schema validator, repository-backed import, or publication build exists
 for them yet. Their `publication_class` and `public_release` values are
-labels, not access controls. The current browser workspace exports a different
-Project/Daily-log format. The daily-log templates here match the browser's
-constrained import format: launch or restore the matching project first, then
-import a completed log. The log's `runs` can describe an analysis,
+labels, not access controls. The new root Capture form can generate these
+record types and submit a proposed file through the local service; it does
+not perform the planned Structure-stage validation or publication build. The
+earlier browser workspace, now in `archived/interactive-demo/`, exports a
+different Project/Daily-log format. The daily-log templates here match that
+workspace's constrained import format: launch or restore the matching project
+first, then import a completed log. The log's `runs` can describe an analysis,
 experiment, QC check, or other work, with inputs, outputs, and result; use
 `decisions`, `issues`, and `issue_updates` when those occurred.
 
