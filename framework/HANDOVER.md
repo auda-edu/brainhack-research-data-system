@@ -73,6 +73,14 @@ The earlier researcher implementation was checked through repository inspection,
 
 ## Handover log
 
+### 2026-09-28 — Three-layer architecture plan page
+
+- Added a self-contained `/plan-ver-0928/` presentation with exactly three slides (Capture, Structure, Explore), the full English architecture Markdown, the supplied light and dark LabHippo logos, and a QR code for the intended Pages URL.
+- The page is an architecture proposal. It distinguishes the existing public GitHub Pages output from a proposed internal Azure Static Web Apps output; it does not connect to private records or deploy Azure resources.
+- Local verification: all six page assets returned HTTP 200; Chrome/Playwright rendered all three slides at 1440 px and 375 px without horizontal overflow or console errors. Both screenshots' QR codes decoded to the intended URL. Chrome printing produced three PDF pages. The supplied logos matched their source SHA-256 hashes.
+- Baseline checks: `node --check` passed for every `framework/*.js`; all six `api/api.test.mjs` tests and all five `framework/log-format.test.cjs` tests passed. A targeted scan found no restricted hostnames or participant/session identifiers in the new public files.
+- The Codex in-app browser helper failed before inspection from the Dropbox task (`CreateProcessWithLogonW failed: 267`); the local Chrome check above does not establish that helper's recovery. GitHub Pages deployment and live browser verification remain pending owner merge.
+
 ### 2026-09-27 — Daily-log import, newcomer flow and readable type
 
 - Increased text sizes across navigation, cards, metadata, function views, tables, and form controls; the browser walkthrough measured 16 px body, navigation, and action button text on desktop.
