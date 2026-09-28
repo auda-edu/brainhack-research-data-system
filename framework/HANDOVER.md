@@ -73,6 +73,12 @@ The earlier researcher implementation was checked through repository inspection,
 
 ## Handover log
 
+### 2026-09-28 — Architecture slide readability
+
+- Replaced the first slide's small flow strip with a prominent three-column Capture → Structure → Explore diagram. Each layer now names its function and components; mobile stacks the same sequence vertically.
+- Increased type sizes across the slide deck and linked the GitHub-rendered `plan-ver-0928/architecture.md` from the slide footer and the Explore detail panel. The GitHub Markdown URL returned HTTP 200.
+- Local verification: Chrome at 1440 × 900 and 375 × 812 showed exactly three slides, loaded all images, and found no page errors or horizontal overflow. The print PDF has three pages. JavaScript syntax checks and all eleven existing Node tests passed. Live verification is pending merge and Pages deployment.
+
 ### 2026-09-28 — Three-layer architecture plan page
 
 - Added a self-contained `/plan-ver-0928/` presentation with exactly three slides (Capture, Structure, Explore), the full English architecture Markdown, the supplied light and dark LabHippo logos, and a QR code for the intended Pages URL.
