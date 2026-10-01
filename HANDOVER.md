@@ -61,6 +61,7 @@ never treats a `publication_class` label or a role page as access control.
 ### 2026-10-01 — Education-account platform migration preparation
 
 - Selected `auda-edu/brainhack-research-data-system` as the public repository home, keeping the existing name, public visibility, commit history, and pending PRs. Transfer acceptance and Pages deployment are separate steps; this branch does not establish either.
+- GitHub accepted the transfer request on 2026-10-01 with HTTP 202. A subsequent read still reported the old owner and no destination repository: recipient acceptance is pending. The clone remote remains at the source until ownership changes.
 - Updated active architecture links, canonical URLs, and the shared architecture QR for `https://auda-edu.github.io/brainhack-research-data-system/plan-latest/`. Archived documents retain historical references.
 - Capture refuses both old and new public repository names before any GitHub request. Its independently configured private destination has not been transferred or modified.
 - Verification: all repository JavaScript syntax checks, 22 Node tests, and `git diff --check` passed. Local Chrome at 1440 px and 375 px loaded Capture and the architecture page without console errors, missing images, or horizontal overflow. The QR asset and both first-slide browser QR screenshots decoded to the new URL. The mobile architecture layout was visually checked.
