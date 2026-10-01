@@ -2,6 +2,10 @@ import capture from "../capture-core.js";
 
 const API = "https://api.github.com";
 const REPO_NAME = /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/;
+const PUBLIC_REPOSITORIES = new Set([
+  "audachang/brainhack-research-data-system",
+  "auda-edu/brainhack-research-data-system"
+]);
 const BRANCH_NAME = /^(?!\/)(?!.*\.\.)(?!.*\/$)[A-Za-z0-9_./-]+$/;
 
 export class SubmissionError extends Error {
@@ -14,7 +18,7 @@ export class SubmissionError extends Error {
 }
 
 export function createGitHubClient({ token, repo, baseBranch = "main", fetchImpl = fetch }) {
-  if (!REPO_NAME.test(repo || "") || repo.toLowerCase() === "audachang/brainhack-research-data-system") {
+  if (!REPO_NAME.test(repo || "") || PUBLIC_REPOSITORIES.has(repo.toLowerCase())) {
     throw new Error("Configure one private records repository, not the public demo repository.");
   }
   if (!BRANCH_NAME.test(baseBranch) || baseBranch.startsWith("labhippo/capture/")) {

@@ -1,11 +1,11 @@
 # LabHippo framework handover
 
-Updated: 2026-09-28 (Asia/Taipei)
-Current work: `feature/capture-two-paths`, based on the pending root-framework PR #10 (which is based on Capture templates PR #9). The public Pages site still serves `main` until owner review, merges, and deployment.
+Updated: 2026-10-01 (Asia/Taipei)
+Current work: `feature/auda-edu-platform`, based on the pending Capture PR #11 (which depends on PR #10 and PR #9). Repository transfer to the selected personal account `auda-edu` is complete. The public Pages site serves `main`; new links and QR codes need owner review, merges, and deployment.
 
 ## Where things live
 
-- [Repository](https://github.com/audachang/brainhack-research-data-system): public code and synthetic examples only.
+- [Repository](https://github.com/auda-edu/brainhack-research-data-system): public code and synthetic examples only.
 - [Root framework](index.html): Capture workspace with file and manual entry routes, plus explicitly planned Structure and Explore sections.
 - [Latest architecture concept](plan-latest/): proposal, not an operational prototype.
 - [Public templates](templates/README.md): blank records and fictional examples.
@@ -57,6 +57,22 @@ The server verifies repository visibility on every submission. The client
 never treats a `publication_class` label or a role page as access control.
 
 ## Handover log
+
+### 2026-10-01 — Repository transfer confirmed
+
+- Both the old and new GitHub API URLs return the same repository ID (`1389913956`) owned by `auda-edu`. The public GitHub page also shows the new owner and four open PRs (#9–#12). No new transfer request or recipient login was needed for this verification.
+- Updated the local clone's origin to `https://github.com/auda-edu/brainhack-research-data-system.git`. The CLI remains authenticated as `audachang`, now with push access but no repository administration permission.
+- Pages reports `built` from `main` at `https://auda-edu.github.io/brainhack-research-data-system/`; the root returned HTTP 200. This verifies the existing main deployment, not the unmerged Capture redesign or migration links. No responsive walkthrough was repeated for this documentation-only follow-up.
+- Recipient Education plan features and the private records migration remain unverified. Merge order stays #9 → #10 → #11 → #12, with owner review and merge.
+
+### 2026-10-01 — Education-account platform migration preparation
+
+- Selected `auda-edu/brainhack-research-data-system` as the public repository home, keeping the existing name, public visibility, commit history, and pending PRs. Transfer acceptance and Pages deployment are separate steps; this branch does not establish either.
+- GitHub accepted the transfer request on 2026-10-01 with HTTP 202. A subsequent read still reported the old owner and no destination repository: recipient acceptance is pending. The clone remote remains at the source until ownership changes.
+- Updated active architecture links, canonical URLs, and the shared architecture QR for `https://auda-edu.github.io/brainhack-research-data-system/plan-latest/`. Archived documents retain historical references.
+- Capture refuses both old and new public repository names before any GitHub request. Its independently configured private destination has not been transferred or modified.
+- Verification: all repository JavaScript syntax checks, 22 Node tests, and `git diff --check` passed. Local Chrome at 1440 px and 375 px loaded Capture and the architecture page without console errors, missing images, or horizontal overflow. The QR asset and both first-slide browser QR screenshots decoded to the new URL. The mobile architecture layout was visually checked.
+- The local Capture server does not serve the historical redirect routes; those routes were not walked through in this check. Live GitHub Pages and Education plan features remain unverified. After acceptance, update local remotes, review Pages settings, merge #9 → #10 → #11 → the platform migration, and verify the deployed site.
 
 ### 2026-09-28 — Three-stage page and local Capture submission
 

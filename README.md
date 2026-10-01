@@ -25,6 +25,28 @@ fully fictional resting-state fMRI and Stroop examples. Real filled records
 belong only in an approved private repository. Do not enter participant data,
 credentials, or other restricted material into the public GitHub Pages version.
 
+## GitHub platform
+
+The selected public home is
+[`auda-edu/brainhack-research-data-system`](https://github.com/auda-edu/brainhack-research-data-system).
+Its Pages URL after transfer and deployment is
+[`auda-edu.github.io/brainhack-research-data-system/`](https://auda-edu.github.io/brainhack-research-data-system/).
+The repository remains public, with code, blank templates, and fictional examples.
+
+`auda-edu` is a personal account. Its Education eligibility does not establish
+an organization plan or confirm that private-repository protection is enabled.
+Verify the account's active plan and repository features before relying on them.
+The private Capture destination remains configured separately; this migration
+does not transfer a private records repository.
+
+Repository transfer preserves history and pull requests, but the recipient
+must accept a transfer to another personal account within one day. GitHub
+redirects the old repository URL, but does not redirect its old Pages URL.
+See [GitHub's transfer documentation](https://docs.github.com/en/repositories/creating-and-managing-repositories/transferring-a-repository).
+After acceptance, update local remotes, review Pages settings, merge the
+pending PRs in dependency order (#9, #10, #11, then the platform migration),
+and verify the deployed site. This branch does not establish deployment.
+
 ## Run locally
 
 Node.js 22 or later is recommended. Without GitHub credentials, the local
