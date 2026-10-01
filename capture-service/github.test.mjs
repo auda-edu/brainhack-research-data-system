@@ -9,6 +9,14 @@ const data = { id: "lh:proj/2026-demo", title: "Demo", summary: "Synthetic examp
 const path = capture.suggestedPath("project", data);
 const markdown = capture.buildMarkdown("project", data);
 
+test("refuses both public repository locations before contacting GitHub", () => {
+  for (const repo of ["audachang/brainhack-research-data-system", "auda-edu/brainhack-research-data-system",
+    "AUDA-EDU/brainhack-research-data-system"]) {
+    assert.throws(() => createGitHubClient({ token: "test-only", repo,
+      fetchImpl: () => assert.fail("Public destinations must not contact GitHub") }), /not the public demo/);
+  }
+});
+
 function mockGitHub({ privateRepo = true, existingFile = false, priorBranch = false, failPr = false } = {}) {
   const calls = [];
   async function fetchImpl(url, options) {
