@@ -1,7 +1,7 @@
 # LabHippo framework handover
 
 Updated: 2026-10-01 (Asia/Taipei)
-Current work: `feature/auda-edu-platform`, based on the pending Capture PR #11 (which depends on PR #10 and PR #9). Repository transfer to the selected personal account `auda-edu` requires recipient acceptance. The public Pages site serves `main`; new links and QR codes need owner review, merges, and deployment.
+Current work: `feature/auda-edu-platform`, based on the pending Capture PR #11 (which depends on PR #10 and PR #9). Repository transfer to the selected personal account `auda-edu` is complete. The public Pages site serves `main`; new links and QR codes need owner review, merges, and deployment.
 
 ## Where things live
 
@@ -57,6 +57,13 @@ The server verifies repository visibility on every submission. The client
 never treats a `publication_class` label or a role page as access control.
 
 ## Handover log
+
+### 2026-10-01 — Repository transfer confirmed
+
+- Both the old and new GitHub API URLs return the same repository ID (`1389913956`) owned by `auda-edu`. The public GitHub page also shows the new owner and four open PRs (#9–#12). No new transfer request or recipient login was needed for this verification.
+- Updated the local clone's origin to `https://github.com/auda-edu/brainhack-research-data-system.git`. The CLI remains authenticated as `audachang`, now with push access but no repository administration permission.
+- Pages reports `built` from `main` at `https://auda-edu.github.io/brainhack-research-data-system/`; the root returned HTTP 200. This verifies the existing main deployment, not the unmerged Capture redesign or migration links. No responsive walkthrough was repeated for this documentation-only follow-up.
+- Recipient Education plan features and the private records migration remain unverified. Merge order stays #9 → #10 → #11 → #12, with owner review and merge.
 
 ### 2026-10-01 — Education-account platform migration preparation
 
