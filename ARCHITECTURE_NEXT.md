@@ -19,6 +19,21 @@ same-origin offline cache. Existing Pages can serve a reviewed static build
 after owner-controlled merges; a separate stable staging origin is a provider
 decision. Do not broaden worker scope/caching to compensate for the mirror.
 
+## Portable synthetic slice implemented
+
+Milestone 5 implements [contracts/](contracts/README.md), a shared portable
+validator and strict v1 wire schemas, [loopback demo API](proposal-service/README.md)
+and an explicit browser-memory adapter. Synthetic tests verify revisions,
+actor-scoped idempotency, atomic memory commits, denied cross-project objects
+and references, and allowlisted approved snapshots. There is no durable backend,
+production identity or Git integration. Review/publication semantics remain
+provisional and are documented with reversible choices in the contract guide.
+
+The next priority is the [actual native development slice](NATIVE_DEVELOPMENT.md),
+using these synthetic contracts, with Android SDK/device and iOS Mac/Xcode
+prerequisites. Production provider and real-data decisions can remain deferred
+while local native synthetic development proceeds.
+
 ## Boundaries and shared implementation
 
 ```mermaid

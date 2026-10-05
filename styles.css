@@ -207,3 +207,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .workspace-draft h4 { margin-bottom: .4rem; }
 #draft-markdown { width: 100%; min-height: 22rem; margin-block: .7rem; font: 13px/1.6 Consolas, monospace; }
 #workspace-recovery { border: 1px solid var(--accent); padding: 1rem; margin-top: 1rem; }
+/* Portable proposal lane uses the existing responsive spacing and controls. */
+#proposal-markdown { width: 100%; box-sizing: border-box; font: 13px/1.6 monospace; }
+#proposal-query { width: 100%; box-sizing: border-box; }
+#proposal-identity, #proposal-results .record-id { overflow-wrap: anywhere; }

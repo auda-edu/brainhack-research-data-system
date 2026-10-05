@@ -82,6 +82,15 @@ same generated-asset and Node checks with read-only permission.
 
 ## Checks
 
+The [portable fictional proposal contracts](contracts/README.md) and
+[loopback demo API](proposal-service/README.md) now share record validation,
+optimistic revisions, retry keys, simulated review and an allowlisted public
+snapshot. Open `#proposal-demo` for the browser-memory walkthrough; it requires
+no API connection and never changes the saved local workspace. This is not
+production authentication, durable storage or real Git publication. The
+[native development recommendation](NATIVE_DEVELOPMENT.md) defines the next
+actual Android/iOS development slice and local prerequisites.
+
 ```powershell
 node pwa/check-syntax.mjs
 node structure/build-index.mjs --check

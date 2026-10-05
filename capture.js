@@ -257,6 +257,18 @@
   $("submit-button").addEventListener("click", submit);
   $("save-demo-button").addEventListener("click", saveDemo);
   $("record-form").addEventListener("submit", event => event.preventDefault());
+  window.LabHippoCaptureDraft = {
+    prepare: prepareWithFeedback,
+    useFictional(prepared) {
+      state.fileText = prepared.markdown;
+      state.fileName = prepared.path.split("/").at(-1);
+      switchMode("upload");
+      state.pathTouched = true;
+      $("target-path").value = prepared.path;
+      $("file-details").textContent = "Invented portable contract example loaded; no file uploaded.";
+      return prepareWithFeedback();
+    }
+  };
   renderManual();
   refreshService();
 })();

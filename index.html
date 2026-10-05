@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="styles.css">
   <script src="capture-core.js" defer></script>
   <script src="record-format.js" defer></script>
+  <script src="contracts/record-contract.js" defer></script>
+  <script src="contracts/demo-service.js" defer></script>
+  <script src="contracts/fixtures.js" defer></script>
   <script src="demo-workspace-core.js" defer></script>
   <script src="capture.js" defer></script>
   <script src="data/synthetic-index.js" defer></script>
@@ -18,6 +21,7 @@
   <script src="explore-core.js" defer></script>
   <script src="explore.js" defer></script>
   <script src="pwa.js" defer></script>
+  <script src="proposal-demo.js" defer></script>
   <title>LabHippo · Research memory</title>
 </head>
 <body>
@@ -148,6 +152,29 @@
         <noscript><p>Enable JavaScript to search the examples, or read the <a href="templates/README.md">template kit</a>.</p></noscript>
         <div id="explore-results" class="explore-results"></div>
         <article id="record-detail" class="record-detail" tabindex="-1" aria-label="Record details" hidden></article>
+      </div>
+    </section>
+    <section id="proposal-demo" class="explore-section" aria-labelledby="proposal-demo-title">
+      <div class="shell">
+        <div class="section-heading"><div><p class="eyebrow">PORTABLE CONTRACTS / FICTIONAL SERVICE</p><h2 id="proposal-demo-title">Propose. Review.<br>Explore the decision.</h2></div><p>Try the shared web and future mobile contract. This policy simulation creates no GitHub PR and has no authentication. Memory resets on reload; use invented content only. Your saved local workspace is separate.</p></div>
+        <div class="workspace-panel">
+          <div class="explore-filters">
+            <div class="field"><label for="proposal-actor">Simulated identity</label><select id="proposal-actor"><option value="writer-alpha">Writer / Alpha</option><option value="reviewer-alpha">Reviewer / Alpha</option><option value="writer-beta">Writer / Beta</option><option value="reviewer-beta">Reviewer / Beta</option></select></div>
+            <div class="field"><label for="proposal-project">Fictional project</label><select id="proposal-project"><option value="alpha">Alpha</option><option value="beta">Beta</option></select></div>
+          </div>
+          <p id="proposal-adapter">Browser memory adapter / no network / synthetic only</p>
+          <div class="workspace-actions"><button id="proposal-fixture" type="button" class="secondary-button">Load invented Capture example</button><button id="proposal-copy" type="button" class="secondary-button">Copy current Capture draft</button><button id="proposal-http" type="button" class="secondary-button" hidden>Use loopback demo API</button></div>
+          <p>Loading an example changes the Capture preview. Copying a draft requires the fictional-content confirmation in Capture. Stable ID and path stay fixed on revision.</p>
+          <label for="proposal-markdown">Fictional proposal Markdown</label><textarea id="proposal-markdown" rows="12" spellcheck="false"></textarea>
+          <p id="proposal-identity" class="record-id">Load a fictional example to begin.</p>
+          <div class="workspace-actions"><button id="proposal-create" type="button" class="secondary-button">Propose</button><button id="proposal-revise" type="button" class="secondary-button">Save revision</button><button id="proposal-read" type="button" class="secondary-button">Read current proposal</button><button id="proposal-retry" type="button" class="secondary-button" disabled>Retry last command</button></div>
+          <div class="field"><label for="proposal-decision">Simulated reviewer decision</label><select id="proposal-decision"><option value="publish_public">Publish allowlisted snapshot</option><option value="accept_internal">Accept internal / withdraw snapshot</option><option value="reject">Reject pending revision / retain approved snapshot</option></select></div>
+          <div class="workspace-actions"><button id="proposal-decide" type="button" class="secondary-button">Apply decision</button><button id="proposal-archive" type="button" class="secondary-button">Archive</button><button id="proposal-restore" type="button" class="secondary-button">Restore</button></div>
+          <p id="proposal-status" role="status" aria-live="polite">No proposal yet.</p>
+          <details><summary>Simulated revision history</summary><ol id="proposal-history"></ol></details>
+          <h3>Service Explore / approved synthetic snapshots</h3><p>Only an explicit simulated reviewer decision adds a snapshot. Editing or rejecting a newer proposal leaves the last approved snapshot. Markdown, source references and steward fields are excluded. These choices remain provisional.</p>
+          <div class="field"><label for="proposal-query">Search published demo snapshots</label><input id="proposal-query" type="search" autocomplete="off"></div><p id="proposal-count" role="status">0 published snapshots</p><div id="proposal-results" class="explore-results"></div>
+        </div>
       </div>
     </section>
   </main>
