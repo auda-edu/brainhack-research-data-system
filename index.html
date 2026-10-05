@@ -8,8 +8,11 @@
   <link rel="icon" href="plan-latest/logo-light.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
   <script src="capture-core.js" defer></script>
+  <script src="record-format.js" defer></script>
+  <script src="demo-workspace-core.js" defer></script>
   <script src="capture.js" defer></script>
   <script src="data/synthetic-index.js" defer></script>
+  <script src="demo-workspace.js" defer></script>
   <script src="explore-core.js" defer></script>
   <script src="explore.js" defer></script>
   <title>LabHippo · Research memory</title>
@@ -52,10 +55,10 @@
               <button id="manual-tab" type="button" role="tab" aria-controls="manual-panel" aria-selected="false">Fill the template<span>Enter each field by hand</span></button>
             </div>
             <div id="upload-panel" role="tabpanel" aria-labelledby="upload-tab">
-              <div class="method-intro"><span class="method-number">A</span><div><h3>Bring an existing Markdown file</h3><p>Choose a completed Project, Project event, Resource, or Daily log record. The file stays in this browser until you submit it to the local service.</p></div></div>
+              <div class="method-intro"><span class="method-number">A</span><div><h3>Bring an existing Markdown file</h3><p>Choose a completed Project, Project event, Resource, or Daily log record. The file stays in memory until you download it, explicitly save a fictional demo, or submit it to the local service.</p></div></div>
               <label class="file-drop" for="markdown-file"><span class="file-icon" aria-hidden="true">↥</span><strong>Choose a .md file</strong><span>Maximum 256 KB · proposed records only</span><input id="markdown-file" type="file" accept=".md,text/markdown"></label>
               <p id="file-details" class="helper" role="status">No file selected.</p>
-              <p class="boundary-note">Check the file for permitted information and source references before submission. A public browser page does not store it.</p>
+              <p class="boundary-note">Check the file for permitted information and source references before submission. Only the separate Save fictional demo action writes it to browser storage. Never use that action for real or private records.</p>
             </div>
             <div id="manual-panel" role="tabpanel" aria-labelledby="manual-tab" hidden>
               <div class="method-intro"><span class="method-number">B</span><div><h3>Fill a record template</h3><p>Each prompt from the public templates appears below. Optional lists and source references can be expanded as needed.</p></div></div>
@@ -75,6 +78,11 @@
             <pre id="markdown-preview" class="markdown-preview" tabindex="0">Choose a file or fill the template to preview your proposed record.</pre>
             <label class="review-check"><input id="review-confirm" type="checkbox"><span>I checked this record, its destination, and its permitted content.</span></label>
             <div class="submission-actions"><button type="button" class="secondary-button" id="download-button">Download .md</button><button type="button" class="submit-button" id="submit-button" disabled>Create draft PR <span aria-hidden="true">↗</span></button></div>
+            <div class="demo-save">
+              <p><strong>Try Capture → Explore with fictional content.</strong> This separate demo action saves to this browser only; it does not create a GitHub PR.</p>
+              <label class="review-check"><input id="save-demo-confirm" type="checkbox"><span>This record is invented demo content, with no private research data or credentials.</span></label>
+              <button id="save-demo-button" type="button" class="secondary-button">Save fictional demo</button>
+            </div>
             <div id="submission-result" class="result" role="status" aria-live="polite"></div>
           </aside>
         </div>
@@ -88,6 +96,14 @@
     <section id="explore" class="explore-section" aria-labelledby="explore-title">
       <div class="shell">
         <div class="section-heading"><div><p class="eyebrow">03 / EXPLORE · FICTIONAL DATA</p><h2 id="explore-title">Find the thread.<br>Follow the record.</h2></div><p>Search two invented projects, their decisions, resources, and daily logs. Open a record to trace its links and original Markdown. Nothing here represents real research.</p></div>
+        <details class="workspace-panel" open>
+          <summary>Local demo workspace · export / import</summary>
+          <p>Save fictional records from Capture, then search them here. Storage is specific to this browser and site origin, is unencrypted, and may be cleared by the browser. Other scripts on this origin can access it. Preview URLs on the same origin share this workspace; another device or origin does not. No sync or backup is provided. Never store real research records, participant details, or secrets.</p>
+          <p>JSON exports contain complete demo Markdown. Keep them as your backup; import only a version 1 demo workspace with all its referenced local records. Identical IDs are kept once; conflicting IDs or paths reject the entire import.</p>
+          <div class="workspace-actions"><button id="workspace-export" class="secondary-button" type="button">Export demo JSON</button><label class="workspace-file">Import demo JSON<input id="workspace-import" type="file" accept=".json,application/json"></label></div>
+          <label class="review-check"><input id="import-demo-confirm" type="checkbox"><span>The import contains invented demo content only.</span></label>
+          <p id="workspace-status" role="status" aria-live="polite">Checking browser storage…</p>
+        </details>
         <div class="explore-filters">
           <div class="field"><label for="explore-query">Search examples</label><input id="explore-query" type="search" placeholder="Try QC, checklist, or missing response" autocomplete="off"></div>
           <div class="field"><label for="explore-kind">Record type</label><select id="explore-kind"><option value="">All record types</option><option value="project">Projects</option><option value="project-event">Project events</option><option value="resource">Resources</option><option value="log">Daily logs</option></select></div>

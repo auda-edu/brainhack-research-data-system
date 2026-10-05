@@ -8,6 +8,12 @@ examples; **Explore** searches them, filters by type/project, and follows
 record links back to their pinned sources. Private-record ingestion,
 access control, and public-record approval/publication remain unimplemented.
 
+**Local fictional workspace** closes Capture → Explore with explicit browser
+saves, validated reload/search, JSON backups and conflict-safe imports.
+Only invented content belongs here. See [storage/privacy and format limits](LOCAL_DEMO.md)
+and the [bounded web/mobile roadmap](ROADMAP.md). This is not a production backend
+or a native mobile app.
+
 Capture has two routes:
 
 1. **Upload Markdown**: choose a completed `.md` Project, Project event,
@@ -71,7 +77,7 @@ node --check capture.js
 node --check explore-core.js
 node --check explore.js
 node structure/build-index.mjs --check
-node --test --test-concurrency=1 structure/build-index.test.mjs explore-core.test.cjs capture-core.test.cjs capture-service/github.test.mjs capture-service/http.test.mjs api/api.test.mjs archived/interactive-demo/log-format.test.cjs
+node --test --test-concurrency=1 demo-workspace-core.test.cjs structure/build-index.test.mjs explore-core.test.cjs capture-core.test.cjs capture-service/github.test.mjs capture-service/http.test.mjs api/api.test.mjs archived/interactive-demo/log-format.test.cjs
 ```
 
 The [synthetic index contract](structure/README.md) explains the manifest,

@@ -125,12 +125,21 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .index-summary { font-weight: 750; color: var(--accent) !important; }
 .explore-section { padding: 80px 0; border-top: 1px solid var(--line); background: #eaf1e9; }
 .explore-section .section-heading > p { color: var(--soft); }
+.demo-save { margin-top: 24px; padding: 18px; border: 1px solid var(--line); background: #eaf1e9; }
+.demo-save p, .workspace-panel p { font-size: 13px; line-height: 1.65; }
+.demo-save button { width: 100%; margin-top: 16px; }
+.workspace-panel { margin: 25px 0; padding: 22px; border: 1px solid var(--line); background: var(--surface); }
+.workspace-panel summary { cursor: pointer; font-weight: 750; font-size: 15px; }
+.workspace-panel > p:first-of-type { margin-top: 20px; }
+.workspace-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin: 18px 0; }
+.workspace-file { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-size: 13px; font-weight: 700; max-width: 100%; }
+.workspace-file input { max-width: 100%; font-size: 13px; }
 .explore-filters { display: grid; grid-template-columns: 2fr 1fr 1.6fr auto; align-items: end; gap: 16px; margin-top: 30px; }
 .explore-filters .field { margin: 0; }
 .explore-filters input, .explore-filters select { font-size: 14px; min-height: 49px; }
 #explore-count { margin: 24px 0; font-size: 13px; color: var(--soft); }
 .explore-results { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.record-card { min-width: 0; padding: 25px; background: var(--surface); border: 1px solid var(--line); }
+.record-card { min-width: 0; padding: 25px; background: var(--surface); border: 1px solid var(--line); overflow-wrap: anywhere; }
 .record-card h3 { margin: 13px 0; font: 26px/1.2 var(--display); }
 .record-card h3 a { display: block; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; }
 .record-kicker, .record-tags { color: var(--soft); font-size: 12px; line-height: 1.6; }
