@@ -34,7 +34,7 @@ async function harness(failing = false) {
   return { event, stores, fetched, counts: () => ({ skipped, claimed }) };
 }
 test("manifest remains relative to its app directory and icons have declared PNG dimensions", async () => {
-  const manifest = JSON.parse(await readFile(new URL("manifest.webmanifest", root), "utf8"));
+  const manifest = JSON.parse(await readFile(new URL("manifest.json", root), "utf8"));
   assert.equal(new URL(manifest.scope, scope).href, scope);
   assert.equal(new URL(manifest.start_url, scope).href, scope + "index.html#capture");
   assert.equal(manifest.display, "standalone");

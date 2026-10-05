@@ -6,6 +6,10 @@ vary by browser. On a supported host, Chrome offers Install app; iPhone Safari
 offers Share > Add to Home Screen. Enable offline demo explicitly before
 depending on offline loading.
 
+The manifest uses `manifest.json` with a standard JSON MIME type. The preview
+mirror redirects `.webmanifest` files to a different origin, which invalidates
+relative start/scope URLs; the JSON path keeps those URLs on the app host.
+
 ## Offline scope and storage
 
 `sw.js` registers only for its containing app directory. The relative manifest
