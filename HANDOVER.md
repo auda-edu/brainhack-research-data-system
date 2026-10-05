@@ -1,7 +1,7 @@
 # LabHippo framework handover
 
 Updated: 2026-10-05 (UTC)
-Current work: `feature/explore-synthetic-index`, based on verified PR #12 head `617cb12`. The preceding PR stack (#9 → #10 → #11 → #12) remains unmerged. The public Pages site serves `main`; this milestone adds an independent branch preview and does not merge or change Pages settings.
+Current work: `feature/local-demo-workspace`, based on verified first-milestone commit `539dc81` (draft PR #13). The preceding PR stack (#9 → #10 → #11 → #12 → #13) remains unmerged. The public Pages site serves `main`; each milestone adds an independent branch preview and does not merge or change Pages settings.
 
 ## Where things live
 
@@ -12,6 +12,8 @@ Current work: `feature/explore-synthetic-index`, based on verified PR #12 head `
 - [Earlier interactive demo](archived/interactive-demo/): historical browser-local project, log, and role-view prototype.
 - [Local Capture service](capture-service/README.md): fixed private-repository submission through a new branch and draft PR.
 - [Local read API](api/README.md): separate synthetic, read-only prototype.
+- [Local demo workspace](LOCAL_DEMO.md): explicitly saved fictional Markdown, JSON export/import and storage limits.
+- [Web/mobile roadmap](ROADMAP.md): bounded future outcomes and review gates.
 
 ## What is built
 
@@ -30,6 +32,12 @@ permalinks, incoming/outgoing links and pinned Markdown sources. This is not
 the private-record validator or publication pipeline: separate approved public
 and authenticated internal builds remain future work. The earlier browser-local
 role views remain in the archive and are not access controls.
+
+The local demo workspace persists only explicitly confirmed fictional Capture
+records. A versioned JSON envelope preserves canonical Markdown, stable IDs
+and SHA-256 fingerprints; Explore derives record text and resolved links after
+validation. It never submits demo data to GitHub or changes the built-in index.
+It is browser-origin storage, not an authenticated backend or native app.
 
 ## Current files and checks
 
@@ -61,6 +69,15 @@ The server verifies repository visibility on every submission. The client
 never treats a `publication_class` label or a role page as access control.
 
 ## Handover log
+
+### 2026-10-05 — Local fictional Capture → Explore milestone
+
+- Isolated branch `feature/local-demo-workspace` is based on verified `539dc81` and targets `feature/explore-synthetic-index` (draft PR #13). Earlier PRs/main remain unchanged; no merges or Pages setting changes.
+- Shared the constrained parser in `record-format.js` between the synthetic build and browser workflow. Added explicit fictional-save and JSON export/import actions, validated local reload, derived search/relationships, saved-source downloads and local-draft labels. Uploaded/prepared Markdown is not persisted until the demo action is confirmed.
+- Version 1 JSON preserves IDs, paths, source Markdown and normalized-text hashes. Missing log IDs receive a deterministic project/date ID in the saved Markdown. Validation checks envelope/entry fields, record dates/rows, limits, IDs, paths, hashes and dependencies. Exact reimports are idempotent; conflicting IDs/paths reject the whole import. New saves never overwrite an existing ID/path.
+- Storage is limited to 100 local records / 1 MB and is unencrypted, origin-specific, unsynchronized and subject to browser cleanup. Different preview URLs on one origin share it. Corrupt storage is preserved and blocks writes; quota/read failures do not report success, and unsaved Markdown remains available. Cross-tab stale writes are rejected. No private source, cloud database, credential grant, paid service or app-store work was introduced.
+- Added [LOCAL_DEMO.md](LOCAL_DEMO.md) and [ROADMAP.md](ROADMAP.md), including migration/recovery, record/publication contracts, authenticated web service and native/mobile-sync outcomes with separate review gates. Responsive/local browser behavior is explicitly distinguished from native mobile and production infrastructure.
+- Verification: all 45 Node tests, deterministic synthetic-index check, JavaScript syntax checks and diff checks passed. Isolated Chrome at 1440 px and 375 px passed explicit demo save, reload/search, bookmarked local-project filters, log relationships, export/fresh-profile import, identical reimport, malformed/conflicting imports, quota preservation and hostile-text rendering. No app errors or horizontal overflow. The task workspace keeps screenshots, JSON exports and browser reports outside the public repository; all QA data is invented. Live preview results are recorded in the draft PR handoff after pushing. Production Pages still serves main.
 
 ### 2026-10-05 — First Structure / Explore milestone
 

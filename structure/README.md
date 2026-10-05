@@ -24,7 +24,7 @@ The deterministic output `data/synthetic-index.js` contains schema version 1,
 records, typed relationships, original source paths and content fingerprints.
 The manifest pins the source template commit for GitHub source links. There
 is no generated timestamp, live GitHub dependency, or credential in the index.
-The parser accepts the constrained template subset (quoted scalars, inline
+The shared `record-format.js` parser accepts the constrained template subset (quoted scalars, inline
 text arrays, block lists and one-level list mappings), not arbitrary YAML.
 Metadata is projected from an explicit field list; body Markdown and log rows
 remain plain text. Browser rendering uses DOM nodes and `textContent`.
@@ -33,6 +33,8 @@ Explore provides case-insensitive word search, project/type filters, stable
 record links, incoming/outgoing relationships, source fingerprints, and a
 single-column mobile layout. A resource can appear in more than one project.
 Record links can be bookmarked; filter URLs retain the query and selections.
+The separate [local demo workspace](../LOCAL_DEMO.md) derives explicitly saved
+fictional drafts at runtime, without changing this manifest or built-in index.
 There is no native Android/iOS binary, offline cache, account system, private
 publication pipeline, or role authorization in this milestone.
 

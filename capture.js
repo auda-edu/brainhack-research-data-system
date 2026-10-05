@@ -232,6 +232,18 @@
     } finally { state.busy = false; updateSubmit(); }
   }
 
+  async function saveDemo() {
+    const prepared = prepareWithFeedback();
+    if (!prepared) return;
+    try {
+      const id = await window.LabHippoWorkspace.save(prepared);
+      result("Fictional demo record saved in this browser. Export JSON for a backup.", "success");
+      const link = node("a", "", " Open in Explore →");
+      link.href = window.LabHippoExplore.recordHash(id);
+      $("submission-result").append(link);
+    } catch (error) { result(error.message, "error"); }
+  }
+
   $("upload-tab").addEventListener("click", () => switchMode("upload"));
   $("manual-tab").addEventListener("click", () => switchMode("manual"));
   $("record-kind").addEventListener("change", () => { state.pathTouched = false; renderManual(); invalidate(); });
@@ -242,6 +254,7 @@
   $("preview-button").addEventListener("click", prepareWithFeedback);
   $("download-button").addEventListener("click", download);
   $("submit-button").addEventListener("click", submit);
+  $("save-demo-button").addEventListener("click", saveDemo);
   $("record-form").addEventListener("submit", event => event.preventDefault());
   renderManual();
   refreshService();
