@@ -1,0 +1,38 @@
+{
+  "dataset": "synthetic-template-examples",
+  "source_commit": "9e9c2b83b1e39c53a4ee8798827f91c762756cae",
+  "files": [
+    {
+      "path": "templates/examples/resting-state-fmri/daily-log.md",
+      "sha256": "ff05285915a56fe4d86ceb665941a59514da7d82c089affc7efca9f9bd38fa22"
+    },
+    {
+      "path": "templates/examples/resting-state-fmri/project-event.md",
+      "sha256": "c30c028b3f5773ab966dd06741f26282cf3560e7e5d687fc0575baa4a3271684"
+    },
+    {
+      "path": "templates/examples/resting-state-fmri/project.md",
+      "sha256": "d3e233e408910266798764f9de4d9233cb18528aa82c35c6e0ceeb2083c2fc42"
+    },
+    {
+      "path": "templates/examples/resting-state-fmri/resource.md",
+      "sha256": "8587969cbdd10863ed9f02782d793cf9da1d66e17f9380f9dbee697c3a87593a"
+    },
+    {
+      "path": "templates/examples/stroop-task/daily-log.md",
+      "sha256": "117516f4471ce88f83fee97690a1c9b90c8866eb596b7eaaeb940bee55169f2f"
+    },
+    {
+      "path": "templates/examples/stroop-task/project-event.md",
+      "sha256": "0c44b7cd32a50e0a402ac28f113cb3a9bddee38f3fa0d545ece9b40c8f58ae55"
+    },
+    {
+      "path": "templates/examples/stroop-task/project.md",
+      "sha256": "9f9f9ca7e57a7831a892edf138419f9b96b8a2ba0631a82b6f2934bd9240dad4"
+    },
+    {
+      "path": "templates/examples/stroop-task/resource.md",
+      "sha256": "938f293daa921afce7a6d3d4882898a8dc04c7f08ab6d91f9e236fee915f997d"
+    }
+  ]
+}

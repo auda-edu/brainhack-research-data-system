@@ -1,10 +1,12 @@
-# LabHippo Capture framework
+# LabHippo research-memory framework
 
 The repository root is a zero-build public framework for the three stages in
 [plan-latest](plan-latest/): Capture, Structure, and Explore. The plan is a
-concept. The working feature here is **Capture**. Structure and Explore show
-their intended boundaries but do not run automated validation, indexing,
-search, access control, or publication.
+concept. **Capture** prepares Markdown and local draft pull requests.
+**Structure** builds a validated index of the eight fictional template
+examples; **Explore** searches them, filters by type/project, and follows
+record links back to their pinned sources. Private-record ingestion,
+access control, and public-record approval/publication remain unimplemented.
 
 Capture has two routes:
 
@@ -66,9 +68,16 @@ Open `http://127.0.0.1:8788/`. The direct-submission configuration is in
 ```powershell
 node --check capture-core.js
 node --check capture.js
-node --test capture-core.test.cjs capture-service/github.test.mjs capture-service/http.test.mjs
-node --test api/api.test.mjs archived/interactive-demo/log-format.test.cjs
+node --check explore-core.js
+node --check explore.js
+node structure/build-index.mjs --check
+node --test --test-concurrency=1 structure/build-index.test.mjs explore-core.test.cjs capture-core.test.cjs capture-service/github.test.mjs capture-service/http.test.mjs api/api.test.mjs archived/interactive-demo/log-format.test.cjs
 ```
+
+The [synthetic index contract](structure/README.md) explains the manifest,
+validation, generated data, publication boundaries and branch preview.
+Explore has a responsive phone layout and bookmarkable record/filter URLs.
+It does not provide a native Android/iOS app or an offline cache.
 
 The prior browser-local interactive system remains in
 [archived/interactive-demo/](archived/interactive-demo/). Its records and role
