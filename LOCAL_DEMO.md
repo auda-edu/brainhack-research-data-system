@@ -63,6 +63,10 @@ Stable IDs and paths cannot change. Cross-tab writes use Web Locks and expected
 storage snapshots; stale editors fail without losing their text. Storage events
 refresh Explore without stealing editor focus. Close older app versions first;
 external tools or older clients do not participate in these locks.
+Pausing or selecting another draft preserves the existing unsaved editor; resume
+it to compare/download. Only a confirmed Discard editor text action drops that
+in-memory copy. Download it before closing/reloading the page; paused text is
+not a persistent backup.
 When storage is blocked/full, the new Markdown stays in Capture and no save is
 reported. Malformed existing storage is preserved and blocks writes; recovery
 requires downloading its raw value and confirming the backup before explicitly

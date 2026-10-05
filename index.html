@@ -122,10 +122,12 @@
             <p>The first explicit lifecycle change writes workspace version 2. Reading an existing version 1 workspace does not migrate it. Revision times come from this browser and are not a trusted audit trail. Keep exports; close older app versions before editing.</p>
             <label class="review-check"><input id="lifecycle-confirm" type="checkbox"><span>I exported a backup and confirmed these are fictional drafts before applying this change.</span></label>
             <div id="workspace-drafts"></div>
+            <button id="resume-revision" class="secondary-button" type="button" hidden>Resume paused editor</button>
             <section id="draft-editor" hidden aria-labelledby="draft-editor-title">
               <h4 id="draft-editor-title">Edit saved fictional Markdown</h4><p id="draft-editor-id" class="record-id"></p>
               <label for="draft-markdown">Markdown revision (ID and path must stay the same)</label><textarea id="draft-markdown" rows="18" spellcheck="false"></textarea>
-              <div class="workspace-actions"><button id="save-revision" class="secondary-button" type="button">Save revision</button><button id="download-revision" class="secondary-button" type="button">Download unsaved revision</button><button id="cancel-revision" class="secondary-button" type="button">Close editor</button></div>
+              <div class="workspace-actions"><button id="save-revision" class="secondary-button" type="button">Save revision</button><button id="download-revision" class="secondary-button" type="button">Download unsaved revision</button><button id="cancel-revision" class="secondary-button" type="button">Pause editor</button></div>
+              <label class="review-check"><input id="discard-revision-confirm" type="checkbox"><span>I downloaded or no longer need this editor text; discard this unsaved copy.</span></label><button id="discard-revision" class="secondary-button" type="button" disabled>Discard editor text</button>
             </section>
           </details>
           <section id="workspace-recovery" class="result error" hidden aria-labelledby="recovery-title">

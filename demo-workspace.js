@@ -36,10 +36,17 @@
         control.addEventListener("click", callback); actions.append(control);
       }
       if (!archived) button("edit", "Edit Markdown", () => {
+        if (editorSnapshot) {
+          editor.hidden = false; document.getElementById("resume-revision").hidden = true;
+          document.getElementById("draft-markdown").focus();
+          message("Your existing editor is preserved. Save or explicitly discard it before opening another draft; download unsaved text first.", true);
+          return;
+        }
         editorSnapshot = { entry, raw: current.raw };
         document.getElementById("draft-editor-id").textContent = `${entry.id} · ${entry.path}`;
         document.getElementById("draft-markdown").value = entry.markdown;
         editor.hidden = false; document.getElementById("draft-markdown").focus();
+        document.getElementById("resume-revision").hidden = true;
       });
       const expected = current.raw;
       async function apply(action) {
@@ -174,6 +181,9 @@
       const markdown = document.getElementById("draft-markdown").value;
       await operation(() => store.change(entry.id, "edit", { path: entry.path, markdown }, raw));
       editor.hidden = true; editorSnapshot = undefined;
+      document.getElementById("resume-revision").hidden = true;
+      document.getElementById("discard-revision-confirm").checked = false;
+      document.getElementById("discard-revision").disabled = true;
       document.getElementById("lifecycle-confirm").checked = false;
       message("Revision saved with stable ID, path and previous Markdown retained. Export JSON for a backup.");
     } catch (error) { message(error.message, true); }
@@ -181,7 +191,25 @@
   document.getElementById("download-revision").addEventListener("click", () => {
     if (editorSnapshot) download(document.getElementById("draft-markdown").value, "unsaved-" + editorSnapshot.entry.path.split("/").at(-1), "text/markdown");
   });
-  document.getElementById("cancel-revision").addEventListener("click", () => { editor.hidden = true; editorSnapshot = undefined; });
+  document.getElementById("cancel-revision").addEventListener("click", () => {
+    editor.hidden = true;
+    document.getElementById("resume-revision").hidden = !editorSnapshot;
+    message("Editor paused with its unsaved text retained. Resume it, or download and explicitly discard it before opening another draft.");
+  });
+  document.getElementById("resume-revision").addEventListener("click", () => {
+    if (editorSnapshot) { editor.hidden = false; document.getElementById("draft-markdown").focus(); }
+    document.getElementById("resume-revision").hidden = true;
+  });
+  document.getElementById("discard-revision-confirm").addEventListener("change", event => { document.getElementById("discard-revision").disabled = !event.target.checked; });
+  document.getElementById("discard-revision").addEventListener("click", () => {
+    if (!document.getElementById("discard-revision-confirm").checked) return;
+    editorSnapshot = undefined; editor.hidden = true;
+    document.getElementById("draft-markdown").value = "";
+    document.getElementById("resume-revision").hidden = true;
+    document.getElementById("discard-revision-confirm").checked = false;
+    document.getElementById("discard-revision").disabled = true;
+    message("Unsaved editor text discarded explicitly. Saved drafts and their revisions are unchanged.");
+  });
   document.getElementById("download-raw-backup").addEventListener("click", () => {
     try {
       const raw = store.readRaw();
