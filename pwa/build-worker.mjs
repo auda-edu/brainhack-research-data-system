@@ -5,7 +5,8 @@ import { resolve } from "node:path";
 const root = fileURLToPath(new URL("../", import.meta.url));
 export const assets = ["index.html", "styles.css", "capture-core.js", "capture.js", "record-format.js",
   "demo-workspace-core.js", "demo-workspace.js", "data/synthetic-index.js", "explore-core.js", "explore.js",
-  "pwa.js", "manifest.json", "icons/app-192.png", "icons/app-512.png", "plan-latest/logo-light.png"];
+  "pwa.js", "manifest.json", "icons/app-192.png", "icons/app-512.png", "plan-latest/logo-light.png",
+  "contracts/record-contract.js", "contracts/demo-service.js", "contracts/fixtures.js", "proposal-demo.js"];
 export async function buildWorker() {
   const hash = createHash("sha256");
   const template = (await readFile(resolve(root, "pwa/sw-template.js"), "utf8")).replace(/\r\n?/g, "\n");

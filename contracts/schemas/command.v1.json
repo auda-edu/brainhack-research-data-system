@@ -1,0 +1,266 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LabHippo fictional command contract v1",
+  "description": "Demo only. Structural schema; byte limits, Markdown parsing, project policy, revisions and transaction checks are authoritative in demo-service.js.",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": [
+        "contract_version",
+        "demo_only",
+        "action",
+        "id",
+        "project_id",
+        "expected_revision",
+        "idempotency_key",
+        "record"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "contract_version": {
+          "const": 1
+        },
+        "demo_only": {
+          "const": true
+        },
+        "action": {
+          "const": "propose"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^lh:[a-z]+/[A-Za-z0-9][A-Za-z0-9._-]*$"
+        },
+        "project_id": {
+          "enum": [
+            "lh:proj/demo-contract-alpha",
+            "lh:proj/demo-contract-beta"
+          ]
+        },
+        "expected_revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "idempotency_key": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{8,80}$"
+        },
+        "record": {
+          "type": "object",
+          "required": [
+            "path",
+            "markdown"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string",
+              "maxLength": 240
+            },
+            "markdown": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "contract_version",
+        "demo_only",
+        "action",
+        "id",
+        "project_id",
+        "expected_revision",
+        "idempotency_key",
+        "record"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "contract_version": {
+          "const": 1
+        },
+        "demo_only": {
+          "const": true
+        },
+        "action": {
+          "const": "revise"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^lh:[a-z]+/[A-Za-z0-9][A-Za-z0-9._-]*$"
+        },
+        "project_id": {
+          "enum": [
+            "lh:proj/demo-contract-alpha",
+            "lh:proj/demo-contract-beta"
+          ]
+        },
+        "expected_revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "idempotency_key": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{8,80}$"
+        },
+        "record": {
+          "type": "object",
+          "required": [
+            "path",
+            "markdown"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string",
+              "maxLength": 240
+            },
+            "markdown": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "contract_version",
+        "demo_only",
+        "action",
+        "id",
+        "project_id",
+        "expected_revision",
+        "idempotency_key",
+        "decision"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "contract_version": {
+          "const": 1
+        },
+        "demo_only": {
+          "const": true
+        },
+        "action": {
+          "const": "decide"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^lh:[a-z]+/[A-Za-z0-9][A-Za-z0-9._-]*$"
+        },
+        "project_id": {
+          "enum": [
+            "lh:proj/demo-contract-alpha",
+            "lh:proj/demo-contract-beta"
+          ]
+        },
+        "expected_revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "idempotency_key": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{8,80}$"
+        },
+        "decision": {
+          "enum": [
+            "publish_public",
+            "accept_internal",
+            "reject"
+          ]
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "contract_version",
+        "demo_only",
+        "action",
+        "id",
+        "project_id",
+        "expected_revision",
+        "idempotency_key"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "contract_version": {
+          "const": 1
+        },
+        "demo_only": {
+          "const": true
+        },
+        "action": {
+          "const": "archive"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^lh:[a-z]+/[A-Za-z0-9][A-Za-z0-9._-]*$"
+        },
+        "project_id": {
+          "enum": [
+            "lh:proj/demo-contract-alpha",
+            "lh:proj/demo-contract-beta"
+          ]
+        },
+        "expected_revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "idempotency_key": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{8,80}$"
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "contract_version",
+        "demo_only",
+        "action",
+        "id",
+        "project_id",
+        "expected_revision",
+        "idempotency_key"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "contract_version": {
+          "const": 1
+        },
+        "demo_only": {
+          "const": true
+        },
+        "action": {
+          "const": "restore"
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^lh:[a-z]+/[A-Za-z0-9][A-Za-z0-9._-]*$"
+        },
+        "project_id": {
+          "enum": [
+            "lh:proj/demo-contract-alpha",
+            "lh:proj/demo-contract-beta"
+          ]
+        },
+        "expected_revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "idempotency_key": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{8,80}$"
+        }
+      }
+    }
+  ]
+}

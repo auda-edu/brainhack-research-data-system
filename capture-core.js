@@ -215,8 +215,8 @@
     }
     return header;
   }
-  function validateSubmission(path, markdown) {
-    if (typeof markdown !== "string" || !markdown.trim() || BufferSize(markdown) > 256 * 1024) {
+  function validateSubmission(path, markdown, { byteLength = BufferSize } = {}) {
+    if (typeof markdown !== "string" || !markdown.trim() || byteLength(markdown) > 256 * 1024) {
       throw new Error("Choose a nonempty Markdown file up to 256 KB.");
     }
     const header = parseHeader(markdown.replace(/\r\n/g, "\n"));

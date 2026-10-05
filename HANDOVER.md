@@ -1,7 +1,12 @@
 # LabHippo framework handover
 
 Updated: 2026-10-05 (UTC)
-Current work: `feature/draft-lifecycle-recovery`, based on verified third-milestone commit `f4e7fd1` (draft PR #15). The preceding PR stack (#9 → #10 → #11 → #12 → #13 → #14 → #15) remains unmerged. The public Pages site serves `main`; each milestone adds an independent branch preview and does not merge or change Pages settings.
+Current work: `feature/portable-proposal-contracts`, based on verified fourth-milestone `953410f` (draft PR #16). The preceding PR stack (#9–#16) remains unmerged. Public Pages serves main; this stage adds an immutable synthetic preview without merges or deployment changes.
+
+Current milestone: `feature/portable-proposal-contracts`, based on verified
+`953410f` (draft PR #16). All earlier stacked PRs remain unmerged. The stage adds
+portable synthetic contracts and a local memory-only service, without touching
+main/Pages or connecting private records.
 
 ## Where things live
 
@@ -16,6 +21,9 @@ Current work: `feature/draft-lifecycle-recovery`, based on verified third-milest
 - [Web/mobile roadmap](ROADMAP.md): bounded future outcomes and review gates.
 - [Installable browser demo](PWA.md): scoped offline assets, backup-aware updates and hosting requirements.
 - [Next architecture plan](ARCHITECTURE_NEXT.md): portable API contracts, native slice, production and data/device decisions.
+- [Portable contracts](contracts/README.md): v1 wire schemas, shared Markdown validation and fictional proposal policy.
+- [Local proposal API](proposal-service/README.md): fixed-fixture loopback service and explicit web adapter.
+- [Native development recommendation](NATIVE_DEVELOPMENT.md): actual Android/iOS development build scope and prerequisites.
 
 ## What is built
 
@@ -71,6 +79,14 @@ The server verifies repository visibility on every submission. The client
 never treats a `publication_class` label or a role page as access control.
 
 ## Handover log
+
+### 2026-10-05 - Portable contracts and synthetic proposal API milestone
+
+- Extracted shared record validation with explicit SHA-256/UTF-8 host adapters; existing local workspace behavior stays compatible. Added strict v1 command/proposal/public-index JSON schemas and synthetic fixtures, with runtime semantic checks.
+- Added serialized in-memory proposal transactions: stable IDs/paths, revision preconditions, actor-scoped idempotency, full revision snapshots, bounded retained state, rollback on pre-commit failure, scoped objects/references and reviewer-only publication decisions. Reviewed public snapshots retain only allowlisted fields; pending edits/rejections preserve the preceding approved snapshot. All choices are provisional simulations of Git review.
+- The new loopback CLI requires an explicit demo flag; trusted startup fixture controls identity. Strict Host/Origin, CSRF nonce, no CORS, JSON/body bounds and fixed static allowlist fail closed. It reads no GitHub credentials and disables private Capture submissions. The public page uses browser memory by default, with zero demo API probes; loopback connection is explicit and uses the same engine.
+- Verification: 75 Node tests, syntax/index/19-asset worker/diff checks; isolated local Chrome at 1440/375 px passes Capture/propose/revise/review/Explore, same-key retry, literal hostile text, cross-project denial, HTTP stale-write/editor preservation and archive/restore. Workspace/lifecycle/offline regressions pass at both widths, including offline save/search/export and backup-aware update preservation. A transient Windows Capture HTTP test-process exit passed isolated and complete reruns; final CI/live results are recorded in the PR and external task evidence after push.
+- No production auth, durable database/ledger, actual Git publication or native runtime has been built. [NATIVE_DEVELOPMENT.md](NATIVE_DEVELOPMENT.md) recommends a local React Native/Expo Android binary next, with explicit shared adapters and device/toolchain verification; iOS needs Mac/Xcode. The mirror PNG redirect still prevents live PWA offline cache; no worker scope/origin relaxation.
 
 ### 2026-10-05 - Reversible local draft lifecycle and recovery milestone
 

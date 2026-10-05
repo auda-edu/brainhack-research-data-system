@@ -1,0 +1,342 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LabHippo fictional proposal contract v1",
+  "description": "Demo only. Structural schema; byte limits, Markdown parsing, project policy, revisions and transaction checks are authoritative in demo-service.js.",
+  "type": "object",
+  "required": [
+    "contract_version",
+    "demo_only",
+    "id",
+    "project_id",
+    "revision",
+    "state",
+    "archived",
+    "published",
+    "entry",
+    "record",
+    "history"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": {
+      "const": 1
+    },
+    "demo_only": {
+      "const": true
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^lh:[a-z]+/[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "project_id": {
+      "enum": [
+        "lh:proj/demo-contract-alpha",
+        "lh:proj/demo-contract-beta"
+      ]
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "state": {
+      "enum": [
+        "proposed",
+        "publish_public",
+        "accept_internal",
+        "reject"
+      ]
+    },
+    "archived": {
+      "type": "boolean"
+    },
+    "published": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "id",
+            "kind",
+            "title",
+            "summary",
+            "tags",
+            "project_id",
+            "related_ids",
+            "revision",
+            "sha256"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^lh:[a-z]+/[A-Za-z0-9][A-Za-z0-9._-]*$"
+            },
+            "kind": {
+              "enum": [
+                "project",
+                "project-event",
+                "resource",
+                "log"
+              ]
+            },
+            "title": {
+              "type": "string"
+            },
+            "summary": {
+              "type": "string"
+            },
+            "tags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "project_id": {
+              "enum": [
+                "lh:proj/demo-contract-alpha",
+                "lh:proj/demo-contract-beta"
+              ]
+            },
+            "related_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^lh:[a-z]+/[A-Za-z0-9][A-Za-z0-9._-]*$"
+              }
+            },
+            "revision": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "entry": {
+      "type": "object",
+      "required": [
+        "id",
+        "path",
+        "markdown",
+        "sha256"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^lh:[a-z]+/[A-Za-z0-9][A-Za-z0-9._-]*$"
+        },
+        "path": {
+          "type": "string"
+        },
+        "markdown": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "record": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "title",
+        "summary",
+        "date",
+        "review",
+        "tags",
+        "related_ids",
+        "project_ids",
+        "fields",
+        "entries",
+        "body",
+        "source"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^lh:[a-z]+/[A-Za-z0-9][A-Za-z0-9._-]*$"
+        },
+        "kind": {
+          "enum": [
+            "project",
+            "project-event",
+            "resource",
+            "log"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "review": {
+          "const": "proposed"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "related_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^lh:[a-z]+/[A-Za-z0-9][A-Za-z0-9._-]*$"
+          }
+        },
+        "project_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^lh:[a-z]+/[A-Za-z0-9][A-Za-z0-9._-]*$"
+          }
+        },
+        "fields": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "entries": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "body": {
+          "type": "string"
+        },
+        "source": {
+          "type": "object",
+          "required": [
+            "path",
+            "sha256",
+            "local_demo",
+            "markdown"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "local_demo": {
+              "const": true
+            },
+            "markdown": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "revision",
+          "action",
+          "actor",
+          "at",
+          "decision",
+          "entry",
+          "archived"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "revision": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "action": {
+            "enum": [
+              "propose",
+              "revise",
+              "decide",
+              "archive",
+              "restore"
+            ]
+          },
+          "actor": {
+            "enum": [
+              "writer-alpha",
+              "reviewer-alpha",
+              "writer-beta",
+              "reviewer-beta"
+            ]
+          },
+          "at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "decision": {
+            "enum": [
+              "publish_public",
+              "accept_internal",
+              "reject",
+              null
+            ]
+          },
+          "entry": {
+            "type": "object",
+            "required": [
+              "id",
+              "path",
+              "markdown",
+              "sha256"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^lh:[a-z]+/[A-Za-z0-9][A-Za-z0-9._-]*$"
+              },
+              "path": {
+                "type": "string"
+              },
+              "markdown": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            }
+          },
+          "archived": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

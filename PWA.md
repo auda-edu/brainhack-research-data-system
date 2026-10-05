@@ -14,7 +14,7 @@ relative start/scope URLs; the JSON path keeps those URLs on the app host.
 
 `sw.js` registers only for its containing app directory. The relative manifest
 scope/start URL work under repository and immutable commit subdirectories.
-The generated worker caches exactly 15 reviewed static app assets, including
+The generated worker caches exactly 19 reviewed static app assets, including
 the built-in synthetic index and icons. It handles only their same-origin,
 query-free GET URLs and the app directory's root. It never caches API calls,
 private submissions, Markdown source records, architecture pages, arbitrary
