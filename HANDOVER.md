@@ -1,7 +1,7 @@
 # LabHippo framework handover
 
 Updated: 2026-10-05 (UTC)
-Current work: `feature/pwa-offline-foundation`, based on verified second-milestone commit `a5911af` (draft PR #14). The preceding PR stack (#9 → #10 → #11 → #12 → #13 → #14) remains unmerged. The public Pages site serves `main`; each milestone adds an independent branch preview and does not merge or change Pages settings.
+Current work: `feature/draft-lifecycle-recovery`, based on verified third-milestone commit `f4e7fd1` (draft PR #15). The preceding PR stack (#9 → #10 → #11 → #12 → #13 → #14 → #15) remains unmerged. The public Pages site serves `main`; each milestone adds an independent branch preview and does not merge or change Pages settings.
 
 ## Where things live
 
@@ -15,6 +15,7 @@ Current work: `feature/pwa-offline-foundation`, based on verified second-milesto
 - [Local demo workspace](LOCAL_DEMO.md): explicitly saved fictional Markdown, JSON export/import and storage limits.
 - [Web/mobile roadmap](ROADMAP.md): bounded future outcomes and review gates.
 - [Installable browser demo](PWA.md): scoped offline assets, backup-aware updates and hosting requirements.
+- [Next architecture plan](ARCHITECTURE_NEXT.md): portable API contracts, native slice, production and data/device decisions.
 
 ## What is built
 
@@ -70,6 +71,16 @@ The server verifies repository visibility on every submission. The client
 never treats a `publication_class` label or a role page as access control.
 
 ## Handover log
+
+### 2026-10-05 - Reversible local draft lifecycle and recovery milestone
+
+- Isolated branch `feature/draft-lifecycle-recovery` is based on verified `f4e7fd1` and targets `feature/pwa-offline-foundation` (draft PR #15). Earlier PRs, main, the original checkout and deployment settings remain unchanged.
+- Saved fictional Markdown can be edited with stable ID/path preserved. Explicit lifecycle operations write a v2 envelope with bounded full before/after snapshots, hashes, browser timestamps and archive transitions; v1 reads never migrate stored bytes. Archive retains all content and hides active results; Restore and single latest-change Undo append validated transitions. Active dependencies must resolve, so referenced drafts cannot be archived silently.
+- Web Locks serialize current-client writes; expected snapshots reject stale editors. Unsaved edits remain downloadable, and background storage refreshes preserve editor focus and conflict messages. Older clients/external tools do not share those locks; close older versions before changing v2 drafts. No trusted audit, authentication, production synchronization or private-service behavior is implied.
+- Corrupt storage is preserved and blocks normal writes. Recovery requires raw download plus explicit saved-backup confirmation, retains an exact fingerprinted app-specific raw copy before an empty reset, and provides retained-copy downloads. Stale recovery, backup quota and reset quota failures preserve the original. There is no valid-workspace reset, silent migration/history trimming or permanent-delete UI.
+- Added [ARCHITECTURE_NEXT.md](ARCHITECTURE_NEXT.md), prioritizing portable contracts/local synthetic API then a native development slice, followed by approved identity/staging/private sync. Canonical-store, publication, provider/budget, identity scopes, data retention/device encryption and signing/device decisions are explicit. No infrastructure, native dependencies or grants were added.
+- Verification: all 61 Node tests passed, including stable identity/history, per-record provenance chain, archive dependency checks, undo/export/import order, tampering/conflict rejection, locked same-snapshot writes, stale editors and backup/reset quota preservation. Repository-wide syntax, generated synthetic index/worker and diff checks passed. Local Chrome at 1440/375 px passed lifecycle/undo/dependency rejection, stale-tab text preservation and download, v2 complete export/fresh import, export-first corruption recovery and retained-copy download. No app errors/overflow; hostile text remained literal. Existing full workspace regression and PWA offline/update/cache-isolation checks also passed at both widths.
+- Final live preview/CI results are recorded in the stacked draft PR after pushing. The raw.githack PNG redirect gap remains separate: online synthetic preview is supported, same-origin offline installation requires an appropriate HTTPS host/loopback. Physical native/device/Safari testing is not established by desktop Chrome emulation. Parent coordinates the next bounded API/native stage; this milestone stops here.
 
 ### 2026-10-05 - Installable browser foundation and CI milestone
 

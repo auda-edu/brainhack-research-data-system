@@ -112,10 +112,29 @@
         <details class="workspace-panel" open>
           <summary>Local demo workspace · export / import</summary>
           <p>Save fictional records from Capture, then search them here. Storage is specific to this browser and site origin, is unencrypted, and may be cleared by the browser. Other scripts on this origin can access it. Preview URLs on the same origin share this workspace; another device or origin does not. No sync or backup is provided. Never store real research records, participant details, or secrets.</p>
-          <p>JSON exports contain complete demo Markdown. Keep them as your backup; import only a version 1 demo workspace with all its referenced local records. Identical IDs are kept once; conflicting IDs or paths reject the entire import.</p>
+          <p>JSON exports contain complete demo Markdown and retained revisions. Keep them as your backup; import a version 1 or 2 demo workspace with all its referenced local records. Identical records are kept once; conflicting IDs, paths or revision histories reject the entire import.</p>
           <div class="workspace-actions"><button id="workspace-export" class="secondary-button" type="button">Export demo JSON</button><label class="workspace-file">Import demo JSON<input id="workspace-import" type="file" accept=".json,application/json"></label></div>
           <label class="review-check"><input id="import-demo-confirm" type="checkbox"><span>The import contains invented demo content only.</span></label>
           <p id="workspace-status" role="status" aria-live="polite">Checking browser storage…</p>
+          <details class="lifecycle-panel" open>
+            <summary>Local drafts / revisions / reversible archive</summary>
+            <p>Editing keeps the stable ID and path. Archive hides a draft while retaining its Markdown and history; Restore or Undo makes it recoverable. Active relationships must still resolve. Built-in examples cannot be changed.</p>
+            <p>The first explicit lifecycle change writes workspace version 2. Reading an existing version 1 workspace does not migrate it. Revision times come from this browser and are not a trusted audit trail. Keep exports; close older app versions before editing.</p>
+            <label class="review-check"><input id="lifecycle-confirm" type="checkbox"><span>I exported a backup and confirmed these are fictional drafts before applying this change.</span></label>
+            <div id="workspace-drafts"></div>
+            <section id="draft-editor" hidden aria-labelledby="draft-editor-title">
+              <h4 id="draft-editor-title">Edit saved fictional Markdown</h4><p id="draft-editor-id" class="record-id"></p>
+              <label for="draft-markdown">Markdown revision (ID and path must stay the same)</label><textarea id="draft-markdown" rows="18" spellcheck="false"></textarea>
+              <div class="workspace-actions"><button id="save-revision" class="secondary-button" type="button">Save revision</button><button id="download-revision" class="secondary-button" type="button">Download unsaved revision</button><button id="cancel-revision" class="secondary-button" type="button">Close editor</button></div>
+            </section>
+          </details>
+          <section id="workspace-recovery" class="result error" hidden aria-labelledby="recovery-title">
+            <h4 id="recovery-title">Saved storage needs recovery</h4><p>The original text is preserved. Download it first, inspect or repair it outside this app, and keep that file. Explicit recovery retains another raw copy in this browser before creating an empty workspace. Nothing is silently reset.</p>
+            <button id="download-raw-backup" class="secondary-button" type="button">Download preserved raw storage</button>
+            <label class="review-check"><input id="recovery-confirm" type="checkbox"><span>I saved the raw download, confirmed it contains fictional content, and want an empty workspace with the original recovery copy retained.</span></label>
+            <button id="recover-workspace" class="secondary-button" type="button" disabled>Create empty workspace / retain raw copy</button>
+          </section>
+          <details><summary>Retained raw recovery downloads</summary><p>These are unvalidated originals retained by explicit recovery. Keep an external copy; repair a copy before importing valid JSON. No recovery copy is automatically deleted.</p><div id="recovery-copies"></div></details>
         </details>
         <div class="explore-filters">
           <div class="field"><label for="explore-query">Search examples</label><input id="explore-query" type="search" placeholder="Try QC, checklist, or missing response" autocomplete="off"></div>
