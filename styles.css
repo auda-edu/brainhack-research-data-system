@@ -198,3 +198,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
   .next-stages { grid-template-columns: 1fr; padding-block: 70px; }
   .footer-inner { flex-direction: column; }
 }
+.pwa-panel { margin-block: 0 3rem; padding: 1.5rem; border: 1px solid var(--line, #cbd5cc); border-radius: 1rem; background: #f3f6f1; overflow-wrap: anywhere; }
+.pwa-panel h2 { margin-top: .4rem; }
+.pwa-panel details { margin-top: 1rem; }
+.pwa-panel summary { cursor: pointer; font-weight: 600; }

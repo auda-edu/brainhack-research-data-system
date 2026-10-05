@@ -4,7 +4,7 @@ import { join, resolve, sep } from "node:path";
 import { randomBytes } from "node:crypto";
 import { SubmissionError } from "./github.mjs";
 
-const TYPES = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".png": "image/png", ".md": "text/markdown", ".json": "application/json" };
+const TYPES = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".png": "image/png", ".md": "text/markdown", ".json": "application/json", ".webmanifest": "application/manifest+json" };
 const HEADERS = {
   "Cache-Control": "no-store",
   "X-Content-Type-Options": "nosniff",
@@ -22,7 +22,7 @@ function failure(response, status, code, message, details) {
 }
 function publicFile(rootDir, pathname) {
   const fixed = new Set(["/", "/index.html", "/styles.css", "/capture.js", "/capture-core.js", "/explore.js", "/explore-core.js", "/data/synthetic-index.js", "/structure/README.md",
-    "/record-format.js", "/demo-workspace-core.js", "/demo-workspace.js"]);
+    "/record-format.js", "/demo-workspace-core.js", "/demo-workspace.js", "/pwa.js", "/sw.js", "/manifest.webmanifest", "/icons/app-192.png", "/icons/app-512.png", "/PWA.md"]);
   if (fixed.has(pathname)) return join(rootDir, pathname === "/" ? "index.html" : pathname.slice(1));
   if (!/^\/(?:plan-latest|templates|archived\/interactive-demo)\/[A-Za-z0-9_./-]+$/.test(pathname) || pathname.includes("..")) return null;
   const extension = pathname.slice(pathname.lastIndexOf("."));

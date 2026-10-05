@@ -69,21 +69,24 @@ node capture-service/server.mjs
 Open `http://127.0.0.1:8788/`. The direct-submission configuration is in
 [capture-service/README.md](capture-service/README.md).
 
+The [browser installation and offline guide](PWA.md) describes opt-in static
+caching, backup-aware updates and host requirements. GitHub Actions runs the
+same generated-asset and Node checks with read-only permission.
+
 ## Checks
 
 ```powershell
-node --check capture-core.js
-node --check capture.js
-node --check explore-core.js
-node --check explore.js
+node pwa/check-syntax.mjs
 node structure/build-index.mjs --check
-node --test --test-concurrency=1 demo-workspace-core.test.cjs structure/build-index.test.mjs explore-core.test.cjs capture-core.test.cjs capture-service/github.test.mjs capture-service/http.test.mjs api/api.test.mjs archived/interactive-demo/log-format.test.cjs
+node pwa/build-worker.mjs --check
+node --test
 ```
 
 The [synthetic index contract](structure/README.md) explains the manifest,
 validation, generated data, publication boundaries and branch preview.
 Explore has a responsive phone layout and bookmarkable record/filter URLs.
-It does not provide a native Android/iOS app or an offline cache.
+The optional PWA cache covers only the static fictional demo. Native Android/iOS
+apps and permission-aware private-record synchronization remain future work.
 
 The prior browser-local interactive system remains in
 [archived/interactive-demo/](archived/interactive-demo/). Its records and role

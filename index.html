@@ -3,7 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f3f6f8">
+  <meta name="theme-color" content="#17372d">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/app-192.png">
   <meta name="description" content="LabHippo Capture framework: submit reviewed Markdown or fill a record template, then send a proposed record to a private GitHub pull request.">
   <link rel="icon" href="plan-latest/logo-light.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
@@ -15,6 +17,7 @@
   <script src="demo-workspace.js" defer></script>
   <script src="explore-core.js" defer></script>
   <script src="explore.js" defer></script>
+  <script src="pwa.js" defer></script>
   <title>LabHippo · Research memory</title>
 </head>
 <body>
@@ -45,6 +48,16 @@
       </div>
     </section>
 
+    <section class="shell pwa-panel" aria-labelledby="pwa-title">
+      <p class="eyebrow">BROWSER APP / FICTIONAL DEMO</p>
+      <h2 id="pwa-title">Take the demo with you.</h2>
+      <p>Enable offline demo to cache this app's static files. Your fictional records remain in unencrypted browser storage. Export demo JSON regularly and download unsaved Capture Markdown before updating or reloading.</p>
+      <div class="workspace-actions"><button id="enable-offline" class="secondary-button" type="button">Enable offline demo</button><button id="install-app" class="secondary-button" type="button" hidden>Install browser app</button><a href="#explore">Export / import demo JSON</a></div>
+      <p id="pwa-status" role="status" aria-live="polite">Checking offline support...</p>
+      <p id="network-status" class="helper" role="status"></p>
+      <div id="update-consent" hidden><label class="review-check"><input id="update-backup-confirm" type="checkbox"><span>I exported my demo JSON and downloaded any unsaved Markdown.</span></label><button id="apply-update" class="secondary-button" type="button" hidden>Apply backed-up update</button></div>
+      <details><summary>Install and offline limits</summary><p>On a supported HTTPS host, use Chrome's Install app menu, or Safari on iPhone: Share, then Add to Home Screen. Browser support varies; installing may not show a button. This is a browser app. A native mobile companion is a later milestone.</p><p>Only this app's fixed demo assets work offline after successful enablement. Architecture pages, source links and private submission require a connection. Installation provides no sync, encryption or automatic backup. Reload only after saving your work. <a href="PWA.md">Deployment and update guide</a></p></details>
+    </section>
     <section class="capture-section" id="capture" aria-labelledby="capture-title">
       <div class="shell">
         <div class="section-heading"><div><p class="eyebrow">01 / CAPTURE</p><h2 id="capture-title">Begin with a record.</h2></div><p>Both routes produce Markdown for a designated path in the private records repository. Submission opens a draft pull request; it does not approve or publish the record.</p></div>

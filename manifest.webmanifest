@@ -1,0 +1,15 @@
+{
+  "id": "./",
+  "name": "LabHippo · Fictional research memory",
+  "short_name": "LabHippo",
+  "description": "Capture, search and back up fictional research-memory records in this browser.",
+  "start_url": "./index.html#capture",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f6f1",
+  "theme_color": "#17372d",
+  "icons": [
+    { "src": "icons/app-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/app-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
