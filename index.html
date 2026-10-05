@@ -9,7 +9,10 @@
   <link rel="stylesheet" href="styles.css">
   <script src="capture-core.js" defer></script>
   <script src="capture.js" defer></script>
-  <title>LabHippo · Capture framework</title>
+  <script src="data/synthetic-index.js" defer></script>
+  <script src="explore-core.js" defer></script>
+  <script src="explore.js" defer></script>
+  <title>LabHippo · Research memory</title>
 </head>
 <body>
   <a class="skip-link" href="#capture">Skip to Capture</a>
@@ -33,8 +36,8 @@
         <figure class="brand-panel"><img src="plan-latest/logo-light.png" width="2400" height="1280" alt="LabHippo — the lab's memory"></figure>
         <ol class="stage-rail" aria-label="Three-stage framework">
           <li><span class="stage-number">01</span><div><strong>Capture</strong><p>Markdown file or guided fields</p></div><span class="stage-state ready">Available locally</span></li>
-          <li><span class="stage-number">02</span><div><strong>Structure</strong><p>Review, validate, version, connect</p></div><span class="stage-state">Planned</span></li>
-          <li><span class="stage-number">03</span><div><strong>Explore</strong><p>Find approved knowledge</p></div><span class="stage-state">Planned</span></li>
+          <li><span class="stage-number">02</span><div><strong>Structure</strong><p>Stable IDs, links, source fingerprints</p></div><span class="stage-state ready">Synthetic index</span></li>
+          <li><span class="stage-number">03</span><div><strong>Explore</strong><p>Search and trace fictional records</p></div><a class="stage-state ready" href="#explore">Try the examples →</a></li>
         </ol>
       </div>
     </section>
@@ -78,9 +81,24 @@
       </div>
     </section>
 
-    <section class="next-stages shell" aria-label="Next framework stages">
-      <article id="structure"><span class="stage-number">02 / STRUCTURE</span><h2>Review, then connect.</h2><p>The architecture calls for schema checks, stable IDs, relationship indexing, and source-version traces after a private pull request is reviewed and merged. This automated build is planned; this framework does not claim that it has run.</p><a href="plan-latest/architecture.md">Read the Structure design ↗</a></article>
-      <article id="explore"><span class="stage-number">03 / EXPLORE</span><h2>Publish with boundaries.</h2><p>The plan separates explicitly approved public pages from access-controlled internal views. Search, role views, Azure deployment, and publication rules still need implementation and verification.</p><a href="plan-latest/architecture.md">Read the Explore design ↗</a></article>
+    <section class="next-stages shell" aria-label="Structure and publication boundaries">
+      <article id="structure"><span class="stage-number">02 / STRUCTURE</span><h2>Connect the evidence.</h2><p>A repeatable build checks the existing fictional templates, stable IDs, dates, and relationships. Each source is pinned by its SHA-256 fingerprint in a reviewed manifest.</p><p id="structure-summary" class="index-summary">Loading the synthetic index…</p><a href="structure/README.md">Read the index contract ↗</a></article>
+      <article><span class="stage-number">PUBLICATION BOUNDARY</span><h2>Examples stay examples.</h2><p>This index contains only the already public, invented template kit. Proposed and internal labels illustrate a workflow; they do not approve publication or control access. Private-record ingestion, public approval rules, authentication, and mobile-native apps remain future work.</p><a href="plan-latest/architecture.md">Read the architecture design ↗</a></article>
+    </section>
+    <section id="explore" class="explore-section" aria-labelledby="explore-title">
+      <div class="shell">
+        <div class="section-heading"><div><p class="eyebrow">03 / EXPLORE · FICTIONAL DATA</p><h2 id="explore-title">Find the thread.<br>Follow the record.</h2></div><p>Search two invented projects, their decisions, resources, and daily logs. Open a record to trace its links and original Markdown. Nothing here represents real research.</p></div>
+        <div class="explore-filters">
+          <div class="field"><label for="explore-query">Search examples</label><input id="explore-query" type="search" placeholder="Try QC, checklist, or missing response" autocomplete="off"></div>
+          <div class="field"><label for="explore-kind">Record type</label><select id="explore-kind"><option value="">All record types</option><option value="project">Projects</option><option value="project-event">Project events</option><option value="resource">Resources</option><option value="log">Daily logs</option></select></div>
+          <div class="field"><label for="explore-project">Project</label><select id="explore-project"><option value="">Both fictional projects</option></select></div>
+          <button id="clear-explore" class="secondary-button" type="button">Clear filters</button>
+        </div>
+        <p id="explore-count" role="status" aria-live="polite">Loading fictional records…</p>
+        <noscript><p>Enable JavaScript to search the examples, or read the <a href="templates/README.md">template kit</a>.</p></noscript>
+        <div id="explore-results" class="explore-results"></div>
+        <article id="record-detail" class="record-detail" tabindex="-1" aria-label="Record details" hidden></article>
+      </div>
     </section>
   </main>
   <footer class="site-footer"><div class="shell footer-inner"><span>labhippo<span class="accent">.</span> · Capture framework</span><div><a href="templates/README.md">Blank templates and fictional examples</a><a href="archived/interactive-demo/">Earlier interactive demo</a><a href="plan-latest/">Architecture concept</a></div></div></footer>

@@ -1,12 +1,12 @@
 # LabHippo framework handover
 
-Updated: 2026-10-01 (Asia/Taipei)
-Current work: `feature/auda-edu-platform`, based on the pending Capture PR #11 (which depends on PR #10 and PR #9). Repository transfer to the selected personal account `auda-edu` is complete. The public Pages site serves `main`; new links and QR codes need owner review, merges, and deployment.
+Updated: 2026-10-05 (UTC)
+Current work: `feature/explore-synthetic-index`, based on verified PR #12 head `617cb12`. The preceding PR stack (#9 → #10 → #11 → #12) remains unmerged. The public Pages site serves `main`; this milestone adds an independent branch preview and does not merge or change Pages settings.
 
 ## Where things live
 
 - [Repository](https://github.com/auda-edu/brainhack-research-data-system): public code and synthetic examples only.
-- [Root framework](index.html): Capture workspace with file and manual entry routes, plus explicitly planned Structure and Explore sections.
+- [Root framework](index.html): Capture workspace plus synthetic Structure and responsive Explore.
 - [Latest architecture concept](plan-latest/): proposal, not an operational prototype.
 - [Public templates](templates/README.md): blank records and fictional examples.
 - [Earlier interactive demo](archived/interactive-demo/): historical browser-local project, log, and role-view prototype.
@@ -24,10 +24,12 @@ GitHub credential; the service reads its credential from the local process
 environment. Capture records remain proposed. A draft PR is not a merge,
 approval, or publication.
 
-The architecture calls for Structure validation, indexing, relationships,
-source-version tracking, and separate public/internal Explore builds. Those
-automated stages are not implemented. The earlier browser-local role views
-remain in the archive and are not access controls.
+A constrained build validates and indexes the eight existing fictional
+template examples. Explore provides search, type/project filters, record
+permalinks, incoming/outgoing links and pinned Markdown sources. This is not
+the private-record validator or publication pipeline: separate approved public
+and authenticated internal builds remain future work. The earlier browser-local
+role views remain in the archive and are not access controls.
 
 ## Current files and checks
 
@@ -37,6 +39,8 @@ remain in the archive and are not access controls.
 | [capture-core.js](capture-core.js) | Template fields, Markdown generation, path/record checks |
 | [capture-service/](capture-service/README.md) | Loopback HTTP server and GitHub draft-PR submission |
 | [capture-core.test.cjs](capture-core.test.cjs) | Record generation and validation tests |
+| [structure/](structure/README.md), [data/synthetic-index.js](data/synthetic-index.js) | Reviewed synthetic source manifest, deterministic build and index |
+| [explore-core.js](explore-core.js), [explore.js](explore.js) | Read-only search, filter URLs, record navigation and text-only rendering |
 | [archived/interactive-demo/](archived/interactive-demo/) | Previous browser-local framework |
 | [api/](api/README.md) | Separate read-only synthetic API |
 
@@ -57,6 +61,17 @@ The server verifies repository visibility on every submission. The client
 never treats a `publication_class` label or a role page as access control.
 
 ## Handover log
+
+### 2026-10-05 — First Structure / Explore milestone
+
+- Verified repository ID `1389913956` belongs to `auda-edu`, with authenticated connector push access. Worked in an isolated checkout based on PR #12 head `617cb12`; preserved the original checkout and earlier PR stack. This branch targets `feature/auda-edu-platform`, not `main`.
+- Added an explicit manifest of eight existing fictional Markdown examples, pinned by normalized UTF-8/LF SHA-256 hashes. Build checks supported syntax, stable IDs, valid dates, duplicate IDs, project references and related links. Unlisted files are never scanned. Generated index contains eight records and sixteen resolved relationships, with original review/publication labels retained.
+- Added word search across text/metadata/log entries, intersecting project/type filters, filter URLs, stable record permalinks, source links and relationship navigation. Mobile uses one column. All record-derived content is rendered through DOM nodes and `textContent`; no HTML renderer or browser storage is used.
+- Capture remains local-only for private submission. Public/static pages now show the unavailable-service message without probing a nonexistent API. The local server's file allowlist was extended only for the browser assets and index README; server source, the manifest and unlisted data remain unavailable.
+- Verification: deterministic index check, all JavaScript syntax checks, `git diff --check`, and 35 Node tests passed. The initial parallel run had a transient existing API-worker failure; the API passed alone and the complete suite passed sequentially. No API product code changed.
+- Isolated headless Chrome at 1440 px and 375 px passed search/type/project combinations, empty state, bookmarked filter reload, record permalink reload, related-record navigation and malformed links. Images loaded, no page/console errors or horizontal overflow. Hostile record text rendered literally with no inserted image or execution. Capture remained disabled without credentials. Screenshots and JSON evidence are in the task workspace, outside the public repository.
+- Branch preview uses an immutable commit URL on the free read-only raw.githack cache, which may show a confirmation interstitial and has no uptime guarantee. GitHub Pages production remains unchanged until owner-reviewed merges. No account/grant, paid service, private record submission, or app-store action occurred. Live preview verification is recorded with the PR handoff after pushing.
+- Next: owner reviews the existing PR stack and this draft PR; design private ingestion/public allowlist contracts separately. Native mobile, authentication, private indexing and offline behavior are still future milestones.
 
 ### 2026-10-01 — Repository transfer confirmed
 

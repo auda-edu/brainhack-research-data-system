@@ -21,7 +21,7 @@ function failure(response, status, code, message, details) {
   send(response, status, { error: { code, message, ...(details && Object.keys(details).length ? { details } : {}) } });
 }
 function publicFile(rootDir, pathname) {
-  const fixed = new Set(["/", "/index.html", "/styles.css", "/capture.js", "/capture-core.js"]);
+  const fixed = new Set(["/", "/index.html", "/styles.css", "/capture.js", "/capture-core.js", "/explore.js", "/explore-core.js", "/data/synthetic-index.js", "/structure/README.md"]);
   if (fixed.has(pathname)) return join(rootDir, pathname === "/" ? "index.html" : pathname.slice(1));
   if (!/^\/(?:plan-latest|templates|archived\/interactive-demo)\/[A-Za-z0-9_./-]+$/.test(pathname) || pathname.includes("..")) return null;
   const extension = pathname.slice(pathname.lastIndexOf("."));

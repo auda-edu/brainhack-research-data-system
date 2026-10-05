@@ -155,6 +155,9 @@
   }
   async function refreshService() {
     try {
+      if (location.protocol !== "http:" || location.hostname !== "127.0.0.1") {
+        throw new Error("Private submission is available only from the loopback Capture service.");
+      }
       const response = await fetch("api/capture/status", { cache: "no-store" });
       if (!response.ok) throw new Error("Local service is not running at this page address.");
       const data = await response.json();
