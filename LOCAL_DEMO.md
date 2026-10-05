@@ -58,12 +58,46 @@ must supply a distinct explicit ID and path; no draft is silently overwritten.
 
 Identical imported entries are kept once. A differing record with an existing ID
 or path rejects the whole import. Saving an existing ID/path also fails; there
-is no edit/delete UI in this milestone. Cross-tab changes are checked before
-writes; stale writes fail and storage events refresh the other tab's Explore.
+is now an explicit edit/archive/restore/undo UI for saved fictional drafts.
+Stable IDs and paths cannot change. Cross-tab writes use Web Locks and expected
+storage snapshots; stale editors fail without losing their text. Storage events
+refresh Explore without stealing editor focus. Close older app versions first;
+external tools or older clients do not participate in these locks.
+Pausing or selecting another draft preserves the existing unsaved editor; resume
+it to compare/download. Only a confirmed Discard editor text action drops that
+in-memory copy. Download it before closing/reloading the page; paused text is
+not a persistent backup.
 When storage is blocked/full, the new Markdown stays in Capture and no save is
 reported. Malformed existing storage is preserved and blocks writes; recovery
-requires preserving that raw value with browser tools before clearing it. An
-automatic migration/recovery interface is future work.
+requires downloading its raw value and confirming the backup before explicitly
+creating an empty workspace. The original is also retained under a fingerprinted
+`labhippo.brainhack.demo-workspace.recovery.*` key, with an in-app download action.
+Backup/reset quota failures and stale recovery attempts preserve the original.
+No valid workspace reset, silent recovery or permanent-delete action is provided.
+
+## Revisions and recoverable archive
+
+Version 1 remains readable and unchanged on load. An explicit lifecycle action
+or version 2 import writes a version 2 envelope with the same records and a
+`history` array. Each event contains `id`, `action`, browser-supplied UTC `at`,
+full `before`/`after` entry snapshots, `was_archived` and `archived`. Hashes,
+identity/path, per-record chain continuity and current heads are validated.
+The 1 MB limit includes history; at most 300 retained changes are allowed.
+No history is silently trimmed to make space.
+
+Archive hides a draft from active Explore while retaining its current Markdown
+and revisions. Active links prevent archiving referenced records; restore/undo
+also require all active relationships to resolve. Restore dependencies first.
+Undo reverses the latest non-undo operation by appending a compensating revision;
+it is a single-operation undo, not an arbitrary historical undo stack. Earlier
+snapshots remain in complete JSON exports. Conflicting imported records or
+histories reject the entire import; exact reimports are idempotent. Importing v1
+duplicates never discards retained v2 history. Recovery originals are unvalidated
+text: repair a copy outside the app, then import valid v1/v2 JSON.
+
+Revision metadata is browser-provided provenance, not a trusted server audit
+trail. These storage/history formats are demo contracts, not production sync.
+Browsers without Web Locks can read/export but cannot safely change this workspace.
 
 The `demo_only` flag and confirmation are a declaration of intended use, not
 semantic detection of private information. Browser storage is not authentication,
@@ -72,7 +106,7 @@ and a local draft is not a reviewed research record or public publication.
 ## Checks
 
 ```powershell
-node --test demo-workspace-core.test.cjs
+node --test demo-workspace-core.test.cjs draft-lifecycle.test.cjs
 node structure/build-index.mjs --check
 ```
 

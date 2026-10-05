@@ -36,7 +36,7 @@
     }
     if (!rows.length) results.append(element("p", "No matching examples. Try another term or clear the filters.", "empty-state"));
   }
-  function renderDetail(id, error) {
+  function renderDetail(id, error, moveFocus = true) {
     detail.replaceChildren();
     detail.hidden = false;
     const back = element("a", "← Back to results", "text-button");
@@ -71,6 +71,7 @@
       if (!connections.children.length) connections.append(element("li", "No linked examples."));
       detail.append(connections, element("h4", "Source and version"));
       if (record.source.local_demo) {
+        detail.append(element("p", `${record.source.history?.length || 0} retained revisions · Browser-provided provenance; not a verified audit trail. Edit, archive and undo in Local drafts above.`));
         detail.append(element("p", "Local fictional draft · not reviewed or published. Original Markdown and source references are preserved in the JSON export."));
         const download = element("button", "Download saved demo Markdown", "secondary-button");
         download.type = "button";
@@ -86,8 +87,10 @@
           element("h4", "Record text"), element("pre", record.body, "record-body"));
       }
     }
-    detail.focus({ preventScroll: true });
-    detail.scrollIntoView({ behavior: "instant", block: "start" });
+    if (moveFocus) {
+      detail.focus({ preventScroll: true });
+      detail.scrollIntoView({ behavior: "instant", block: "start" });
+    }
   }
   function route() {
     const state = core.parseRoute(location.hash);
@@ -109,7 +112,7 @@
     inputs.project.value = selected;
     renderResults();
     const state = core.parseRoute(location.hash);
-    if (Object.hasOwn(state, "id")) renderDetail(state.id, state.error);
+    if (Object.hasOwn(state, "id")) renderDetail(state.id, state.error, false);
   }
   window.addEventListener("labhippo-workspace-changed", event => updateIndex(event.detail));
   window.LabHippoWorkspace.ready.then(() => updateIndex(window.LabHippoWorkspace.index));

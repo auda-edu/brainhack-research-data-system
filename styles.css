@@ -202,3 +202,8 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .pwa-panel h2 { margin-top: .4rem; }
 .pwa-panel details { margin-top: 1rem; }
 .pwa-panel summary { cursor: pointer; font-weight: 600; }
+.lifecycle-panel { margin-top: 1.5rem; }
+.workspace-draft { border-top: 1px solid var(--line); padding-block: 1rem; overflow-wrap: anywhere; }
+.workspace-draft h4 { margin-bottom: .4rem; }
+#draft-markdown { width: 100%; min-height: 22rem; margin-block: .7rem; font: 13px/1.6 Consolas, monospace; }
+#workspace-recovery { border: 1px solid var(--accent); padding: 1rem; margin-top: 1rem; }

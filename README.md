@@ -14,6 +14,13 @@ Only invented content belongs here. See [storage/privacy and format limits](LOCA
 and the [bounded web/mobile roadmap](ROADMAP.md). This is not a production backend
 or a native mobile app.
 
+Saved fictional drafts support stable-ID Markdown revisions, recoverable archive,
+restore and single latest-change undo. Corrupt storage has explicit export-first
+recovery that retains the raw original. Version 1 is not migrated on read;
+explicit lifecycle changes retain version 2 history. See [LOCAL_DEMO.md](LOCAL_DEMO.md).
+The [next architecture plan](ARCHITECTURE_NEXT.md) prioritizes portable API
+contracts and a native development slice over more general demo polish.
+
 Capture has two routes:
 
 1. **Upload Markdown**: choose a completed `.md` Project, Project event,
