@@ -25,8 +25,10 @@ control: other scripts on the same origin may read it. Different immutable
 preview URLs on the same host share it; another browser, device, port or host
 does not. Private browsing and browser cleanup can remove it. JSON exports
 contain all saved Markdown and source references. Keep an export as a backup.
-This prototype has no offline service worker; it requires the page assets to
-load. SHA-256 uses Web Crypto on HTTPS or the supported loopback service.
+Offline loading is available only after explicitly enabling the bounded
+[PWA static cache](PWA.md) on a supporting host. It does not back up drafts or
+cache private submissions. SHA-256 uses Web Crypto on HTTPS or the supported
+loopback service.
 
 ## Format and validation
 

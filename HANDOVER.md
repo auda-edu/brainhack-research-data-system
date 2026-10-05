@@ -1,7 +1,7 @@
 # LabHippo framework handover
 
 Updated: 2026-10-05 (UTC)
-Current work: `feature/local-demo-workspace`, based on verified first-milestone commit `539dc81` (draft PR #13). The preceding PR stack (#9 → #10 → #11 → #12 → #13) remains unmerged. The public Pages site serves `main`; each milestone adds an independent branch preview and does not merge or change Pages settings.
+Current work: `feature/pwa-offline-foundation`, based on verified second-milestone commit `a5911af` (draft PR #14). The preceding PR stack (#9 → #10 → #11 → #12 → #13 → #14) remains unmerged. The public Pages site serves `main`; each milestone adds an independent branch preview and does not merge or change Pages settings.
 
 ## Where things live
 
@@ -14,6 +14,7 @@ Current work: `feature/local-demo-workspace`, based on verified first-milestone 
 - [Local read API](api/README.md): separate synthetic, read-only prototype.
 - [Local demo workspace](LOCAL_DEMO.md): explicitly saved fictional Markdown, JSON export/import and storage limits.
 - [Web/mobile roadmap](ROADMAP.md): bounded future outcomes and review gates.
+- [Installable browser demo](PWA.md): scoped offline assets, backup-aware updates and hosting requirements.
 
 ## What is built
 
@@ -69,6 +70,16 @@ The server verifies repository visibility on every submission. The client
 never treats a `publication_class` label or a role page as access control.
 
 ## Handover log
+
+### 2026-10-05 - Installable browser foundation and CI milestone
+
+- Isolated branch `feature/pwa-offline-foundation` is based on verified `a5911af` and targets `feature/local-demo-workspace` (draft PR #14). Earlier PRs, main and Pages settings remain unchanged.
+- Added relative manifest/start/scope, repository-native 192/512 PNG icons, browser install guidance and explicit offline opt-in. The generated content-versioned worker caches only 15 reviewed synthetic static assets in the exact app directory. APIs, private submissions, source Markdown, architecture links, query URLs and other origins bypass it. Hash record bookmarks share the static document cache.
+- The initial live mirror redirected `.webmanifest` to another origin, invalidating start/scope and rejecting offline installation. Switched the standard manifest to `manifest.json` to retain same-origin URLs without broadening worker scope. Final live verification is recorded with the PR's final tested commit.
+- Updates wait for backup confirmation and never reload an open form automatically. Scoped cleanup preserves other app caches and never reads/deletes drafts. Fixed installation response-body draining and prevented old fetches from recreating obsolete caches. Storage remains unencrypted, origin-specific and subject to browser cleanup; JSON exports and unsaved Markdown downloads remain necessary.
+- Added a pinned GitHub Actions workflow with `contents: read`, no secrets/deployment, Node 22 on Ubuntu and Windows. Existing Actions/workflow access was verified; no grants or settings were changed. [PWA.md](PWA.md) documents deployment, install, offline/update boundaries. The roadmap keeps native mobile development distinct.
+- Verification: all 53 Node tests, repository-wide JavaScript syntax, generated index/worker and diff checks passed. Chrome disposable normal profiles at 1440/375 px reported no manifest/installability errors. Both widths passed actual worker control, offline reload, fictional Capture save/search, bookmark reload, JSON export, waiting-update consent, unsaved-form and stored-draft preservation, and exact-scope cache cleanup with another app cache retained. No application errors, failed requests or horizontal overflow. The prior full workspace create/import/conflict/quota/hostile-text walkthrough also passed at both widths. QA artifacts remain outside the public repository.
+- Immutable preview worker support and live CI are verified after pushing and recorded in the draft PR handoff. A manifest/online preview alone does not establish host offline support. Actual OS installation, Safari/iPhone and physical Android devices are not covered by the desktop Chrome emulation; no native/mobile-store release was performed.
 
 ### 2026-10-05 — Local fictional Capture → Explore milestone
 

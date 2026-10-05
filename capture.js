@@ -155,6 +155,7 @@
   }
   async function refreshService() {
     try {
+      if (!navigator.onLine) throw new Error("Private submission requires a connection to the loopback Capture service.");
       if (location.protocol !== "http:" || location.hostname !== "127.0.0.1") {
         throw new Error("Private submission is available only from the loopback Capture service.");
       }
