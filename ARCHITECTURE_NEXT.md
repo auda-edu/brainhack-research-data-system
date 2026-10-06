@@ -1,5 +1,14 @@
 # Beyond the fictional local demo
 
+**Direction update, 2026-10-06:** the owner requested a web architecture redesign
+grounded in existing research systems and paused Android development. Review the
+[new proposal](architecture-review/design.md) and [workflow prototype](architecture-review/index.html).
+They supersede the priorities and Git-first authority assumptions below as proposed
+future direction. No production authority changes here. Next is owner review, then
+versioned typed contracts and a synthetic migration dry-run; native work stays paused.
+
+## Earlier milestone planning (historical)
+
 Status: proposed next architecture, 2026-10-05. No provider, private account,
 database, identity registration or native build has been provisioned here.
 Further demo polish is lower priority than shared contracts, a backend and a

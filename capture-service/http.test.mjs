@@ -21,10 +21,11 @@ test("local service serves Capture and rejects cross-origin or unverified writes
     assert.equal((await fetch(`${base}/.git/config`)).status, 404);
     assert.equal((await fetch(`${base}/capture-core.js`)).status, 200);
     for (const asset of ["explore.js", "explore-core.js", "data/synthetic-index.js", "structure/README.md",
-      "record-format.js", "demo-workspace-core.js", "demo-workspace.js"]) {
+      "record-format.js", "demo-workspace-core.js", "demo-workspace.js", "architecture-review/", "architecture-review/index.html",
+      "architecture-review/styles.css", "architecture-review/model.js", "architecture-review/review.js", "architecture-review/design.md"]) {
       assert.equal((await fetch(`${base}/${asset}`)).status, 200);
     }
-    for (const blocked of ["structure/build-index.mjs", "structure/synthetic-manifest.json", "data/private.js"]) {
+    for (const blocked of ["structure/build-index.mjs", "structure/synthetic-manifest.json", "data/private.js", "architecture-review/model.test.cjs", "architecture-review/private.json"]) {
       assert.equal((await fetch(`${base}/${blocked}`)).status, 404);
     }
     const blocked = await fetch(`${base}/api/capture/submissions`, {

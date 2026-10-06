@@ -1,5 +1,12 @@
 # Bounded web and mobile milestones
 
+**Current direction, 2026-10-06:** [reference-grounded architecture proposal](architecture-review/design.md)
+and [synthetic workflow review](architecture-review/index.html), stacked on draft
+PR #17 (`f1a154c`). Android development is paused by the owner. The next milestone
+after architecture review is versioned typed registry contracts and a synthetic
+migration dry-run. Provider, identity, private sources and job submission remain
+owner decisions. The earlier future sequence below is historical planning.
+
 Each milestone uses an isolated feature branch, a reviewed draft PR, tests,
 an immutable synthetic preview and a handover. The owner decides merges.
 The current unmerged chain is #9 → #10 → #11 → #12 → #13 → #14 → #15 → #16 → portable-proposal-contracts.

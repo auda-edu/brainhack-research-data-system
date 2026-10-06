@@ -22,7 +22,8 @@ function failure(response, status, code, message, details) {
 }
 function publicFile(rootDir, pathname) {
   const fixed = new Set(["/", "/index.html", "/styles.css", "/capture.js", "/capture-core.js", "/explore.js", "/explore-core.js", "/data/synthetic-index.js", "/structure/README.md",
-    "/record-format.js", "/contracts/record-contract.js", "/contracts/demo-service.js", "/contracts/fixtures.js", "/proposal-demo.js", "/demo-workspace-core.js", "/demo-workspace.js", "/pwa.js", "/sw.js", "/manifest.json", "/icons/app-192.png", "/icons/app-512.png", "/PWA.md"]);
+    "/record-format.js", "/contracts/record-contract.js", "/contracts/demo-service.js", "/contracts/fixtures.js", "/proposal-demo.js", "/demo-workspace-core.js", "/demo-workspace.js", "/pwa.js", "/sw.js", "/manifest.json", "/icons/app-192.png", "/icons/app-512.png", "/PWA.md",
+    "/architecture-review/index.html", "/architecture-review/styles.css", "/architecture-review/model.js", "/architecture-review/review.js", "/architecture-review/design.md"]);
   if (fixed.has(pathname)) return join(rootDir, pathname === "/" ? "index.html" : pathname.slice(1));
   if (!/^\/(?:plan-latest|templates|archived\/interactive-demo)\/[A-Za-z0-9_./-]+$/.test(pathname) || pathname.includes("..")) return null;
   const extension = pathname.slice(pathname.lastIndexOf("."));
@@ -85,7 +86,7 @@ export function createCaptureServer({ rootDir, client, port = 8788 }) {
     }
     if (url.pathname.startsWith("/api/")) return failure(response, 404, "NOT_FOUND", "Endpoint not found.");
     if (request.method !== "GET") return failure(response, 405, "METHOD_NOT_ALLOWED", "Only GET is available here.");
-    const alias = { "/plan-latest/": "/plan-latest/index.html", "/archived/interactive-demo/": "/archived/interactive-demo/index.html" };
+    const alias = { "/architecture-review/": "/architecture-review/index.html", "/plan-latest/": "/plan-latest/index.html", "/archived/interactive-demo/": "/archived/interactive-demo/index.html" };
     const filename = publicFile(rootDir, alias[url.pathname] || url.pathname);
     if (!filename) return failure(response, 404, "NOT_FOUND", "Page not found.");
     try {
