@@ -140,7 +140,7 @@
     const row = element("article", undefined, "reference-card"), anchor = element("a", "Read official documentation ↗"); anchor.href = url; anchor.rel = "noreferrer";
     row.append(element("h3", title), element("p", text), anchor); $("reference-cards").append(row);
   }
-  function route() {
+  function route(event) {
     const parts = location.hash.slice(1).split("/"); let view = parts[0] || "overview", id;
     if (!["overview", "model", "workflow", "policy", "migration", "references"].includes(view)) view = "overview";
     if (view === "model" && parts[1]) { try { id = decodeURIComponent(parts[1]); } catch { id = "invalid-id"; } }
@@ -148,7 +148,7 @@
     document.querySelectorAll("[data-view]").forEach(anchor => { if (anchor.dataset.view === view) anchor.setAttribute("aria-current", "page"); else anchor.removeAttribute("aria-current"); });
     if (view === "model") detail(id);
     if (view === "model" && id) $("object-detail").focus();
-    else $("review-content").focus();
+    else if (event) $("review-content").focus();
   }
   $("object-kind").addEventListener("change", cards); $("object-query").addEventListener("input", cards); $("release-scenario").addEventListener("change", release);
   window.addEventListener("hashchange", route); cards(); release(); route();
