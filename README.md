@@ -1,5 +1,12 @@
 # LabHippo research-memory framework
 
+**Current direction (2026-10-06):** review the [research-system architecture](architecture-review/design.md)
+and its [navigable synthetic prototype](architecture-review/index.html). The proposal
+separates notebook entries, acquisition sessions, content versions, analysis attempts
+and reviewed releases, with clear ELN/NAS/Git/HPC ownership. It recommends a
+transactional metadata registry; production choices remain unresolved. Android is
+paused at the owner's request. Existing demos and v1 contracts remain intact.
+
 The repository root is a zero-build public framework for the three stages in
 [plan-latest](plan-latest/): Capture, Structure, and Explore. The plan is a
 concept. **Capture** prepares Markdown and local draft pull requests.
@@ -18,8 +25,8 @@ Saved fictional drafts support stable-ID Markdown revisions, recoverable archive
 restore and single latest-change undo. Corrupt storage has explicit export-first
 recovery that retains the raw original. Version 1 is not migrated on read;
 explicit lifecycle changes retain version 2 history. See [LOCAL_DEMO.md](LOCAL_DEMO.md).
-The [next architecture plan](ARCHITECTURE_NEXT.md) prioritizes portable API
-contracts and a native development slice over more general demo polish.
+The [next architecture plan](ARCHITECTURE_NEXT.md) records the current web architecture
+review and pending production decisions. Native implementation remains paused.
 
 Capture has two routes:
 

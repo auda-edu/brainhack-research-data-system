@@ -1,18 +1,18 @@
 # LabHippo framework handover
 
-Updated: 2026-10-05 (UTC)
-Current work: `feature/portable-proposal-contracts`, based on verified fourth-milestone `953410f` (draft PR #16). The preceding PR stack (#9–#16) remains unmerged. Public Pages serves main; this stage adds an immutable synthetic preview without merges or deployment changes.
-
-Current milestone: `feature/portable-proposal-contracts`, based on verified
-`953410f` (draft PR #16). All earlier stacked PRs remain unmerged. The stage adds
-portable synthetic contracts and a local memory-only service, without touching
-main/Pages or connecting private records.
+Updated: 2026-10-06 (UTC)
+Current work: `feature/research-system-architecture`, based on verified
+`f1a154c` (draft PR #17). The preceding PR stack remains unmerged. This milestone
+adds a reference-grounded architecture proposal and synthetic navigable web review.
+No production source, provider, authority or permission changes. Android is paused
+at the owner's request; uncommitted native source is preserved outside this checkout.
 
 ## Where things live
 
 - [Repository](https://github.com/auda-edu/brainhack-research-data-system): public code and synthetic examples only.
 - [Root framework](index.html): Capture workspace plus synthetic Structure and responsive Explore.
-- [Latest architecture concept](plan-latest/): proposal, not an operational prototype.
+- [Current architecture review](architecture-review/index.html) and [proposal](architecture-review/design.md): synthetic navigation, ownership, provenance, release checks and migration gates.
+- [Earlier architecture concept](plan-latest/): retained historical proposal.
 - [Public templates](templates/README.md): blank records and fictional examples.
 - [Earlier interactive demo](archived/interactive-demo/): historical browser-local project, log, and role-view prototype.
 - [Local Capture service](capture-service/README.md): fixed private-repository submission through a new branch and draft PR.
@@ -79,6 +79,21 @@ The server verifies repository visibility on every submission. The client
 never treats a `publication_class` label or a role page as access control.
 
 ## Handover log
+
+### 2026-10-06 - Reuse the original LabHippo brand on the architecture review
+
+- Replaced the review masthead's later `lh.` monogram with the existing blue seahorse / LabHippo wordmark, and restored the established PNG favicon reference. CSS only scales the image proportionally and trims its outer padding for desktop/mobile layout; no image pixels, colors or original files were changed.
+- Provenance: `plan-latest/logo-light.png` was introduced as `plan-ver-0928/logo-light.png` in commit `068d543` (2026-09-28), then moved in `170b7c2`. Both paths have Git blob `56d705cf510deef69e222dc5c184564fdb57c41e`; SHA-256 `58d6343637657c1e417ca38f115ed63c8ff00b1856600a3b634955ac9d88e962`. The original plan used this same asset as its hero logo and favicon. The dark companion has the same established design; the light variant matches this page's light theme.
+- Scope is branding only on draft PR #18. No new artwork, generated/re-encoded asset, PWA asset changes, architecture behavior, source integration or native work. Android remains paused. Verification: 82 Node tests and syntax/index/19-asset worker/diff checks passed; isolated local Chrome at 1440/375 px loads the original full-resolution PNG and established favicon, retains every artwork pixel within the layout viewport, and passes the six-view walkthrough without app errors or overflow. Masthead screenshots were visually inspected. Final-head CI/live preview results are recorded in the PR and external task evidence after push.
+
+### 2026-10-06 - Reference-grounded web architecture review
+
+- Designed LabHippo as a metadata/collaboration/provenance entry point with explicit ELN, storage, Git and scheduler ownership. Recommend a transactional relational registry in a modular monolith; no provider or production authority selected.
+- The review page distinguishes 13 object types in 17 invented objects and 19 typed links, including mutable assets versus frozen versions, failed/retried analysis attempts, completion/reopen history and four version-bound release-review scenarios. All underlying fixture fields are already public synthetic data; frontend projections/checklists are not authorization.
+- Documented official eLabFTW/openBIS 7.x/XNAT/DataLad patterns and their limits; phased migration preserves legacy IDs and flags ambiguous records for review. No automatic conversion, private ingestion or job submission.
+- Added explicit static routes and an entry link; existing v1 contracts/demo remain intact. Architecture assets remain outside the opt-in PWA cache; regenerated worker reflects the root entry link. Android remains paused.
+- Verification: 82 Node tests, syntax/index/19-asset worker/diff checks. Isolated Chrome at 1440/375 px passes all six architecture views, filters, detail reloads/typed neighbors, failed and retried attempts, lifecycle history, three withheld release cases, public field allowlisting, malformed hashes and literal hostile titles, with no app errors, root overflow or prototype API requests. Existing Capture/workspace backup/import and local offline/update preservation regressions pass at both widths. Immutable commit/PR/preview and CI results are recorded in the milestone PR and external task evidence after push. No production backend, source permissions or native runtime is verified by these checks.
+
 
 ### 2026-10-05 - Portable contracts and synthetic proposal API milestone
 

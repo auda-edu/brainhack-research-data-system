@@ -1,5 +1,10 @@
 # LabHippo: Three-Layer Research Knowledge Architecture
 
+**2026-10-06 update:** this earlier concept is retained for context. The current
+[research-system proposal](../architecture-review/design.md) and
+[web review](../architecture-review/index.html) specify source ownership, typed
+provenance, version-bound releases and a phased migration. Android is paused.
+
 - **Status:** Architecture draft
 - **Date:** 2026-09-28
 - **Scope:** A private Markdown knowledge source that generates a public research site and an access-controlled internal site.

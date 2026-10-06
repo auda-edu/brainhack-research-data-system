@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17372d">
+  <meta name="description" content="LabHippo architecture review: research objects, data ownership, provenance and phased integration. Synthetic design prototype only.">
+  <link rel="icon" href="../plan-latest/logo-light.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="model.js" defer></script>
+  <script src="review.js" defer></script>
+  <title>LabHippo · Architecture review</title>
+</head>
+<body>
+  <a class="skip" href="#review-content">Skip to architecture review</a>
+  <header class="masthead"><a href="../index.html" class="brand"><img src="../plan-latest/logo-light.png" width="2400" height="1280" alt="LabHippo: the lab's memory"></a><span class="edition">ARCHITECTURE REVIEW / 2026.10</span><a href="design.md" class="doc-link">Read the proposal ↗</a></header>
+  <div class="layout">
+    <aside class="sidebar">
+      <p class="eyebrow">RESEARCH, CONNECTED</p>
+      <nav aria-label="Architecture views">
+        <a href="#overview" data-view="overview"><span>01</span> System boundaries</a>
+        <a href="#model" data-view="model"><span>02</span> Research objects</a>
+        <a href="#workflow" data-view="workflow"><span>03</span> Follow the evidence</a>
+        <a href="#policy" data-view="policy"><span>04</span> Access &amp; release</a>
+        <a href="#migration" data-view="migration"><span>05</span> Migration &amp; decisions</a>
+        <a href="#references" data-view="references"><span>06</span> Official references</a>
+      </nav>
+      <div class="sidebar-note"><strong>A review surface.</strong><p>All records are invented. The diagrams describe a proposed architecture. No lab system is connected.</p><a href="#references">Official design references ↗</a></div>
+      <a class="back-link" href="../index.html">← Existing web demo</a>
+    </aside>
+    <main id="review-content" tabindex="-1">
+      <div class="review-boundary"><span class="dot"></span> DESIGN PROPOSAL + SYNTHETIC WORKFLOW · NO PRODUCTION BACKEND</div>
+      <section id="overview-view" data-panel="overview">
+        <p class="eyebrow">01 / SYSTEM BOUNDARIES</p><h1>The context layer.<br><em>The data stays accountable.</em></h1>
+        <p class="lead">Bring projects, research activity and evidence into one view. Keep each source system responsible for the information it owns.</p>
+        <div class="principles"><article><span class="number">A</span><h3>Know the owner.</h3><p>A catalog reference is distinct from the notebook entry, stored bytes and execution evidence it describes.</p></article><article><span class="number">B</span><h3>Pin the version.</h3><p>Trace a reviewed result to exact inputs, code, parameters and outputs. A moving folder or branch cannot define a reproducible result.</p></article><article><span class="number">C</span><h3>Release deliberately.</h3><p>Internal access and public export are separate decisions. Review a specific artifact version before releasing it.</p></article></div>
+        <h2>One entry point. Clear responsibilities.</h2><div id="system-layers" class="system-layers"></div>
+        <h2>Canonical ownership</h2><p class="muted">Recommended boundaries, subject to owner review. No provider, production database or connector has been selected.</p><div id="ownership-table" class="table-wrap"></div>
+      </section>
+      <section id="model-view" data-panel="model" hidden>
+        <p class="eyebrow">02 / RESEARCH OBJECTS</p><h1>Give each research<br><em>activity its own meaning.</em></h1>
+        <p class="lead">A notebook entry, an acquisition session and an analysis execution are different objects. They connect through typed, version-aware relationships.</p>
+        <div class="model-tools"><label for="object-kind">Object type<select id="object-kind"><option value="">All types</option></select></label><label for="object-query">Search the invented example<input id="object-query" type="search" placeholder="Try dataset, session, or result"></label></div>
+        <p id="object-count" role="status"></p><div id="object-cards" class="object-cards"></div>
+        <article id="object-detail" class="detail" tabindex="-1" hidden></article>
+      </section>
+      <section id="workflow-view" data-panel="workflow" hidden>
+        <p class="eyebrow">03 / FOLLOW THE EVIDENCE</p><h1>From a result<br><em>back to its inputs.</em></h1>
+        <p class="lead">Inspect a fictional acquisition and analysis chain. Every link is a design fixture; no job is submitted and no file is read.</p>
+        <div id="workflow-strip" class="workflow-strip"></div>
+        <article class="question"><p class="eyebrow">THE REVIEW QUESTION</p><h2>Which exact data and code produced this result?</h2><p>Select a node to inspect its owner, frozen version or execution evidence. Working assets stay separate from frozen DatasetVersions.</p></article>
+        <div id="lineage-tree" class="lineage-tree"></div>
+        <h2>Completion can be reopened. History stays.</h2><p class="muted">Invented lifecycle events. Completing a project neither freezes every file nor publishes its results.</p><ol id="lifecycle-history" class="steps"></ol>
+        <article class="caution"><h3>Evidence has limits.</h3><p>Checksums identify bytes; they do not prove ethical approval or scientific validity. A successful HPC exit status and a Git commit do not approve a result. This fixture contains invented version pins, not evidence of a real execution.</p></article>
+      </section>
+      <section id="policy-view" data-panel="policy" hidden>
+        <p class="eyebrow">04 / ACCESS &amp; RELEASE</p><h1>Research access.<br><em>A separate release decision.</em></h1>
+        <p class="lead">These are proposed policy requirements, not live permissions. All values in this static prototype are public synthetic examples.</p>
+        <div id="policy-matrix" class="table-wrap"></div>
+        <h2>Release review examples</h2><p class="muted">A local checklist illustrates why approval must bind the exact version and audience. It performs no publication or security enforcement.</p>
+        <label for="release-scenario">Review scenario<select id="release-scenario"><option value="approved">Reviewed synthetic result v1</option><option value="changed">Result changed after approval</option><option value="missing">Approval missing</option><option value="restricted">Restricted dependency requested</option></select></label>
+        <div id="release-result" class="release-result" role="status" aria-live="polite"></div>
+        <h2>Public output is a new artifact.</h2><ol class="steps"><li>Resolve the selected result and its required evidence versions.</li><li>Review fields, derived files and linked identifiers for the intended audience.</li><li>Bind the approval to a release manifest, artifact digest and policy version.</li><li>Build isolated public output and review every index, source map, image and download.</li><li>Record publication and support a reviewed withdrawal or superseding release.</li></ol>
+      </section>
+      <section id="migration-view" data-panel="migration" hidden>
+        <p class="eyebrow">05 / MIGRATION &amp; DECISIONS</p><h1>A careful migration.<br><em>One bounded step at a time.</em></h1>
+        <p class="lead">Preserve existing IDs and exports. Validate the new model against synthetic evidence before any production connection or migration.</p>
+        <div id="migration-stages" class="migration-stages"></div>
+        <h2>Decisions before production</h2><div id="decision-list" class="decision-list"></div>
+        <article class="caution"><h3>Android remains paused.</h3><p>The owner paused native development while the web architecture is reviewed. Mobile implementation resumes after that decision is revisited.</p></article>
+      </section>
+      <section id="references-view" data-panel="references" hidden>
+        <p class="eyebrow">REFERENCE SYSTEMS</p><h1>Borrow the pattern.<br><em>Respect its boundary.</em></h1><p class="lead">Official documentation grounds this proposal. We compare responsibilities and tradeoffs; we are not selecting or deploying these products.</p><div id="reference-cards" class="reference-cards"></div>
+      </section>
+      <footer><span>labhippo · design review</span><a href="design.md">Architecture proposal</a><a href="../index.html">Existing functional demo</a></footer>
+    </main>
+  </div>
+  <noscript><p class="noscript">Enable JavaScript for the review navigator, or read the <a href="design.md">architecture proposal</a>. All research examples are synthetic.</p></noscript>
+</body>
+</html>
