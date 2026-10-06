@@ -80,6 +80,12 @@ never treats a `publication_class` label or a role page as access control.
 
 ## Handover log
 
+### 2026-10-06 - Reuse the original LabHippo brand on the architecture review
+
+- Replaced the review masthead's later `lh.` monogram with the existing blue seahorse / LabHippo wordmark, and restored the established PNG favicon reference. CSS only scales the image proportionally and trims its outer padding for desktop/mobile layout; no image pixels, colors or original files were changed.
+- Provenance: `plan-latest/logo-light.png` was introduced as `plan-ver-0928/logo-light.png` in commit `068d543` (2026-09-28), then moved in `170b7c2`. Both paths have Git blob `56d705cf510deef69e222dc5c184564fdb57c41e`; SHA-256 `58d6343637657c1e417ca38f115ed63c8ff00b1856600a3b634955ac9d88e962`. The original plan used this same asset as its hero logo and favicon. The dark companion has the same established design; the light variant matches this page's light theme.
+- Scope is branding only on draft PR #18. No new artwork, generated/re-encoded asset, PWA asset changes, architecture behavior, source integration or native work. Android remains paused. Verification: 82 Node tests and syntax/index/19-asset worker/diff checks passed; isolated local Chrome at 1440/375 px loads the original full-resolution PNG and established favicon, retains every artwork pixel within the layout viewport, and passes the six-view walkthrough without app errors or overflow. Masthead screenshots were visually inspected. Final-head CI/live preview results are recorded in the PR and external task evidence after push.
+
 ### 2026-10-06 - Reference-grounded web architecture review
 
 - Designed LabHippo as a metadata/collaboration/provenance entry point with explicit ELN, storage, Git and scheduler ownership. Recommend a transactional relational registry in a modular monolith; no provider or production authority selected.
